@@ -1,10 +1,17 @@
 var mysql = require('mysql');
+require('dotenv').confiq()
+
+const username = process.env.MY_USERNAME
+const password = process.env.MY_PASSWORD
+const siaChatbot = process.env.MY_CHATBOT
+
+
 
 var db = mysql.createConnection({
   host: 'localhost',
-  user: 'muano',
-  password: 'mutondi',
-  database: 'chatbot'
+  user: username,
+  password: password,
+  database: siaChatbot
   // port: '3325'
 })
 

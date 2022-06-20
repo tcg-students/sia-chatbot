@@ -1,12 +1,17 @@
-const {db} =  require('../database/Chat')
+const {db} = require('../database/Chat')
 
 
 
-
+console.log('dsfdf',db)
 const getChatMessages = async () => {
-    let statementQuery = `SELECT * FROM tree;`   
-    const res = await db(statementQuery)
-    console.log('res', res)
+    const connection = await db.getConnection();
+    try {
+        let statementQuery = await connection.query("SELECT * FROM tree;")   
+        console.log('statementQuery', statementQuery)
+        
+    } catch (error) {
+        console.log(error)
+    }
 }
 
 module.exports = {

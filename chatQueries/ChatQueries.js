@@ -1,6 +1,5 @@
 const { db } = require("../database/Chat");
 
-// console.log('dsfdf',db)
 const getInitialTreeMessages = async () => {
   const connection = await db.getConnection();
   try {
@@ -12,10 +11,24 @@ const getInitialTreeMessages = async () => {
   }
 };
 
-const getNodeMessages = async (id) => {
+const getInitialnodes = async (id) => {
   const connection = await db.getConnection();
   try {
-    let getNodeQuery = await connection.query(`SELECT * FROM node WHERE node.tree_id=${id};`
+    let getInitialNodeQuery = await connection.query(`SELECT * FROM node WHERE node.tree_id=${id};`
+    );
+    console.log("getInitialNodeQuery", getInitialNodeQuery);
+    return getInitialNodeQuery;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+
+
+const getNode = async (id) => {
+  const connection = await db.getConnection();
+  try {
+    let getNodeQuery = await connection.query(`SELECT * FROM node WHERE node_id=${id};`
     );
     console.log("getNodeQuery", getNodeQuery);
     return getNodeQuery;
@@ -42,5 +55,6 @@ const getNodeMessages = async (id) => {
 
 module.exports = {
   getInitialTreeMessages,
-  getNodeMessages,
+  getInitialnodes,
+  getNode
 };

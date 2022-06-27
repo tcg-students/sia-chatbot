@@ -9,7 +9,7 @@
             "port": 3306,
             "askForPassword": true,
             "driver": "MySQL",
-            "name": "sqlconnection",
+            "name": "chatbot",
             "database": "chatbot",
             "username": "tumikole"
         }

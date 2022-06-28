@@ -1,7 +1,7 @@
 const {
   getInitialTreeMessages,
   getInitialnodes,
-  getNode
+  getNode,
 } = require("../chatQueries/ChatQueries");
 
 const chatRoutes = (app) => {
@@ -18,8 +18,8 @@ const chatRoutes = (app) => {
   });
 
   app.get("/get_nodes/:id", async (req, res) => {
-    const getNodes = await getNode(req.params.id);
-    console.log('getNodes', getNodes)
+    const getNodes = await getNode([req.params.id]);
+    console.log("getNodes", getNodes);
     res.send(getNodes);
   });
 };

@@ -1,10 +1,10 @@
 const { db } = require("../database/Chat");
 
-console.log("db", db);
 const getInitialTreeMessages = async () => {
-  const connection = await db.getConnection();
   try {
+    const connection = await db.getConnection();
     let statementQuery = await connection.query("SELECT * FROM tree ;");
+    console.log("statementQuery", statementQuery);
 
     return statementQuery;
   } catch (error) {

@@ -1,10 +1,10 @@
 import axios from "axios";
 import * as actions from "../ActionTypes/index";
 
-export const getInitialTreeText = (_) => {
+export const getInitialTreeText = () => {
   return async (dispatch) => {
     const response = await axios.get("http://localhost:4000/treeMessages");
-    const getData = response.data;
+    const getData = response.data.treeMessages;
     console.log("getData", getData);
     dispatch({ type: actions.GETTING_FIRST_TREE_WELCOME_MESSAGES, payload: getData });
   };

@@ -12,7 +12,7 @@ const Chatbot = () => {
 
   const getWelcomeContents = async () => {
     try {
-      dispatch();
+      dispatch(getInitialTreeText());
     } catch (error) {
       console.log("error", error);
     }
@@ -20,7 +20,7 @@ const Chatbot = () => {
 
   const getNodeContents = async (id) => {
     try {
-      dispatch(id)
+      dispatch(getInitialNode(id))
     } catch (error) {
       console.log("error", error);
     }

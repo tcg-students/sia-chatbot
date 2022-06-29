@@ -1,8 +1,3 @@
--- MariaDB dump 10.19  Distrib 10.6.7-MariaDB, for debian-linux-gnu (x86_64)
---
--- Host: localhost    Database: chatbot
--- ------------------------------------------------------
--- Server version	10.6.7-MariaDB-2ubuntu1
 CREATE TABLE `node` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `text` longtext DEFAULT NULL,
@@ -13,10 +8,6 @@ CREATE TABLE `node` (
   `application` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`application`)),
   PRIMARY KEY (`id`)
 ) ENGINE = InnoDB AUTO_INCREMENT = 50 DEFAULT CHARSET = utf8mb4;
-
-
-
-
 
 INSERT INTO `node` (text)
 VALUES (

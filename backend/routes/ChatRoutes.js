@@ -7,7 +7,6 @@ const {
 const chatRoutes = (app) => {
   app.get("/treeMessages", async (req, res) => {
     const treeMessages = await getInitialTreeMessages();
-    console.log("first");
     res.send({ message: "All tree messages", treeMessages });
   });
 

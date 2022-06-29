@@ -13,7 +13,7 @@ const Chatbot = () => {
 
   const getWelcomeContents = async () => {
     try {
-      console.log('tumi')
+
       dispatch(getInitialTreeText());
     } catch (error) {
       console.log("error", error);

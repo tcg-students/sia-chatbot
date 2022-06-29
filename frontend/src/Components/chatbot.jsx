@@ -29,10 +29,9 @@ const Chatbot = () => {
 
   
   return <div>
-    {JSON.stringify(introMessage)}
     {introMessage !== undefined ? introMessage && introMessage.map((item) => {
         return(<div>
-<p>{item.text}</p>
+<button style={{padding:"5px"}}>{item.text}</button>
 
         </div>)
     }): null} 

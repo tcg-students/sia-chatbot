@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import ChatbotDisplay from './ChatbotDisplay'
+import { useDispatch  } from "react-redux";
 import { getInitialTreeText , getInitialNode } from "../Redux/ActionCreators/index";
 const Chatbot = () => {
   const [introMessage, setIntroMessage] = useState();
@@ -7,20 +8,21 @@ const Chatbot = () => {
   let dispatch = useDispatch();
   useEffect(() => {
     getWelcomeContents();
-    getNodeContents();
+    handleInitialNodeOptions();
   }, []);
 
   const getWelcomeContents = async () => {
     try {
-      dispatch();
+      console.log('tumi')
+      dispatch(getInitialTreeText());
     } catch (error) {
       console.log("error", error);
     }
   };
 
-  const getNodeContents = async (id) => {
+  const handleInitialNodeOptions = async (id) => {
     try {
-      dispatch(id)
+      dispatch(getInitialNode(id))
     } catch (error) {
       console.log("error", error);
     }
@@ -28,16 +30,7 @@ const Chatbot = () => {
 
   return (
     <div>
-      {introMessage !== undefined
-        ? introMessage &&
-          introMessage.map((item) => {
-            return (
-              <div>
-                <button style={{ padding: "5px" }}>{item.text}</button>
-              </div>
-            );
-          })
-        : null}
+      <ChatbotDisplay handleInitialNodeOptions={handleInitialNodeOptions} />
     </div>
   );
 };

@@ -22,6 +22,7 @@ const Chatbot = () => {
 
   const handleInitialNodeOptions = async (id) => {
     try {
+      
       dispatch(getInitialNode(id))
     } catch (error) {
       console.log("error", error);

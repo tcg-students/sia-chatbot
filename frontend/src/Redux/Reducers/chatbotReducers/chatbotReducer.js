@@ -1,4 +1,4 @@
-import * as actions from "../ActionTypes/index";
+import * as actions from "../../ActionTypes/index";
 
 let initialState = {
   welcomeMessages: [],

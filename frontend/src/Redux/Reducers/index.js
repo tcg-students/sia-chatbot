@@ -1,6 +1,6 @@
 import { chatbotMessagesReducer } from "./chatbotReducers/chatbotReducer";
-import { combinedReducers } from "redux";
+import { combineReducers } from "redux";
 
-export const rootReducer = combinedReducers({
+export const rootReducer = combineReducers({
   botConversation: chatbotMessagesReducer,
 });

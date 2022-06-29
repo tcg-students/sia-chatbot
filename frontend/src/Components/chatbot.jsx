@@ -18,6 +18,8 @@ const Chatbot = () => {
     }
   };
 
+  
+
   const getNodeContents = async (id) => {
     try {
       const data = await axios.get(`http://localhost:4000/get_initial_nodes/${id}`);

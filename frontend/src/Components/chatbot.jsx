@@ -1,44 +1,45 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
-
+import { useDispatch } from "react-redux";
+import { getInitialTreeText , getInitialNode } from "../Redux/ActionCreators/index";
 const Chatbot = () => {
   const [introMessage, setIntroMessage] = useState();
 
+  let dispatch = useDispatch();
   useEffect(() => {
     getWelcomeContents();
-    getNodeContents()
+    getNodeContents();
   }, []);
 
   const getWelcomeContents = async () => {
     try {
-      const data = await axios.get("http://localhost:4000/treeMessages");
-      setIntroMessage(data.data.treeMessages);
+      dispatch();
     } catch (error) {
-        console.log('error', error)
+      console.log("error", error);
     }
   };
-
-  
 
   const getNodeContents = async (id) => {
     try {
-      const data = await axios.get(`http://localhost:4000/get_initial_nodes/${2}`);
-      console.log('data', data)
+      dispatch(id)
     } catch (error) {
-        console.log('error', error)
+      console.log("error", error);
     }
   };
 
-  
-  return <div>
-    {introMessage !== undefined ? introMessage && introMessage.map((item) => {
-        return(<div>
-<button style={{padding:"5px"}}>{item.text}</button>
-
-        </div>)
-    }): null} 
-    </div>;
-    
+  return (
+    <div>
+      {introMessage !== undefined
+        ? introMessage &&
+          introMessage.map((item) => {
+            return (
+              <div>
+                <button style={{ padding: "5px" }}>{item.text}</button>
+              </div>
+            );
+          })
+        : null}
+    </div>
+  );
 };
 
 export default Chatbot;

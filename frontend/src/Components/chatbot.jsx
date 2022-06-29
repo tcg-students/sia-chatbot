@@ -20,7 +20,7 @@ const Chatbot = () => {
 
   const getNodeContents = async (id) => {
     try {
-      const data = await axios.get(`http://localhost:4000/get_initial_nodes/${id}`);
+      const data = await axios.get(`http://localhost:4000/get_initial_nodes/${2}`);
       console.log('data', data)
     } catch (error) {
         console.log('error', error)

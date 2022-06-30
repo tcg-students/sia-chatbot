@@ -18,7 +18,7 @@ const getInitialnodes = async (id) => {
     let getInitialNodeQuery = await connection.query(
       `SELECT * FROM node WHERE node.tree_id=${id};`
     );
-    console.log("getInitialNodeQuery", getInitialNodeQuery);
+    console.log("getInitialNodeQuery", getInitialNodeQuery)
     return getInitialNodeQuery;
   } catch (error) {
     console.log(error);

@@ -11,7 +11,7 @@ function ChatbotDisplay(props) {
   const { handleInitialNodeOptions } = props;
   return (
     <div>
-      <p style={{ padding: "5px" }}>{introTreeMessages[0].text}</p>
+      {/* <p style={{ padding: "5px" }}>{introTreeMessages[0].text}</p> */}
       {introTreeMessages !== undefined
         ? introTreeMessages &&
           introTreeMessages.map((item, id) => {

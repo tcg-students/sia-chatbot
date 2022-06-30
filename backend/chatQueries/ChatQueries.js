@@ -1,8 +1,8 @@
-const { db } = require("../database/Chat");
+const { fetchConn } = require("../database/Chat");
 
 const getInitialTreeMessages = async () => {
   try {
-    const connection = await db.getConnection();
+    const connection = await fetchConn();
     let statementQuery = await connection.query("SELECT * FROM tree ;");
     console.log("statementQuery", statementQuery);
 
@@ -13,7 +13,7 @@ const getInitialTreeMessages = async () => {
 };
 
 const getInitialnodes = async (id) => {
-  const connection = await db.getConnection();
+  const connection = await fetchConn();
   try {
     let getInitialNodeQuery = await connection.query(
       `SELECT * FROM node WHERE node.tree_id=${id};`
@@ -26,7 +26,7 @@ const getInitialnodes = async (id) => {
 };
 
 const getNode = async (id) => {
-  const connection = await db.getConnection();
+  const connection = await fetchConn();
   console.log("kskk", connection);
   try {
     let getNodeQuery = await connection.query(
@@ -58,5 +58,5 @@ const getNode = async (id) => {
 module.exports = {
   getInitialTreeMessages,
   getInitialnodes,
-  getNode,
+  // getNode,
 };

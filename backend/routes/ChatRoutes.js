@@ -16,11 +16,11 @@ const chatRoutes = (app) => {
     res.send(getInitialNodes);
   });
 
-  app.get("/get_nodes/:id", async (req, res) => {
-    const getNodes = await getNode([req.params.id]);
-    console.log("getNodes", getNodes);
-    res.send(getNodes);
-  });
+  // app.get("/get_nodes/:id", async (req, res) => {
+  //   const getNodes = await getNode([req.params.id]);
+  //   console.log("getNodes", getNodes);
+  //   res.send(getNodes);
+  // });
 };
 
 module.exports = {

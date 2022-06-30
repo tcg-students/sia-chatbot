@@ -11,7 +11,14 @@ var db = mariadb.createPool({
   host: "localhost",
   user: username,
   password: password,
-  database: siaChatbot
+  database: siaChatbot,
+  // limitNOFILE : Infinity
 });
 
-module.exports = { db };
+async function fetchConn() {
+  let conn = await db.getConnection();
+  conn.release();
+  return conn;
+}
+
+module.exports = { fetchConn };

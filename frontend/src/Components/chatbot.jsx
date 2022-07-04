@@ -1,17 +1,21 @@
 import React, { useState, useEffect } from "react";
 import ChatbotDisplay from './ChatbotDisplay'
 import { useDispatch  } from "react-redux";
-import { getInitialTreeText , getInitialNode } from "../Redux/ActionCreators/index";
+import { getInitialTreeText , getInitialNode , getNode , getLogo } from "../Redux/ActionCreators/index";
 const Chatbot = () => {
-  const [introMessage, setIntroMessage] = useState();
 
   let dispatch = useDispatch();
   useEffect(() => {
-    getWelcomeContents();
+    getImage();
     handleInitialNodeOptions();
   }, []);
 
-  const getWelcomeContents = async () => {
+  const getImage = _ => {
+    dispatch(getLogo());
+    getWelcomeContents()
+  }
+
+  const getWelcomeContents = async _ => {
     try {
 
       dispatch(getInitialTreeText());
@@ -21,6 +25,7 @@ const Chatbot = () => {
   };
 
   const handleInitialNodeOptions = async (id) => {
+    // console.log('id', id)
     try {
       dispatch(getInitialNode(id))
     } catch (error) {
@@ -28,9 +33,18 @@ const Chatbot = () => {
     }
   };
 
+  const handleNodeOptions = async (id) => {
+    // console.log('id', id)
+    try {
+      dispatch(getNode(id))
+    } catch (error) {
+      console.log("error", error);
+    }
+  };
+
   return (
     <div>
-      <ChatbotDisplay handleInitialNodeOptions={handleInitialNodeOptions} />
+      <ChatbotDisplay handleInitialNodeOptions={handleInitialNodeOptions} handleNodeOptions={handleNodeOptions}/>
     </div>
   );
 };

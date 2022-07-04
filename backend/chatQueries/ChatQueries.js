@@ -1,5 +1,19 @@
 const { fetchConn } = require("../database/Chat");
 
+const getTcgLogo = async () => {
+  try {
+    const connection = await fetchConn();
+    let statementQuery =
+      await connection.query(`SELECT * FROM node WHERE id = ${1};
+    `);
+    console.log("statementQuery", statementQuery);
+
+    return statementQuery;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 const getInitialTreeMessages = async () => {
   try {
     const connection = await fetchConn();
@@ -30,7 +44,7 @@ const getNode = async (id) => {
   console.log("kskk", connection);
   try {
     let getNodeQuery = await connection.query(
-      `SELECT * FROM node WHERE node_id=${id};`
+      `SELECT * FROM node WHERE node.node_id=${id};`
     );
     console.log("getNodeQuery", getNodeQuery);
     return getNodeQuery;
@@ -39,28 +53,10 @@ const getNode = async (id) => {
   }
 };
 
-const updateJsonTree = () => {
-  
-}
-
-// const saveStudent = async (data) => {
-//   const {
-//     jsonFile
-//   } = data;
-//   const connection = await db.getConnection();
-//   try {
-//     let applicantQuery = await connection.query(
-//       `INSERT INTO node (json_file) VALUES ('${nodeId}');`
-//     );
-//     console.log('applicantQuery', applicantQuery)
-//     return applicantQuery;
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
 
 module.exports = {
+  getTcgLogo,
   getInitialTreeMessages,
   getInitialnodes,
-  // getNode,
+  getNode,
 };

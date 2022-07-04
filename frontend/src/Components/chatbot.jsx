@@ -17,6 +17,7 @@ const Chatbot = () => {
 
   const getWelcomeContents = async _ => {
     try {
+
       dispatch(getInitialTreeText());
     } catch (error) {
       console.log("error", error);

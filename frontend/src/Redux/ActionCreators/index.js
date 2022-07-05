@@ -5,7 +5,7 @@ export const getLogo = () => {
   return async (dispatch) => {
     const response = await axios.get("http://localhost:4000/logo");
     const getData = response.data;
-    // console.log("getData", getData);
+    // console.log("logoAction", getData);
     dispatch({ type: actions.GET_LOGO, payload: getData });
   };
 };
@@ -34,7 +34,7 @@ export const getNode = (id) => {
   return async (dispatch) => {
     const response = await axios.get(`http://localhost:4000/get_nodes/${id}`);
     const getInitialNodeData = response.data;
-    // console.log("getInitialNodeData", getInitialNodeData);
+    console.log("getInitialNodeData", getInitialNodeData);
     dispatch({ type: actions.GETTING_NODE_OPTIONS, payload: getInitialNodeData });
   };
 };

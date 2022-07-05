@@ -1,35 +1,41 @@
-import React, {useState , useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 
 function ChatbotDisplay(props) {
-  const [chatbotNodes , setChatbotNodes] = useState([])
+  const [chatbotNodes, setChatbotNodes] = useState([]);
+
   useEffect(() => {
     nodeDisplay();
-  });
+  }, []);
+
+  let logo = useSelector(
+    (state) =>
+      state.botConversation.logo.logo &&
+      state.botConversation.logo.logo[0].image
+  );
+  console.log('logo', logo)
   let introTreeMessages = useSelector(
     (state) => state.botConversation.welcomeMessages
   );
   let nextNodes = useSelector(
     (state) => state.botConversation.optionBotMessages
   );
-  // console.log("nextNodes", nextNodes);
   let nextSubNodes = useSelector(
     (state) => state.botConversation.botConversationalMessages
   );
 
-  const nodeDisplay = () => { 
-    
-    setChatbotNodes(nextSubNodes)
-    // console.log('i', i)
+  console.log('nextSubNodes', nextSubNodes)
+  const nodeDisplay = () => {
+    setChatbotNodes(nextSubNodes);
+  };
 
-  // }
-  }
-
-  console.log('chatbotNodes', chatbotNodes)
 
   const { handleInitialNodeOptions, handleNodeOptions } = props;
   return (
     <div>
+      <div className="logo">
+      <img src={logo} alt="tcgLogo" />
+      </div>
       {introTreeMessages !== undefined
         ? introTreeMessages &&
           introTreeMessages.map((item) => {
@@ -61,17 +67,15 @@ function ChatbotDisplay(props) {
           : null}
       </div>
       <div>
-        {chatbotNodes !== undefined
-          ? chatbotNodes &&
-          chatbotNodes.map((item, i) => {
+        {nextSubNodes !== undefined
+          ? nextSubNodes &&
+          nextSubNodes.map((item, i) => {
               return (
                 <div key={i}>
                   {item.text ? (
                     <p>{item.text}</p>
                   ) : (
-                    <button
-                     onClick={() => handleNodeOptions(item.id)}
-                     >
+                    <button onClick={() => handleNodeOptions(item.id)}>
                       {item.option}
                     </button>
                   )}

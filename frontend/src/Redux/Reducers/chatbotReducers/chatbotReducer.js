@@ -14,9 +14,9 @@ export const chatbotMessagesReducer = (state = initialState, action) => {
         ...state,
         logo: action.payload,
       };
-    case actions.GETTING_FIRST_TREE_WELCOME_MESSAGES:
-      return {
-        ...state,
+      case actions.GETTING_FIRST_TREE_WELCOME_MESSAGES:
+        return {
+          ...state,
         welcomeMessages: action.payload,
       };
 
@@ -27,6 +27,7 @@ export const chatbotMessagesReducer = (state = initialState, action) => {
       };
 
     case actions.GETTING_NODE_OPTIONS:
+      console.log('action.payload', action.payload)
       return {
         ...state,
         botConversationalMessages: [...state.botConversationalMessages , ...action.payload],

@@ -23,8 +23,8 @@ function ChatbotDisplay(props) {
   let nextSubNodes = useSelector(
     (state) => state.botConversation.botConversationalMessages
   );
-
   console.log('nextSubNodes', nextSubNodes)
+
   const nodeDisplay = () => {
     setChatbotNodes(nextSubNodes);
   };
@@ -83,6 +83,8 @@ function ChatbotDisplay(props) {
               );
             })
           : null}
+      </div>
+      <div>
       </div>
     </div>
   );

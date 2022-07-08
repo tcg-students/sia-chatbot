@@ -81,16 +81,6 @@ function ChatbotDisplay(props) {
                 }else if (item.application){
                   return <JsonForm nextSubNodes={nextSubNodes}/>
                 }
-                // <div key={i}>
-                //   {item.text ? (
-                //     <p>{item.text}</p>
-                //   ) : (
-                //     <button onClick={() => handleNodeOptions(item.id)}>
-                //       {item.option}
-                //     </button>
-                //   )}
-                // </div>
-              // );
             })
           : null}
       </div>

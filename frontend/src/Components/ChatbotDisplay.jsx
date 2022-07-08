@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import {JsonForm} from './jsonForm'
+import Chatinput from './ChatInput'
 
-function ChatbotDisplay(props) {
+
+const ChatbotDisplay = (props) =>{
   const [chatbotNodes, setChatbotNodes] = useState([]);
 
   useEffect(() => {
@@ -14,10 +16,10 @@ function ChatbotDisplay(props) {
       state.botConversation.logo.logo &&
       state.botConversation.logo.logo[0].image
   );
-  console.log('logo', logo)
   let introTreeMessages = useSelector(
     (state) => state.botConversation.welcomeMessages
   );
+
   let nextNodes = useSelector(
     (state) => state.botConversation.optionBotMessages
   );
@@ -29,32 +31,61 @@ function ChatbotDisplay(props) {
   const nodeDisplay = () => {
     setChatbotNodes(nextSubNodes);
   };
-
-
-  const { handleInitialNodeOptions, handleNodeOptions } = props;
+  
+  const {
+    handleInitialNodeOptions,
+    handleNodeOptions,
+    selected,
+    handleOptionsIndex,
+    handleChange,
+    input,
+    handleInput
+  } = props;
   return (
     <div>
       <div className="logo">
-      <img src={logo} alt="tcgLogo" />
+        <img src={logo} alt="tcgLogo" />
       </div>
-      {introTreeMessages !== undefined
-        ? introTreeMessages &&
-          introTreeMessages.map((item) => {
-            return (
-              <div>
-                <button onClick={() => handleInitialNodeOptions(item.id)}>
-                  {item.text}
-                </button>
-              </div>
-            );
-          })
-        : null}
+
+      <div></div>
+      <div className="treeOptions">
+        {introTreeMessages !== undefined
+          ? introTreeMessages &&
+            introTreeMessages.map((item, i) => {
+              return (
+                <div
+                onClick={() => handleOptionsIndex("option", i)}
+                style={{
+                  display:
+                  selected.option !== i && selected.option > -1
+                  ? "none"
+                  : "block",
+                }}
+                
+                >
+                  {console.log(selected.option)}
+                  <button onClick={() => handleInitialNodeOptions(item.id)}>
+                    {item.text}
+                  </button>
+                </div>
+              );
+            })
+          : null}
+      </div>
       <div>
         {nextNodes !== undefined
           ? nextNodes &&
-            nextNodes.map((item, id) => {
+            nextNodes.map((item, i) => {
               return (
-                <div>
+                <div
+                  onClick={() => handleOptionsIndex("option1", i)}
+                  style={{
+                    display:
+                      selected.option1 !== i && selected.option1 > -1
+                        ? "none"
+                        : "block",
+                  }}
+                >
                   {item.text ? (
                     <p>{item.text}</p>
                   ) : (
@@ -68,7 +99,7 @@ function ChatbotDisplay(props) {
           : null}
       </div>
       <div>
-        {nextSubNodes !== undefined
+        {nextSubNodes !== undefined && nextSubNodes.length !== 1
           ? nextSubNodes &&
           nextSubNodes.map((item, i) => {
               // return (
@@ -85,6 +116,7 @@ function ChatbotDisplay(props) {
           : null}
       </div>
       <div>
+
       </div>
     </div>
   );

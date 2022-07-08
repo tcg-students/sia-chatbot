@@ -8,6 +8,8 @@ import {
   getLogo,
 } from "../Redux/ActionCreators/index";
 const Chatbot = () => {
+  const [selected, setSelected] = useState({});
+
   let dispatch = useDispatch();
   useEffect(() => {
     getImage();
@@ -15,7 +17,9 @@ const Chatbot = () => {
   }, []);
 
   const getImage = (_) => {
-    dispatch(getLogo());
+    setTimeout(function () {
+      dispatch(getLogo());
+    }, 500);
     getWelcomeContents();
   };
 
@@ -51,11 +55,21 @@ const Chatbot = () => {
     }
   };
 
+  const handleOptionsIndex = (field, id) => {
+    console.log('id', id , "field", field)
+    let newSelectedId = { ...selected };
+    newSelectedId[`${field}`] = id;
+    setSelected(newSelectedId);
+  };
+
   return (
     <div>
       <ChatbotDisplay
         handleInitialNodeOptions={handleInitialNodeOptions}
         handleNodeOptions={handleNodeOptions}
+        selected={selected}
+        handleOptionsIndex={handleOptionsIndex}
+
       />
     </div>
   );

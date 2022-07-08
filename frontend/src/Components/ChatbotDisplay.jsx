@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
+import {JsonForm} from './jsonForm'
 
 function ChatbotDisplay(props) {
   const [chatbotNodes, setChatbotNodes] = useState([]);
@@ -70,17 +71,26 @@ function ChatbotDisplay(props) {
         {nextSubNodes !== undefined
           ? nextSubNodes &&
           nextSubNodes.map((item, i) => {
-              return (
-                <div key={i}>
-                  {item.text ? (
-                    <p>{item.text}</p>
-                  ) : (
-                    <button onClick={() => handleNodeOptions(item.id)}>
-                      {item.option}
-                    </button>
-                  )}
-                </div>
-              );
+              // return (
+                if(item.text){
+                 return  <p>{item.text}</p>
+                } else if (item.option){
+                  return <button onClick={() => handleNodeOptions(item.id)}>
+                         {item.option}
+                      </button>
+                }else if (item.application){
+                  return <JsonForm nextSubNodes={nextSubNodes}/>
+                }
+                // <div key={i}>
+                //   {item.text ? (
+                //     <p>{item.text}</p>
+                //   ) : (
+                //     <button onClick={() => handleNodeOptions(item.id)}>
+                //       {item.option}
+                //     </button>
+                //   )}
+                // </div>
+              // );
             })
           : null}
       </div>

@@ -1,11 +1,12 @@
 import React ,{useState} from 'react'
 import { useEffect } from 'react';
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 
 export const JsonForm = (props) => {
+    const {nextSubNodes}=props
+    console.log('props', props)
     const [formStructure , setFormStructure] = useState([])
-    const jsonForm = useSelector(
-        (state) => state.botConversation.botConversationalMessages)
+    const jsonForm = nextSubNodes//useSelector((state) => state.botConversation.botConversationalMessages)
     var object = jsonForm && jsonForm[jsonForm.length - 1]
 
     object && console.log(`jsonForm`, object.application)
@@ -25,7 +26,7 @@ export const JsonForm = (props) => {
 
         useEffect(() => {
             createForm()
-        })
+        },[])
 
     // const mapFields = () => {
     //     // var html = ""
@@ -43,9 +44,9 @@ export const JsonForm = (props) => {
     return (
         <div>
             <form>
-              {formStructure.map(item => <div>
+              {formStructure.map((item) => <div>
                 <label>{item.name}</label>
-                  <input  type={item.value}/>
+                  <input type={item.value}/>
                 </div>
                   )}
             </form>

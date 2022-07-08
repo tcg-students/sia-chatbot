@@ -43,6 +43,12 @@ const ChatbotDisplay = (props) =>{
   } = props;
   return (
     <div>
+    <div className="container">
+      <div className="header">
+<button className="reset-button">Reset</button>
+<h1 style={{color: "white", fontSize: "2rem"}}>chat-bot!</h1>
+<button className="speak-to-an-agent">Speak to an agent</button>
+      </div>
       <div className="logo">
         <img src={logo} alt="tcgLogo" />
       </div>
@@ -118,6 +124,7 @@ const ChatbotDisplay = (props) =>{
       <div>
 
       </div>
+    </div>
     </div>
   );
 }

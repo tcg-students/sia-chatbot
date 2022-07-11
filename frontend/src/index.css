@@ -1,57 +1,76 @@
 .example1 {
   display: grid;
   gap: 1rem;
-  margin-top:1rem;
+  margin-top: 1rem;
 }
 
 .example2 {
   display: grid;
   gap: 1rem;
-  margin-top:2rem;
+  margin-top: 2rem;
 }
-
-/* .logo{
-
-  
-} */
+.treeOptions {
+  padding-top: 2rem;
+  animation: fadeIn 5s;
+  -webkit-animation: fadeIn 10s;
+  -moz-animation: fadeIn 10s;
+  -o-animation: fadeIn 10s;
+  -ms-animation: fadeIn 10s;
+}
 
 .logo {
-  background-color: rgb(7, 90, 7);
+  background-color: #033333;
   animation: fadeIn 5s;
-  -webkit-animation: fadeIn 15s;
-  -moz-animation: fadeIn 15s;
-  -o-animation: fadeIn 15s;
-  -ms-animation: fadeIn 15s;
+  -webkit-animation: fadeIn 5s;
+  -moz-animation: fadeIn 5s;
+  -o-animation: fadeIn 5s;
+  -ms-animation: fadeIn 5s;
 }
 @keyframes fadeIn {
-  0% {opacity:0;}
-  100% {opacity:1;}
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 @-moz-keyframes fadeIn {
-  0% {opacity:0;}
-  100% {opacity:1;}
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 @-webkit-keyframes fadeIn {
-  0% {opacity:0;}
-  100% {opacity:1;}
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 @-o-keyframes fadeIn {
-  0% {opacity:0;}
-  100% {opacity:1;}
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 @-ms-keyframes fadeIn {
-  0% {opacity:0;}
-  100% {opacity:1;}
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
-}
-
-.jsonForm{
+.jsonForm {
   display: grid;
-.treeOptions{
-  padding-top:2rem;
 }

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
 import { JsonForm } from "./jsonForm";
 import Chatinput from "./ChatInput";
 
@@ -16,7 +15,10 @@ const ChatbotDisplay = (props) => {
     nodeDisplay,
     createForm,
     formStructure,
-    handleChange
+    getFormDetails,
+    handleChange,
+    handleSubmit,
+
   } = props;
 
   useEffect(() => {
@@ -107,13 +109,15 @@ const ChatbotDisplay = (props) => {
                     formStructure={formStructure}
                     createForm={createForm}
                     handleChange={handleChange}
+                    getFormDetails={getFormDetails}
+                    handleSubmit={handleSubmit}
+                    // displayApplicantInfomation={displayApplicantInfomation}
                   />
                 );
               }
             })
           : null}
       </div>
-      <div></div>
     </div>
   );
 };

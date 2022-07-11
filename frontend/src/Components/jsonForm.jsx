@@ -2,25 +2,23 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 
 export const JsonForm = (props) => {
-  const { createForm , handleChange } = props;
-
+  const { createForm , formStructure, handleChange , handleSubmit , displayApplicantInfomation} = props;
+  
   useEffect(() => {
     createForm();
   }, []);
 
-  const { formStructure } = props;
-  console.log("formStructure", formStructure);
   return (
     <div>
-      <form className="form">
+      <form className="form" onSubmit={handleSubmit}>
         {formStructure.map((item) => {
           return (
             <div classname="form-input">
               <label className="form-label">{item.name}: </label>
               {item.value === "textarea" ? (
-                <textarea type={item.value} name={item.name} onChange={(e)=>handleChange(e)}/>
+                <textarea type={item.value} name={item.name}  onChange={(e)=>handleChange(e)}/>
               ) : (
-                <input type={item.value} name={item.name} />
+                <input type={item.value} name={item.name}  onChange={(e)=>handleChange(e)}/>
               )}
             </div>
           );
@@ -29,6 +27,7 @@ export const JsonForm = (props) => {
           <button>Submit</button>
         </div>
       </form>
+
     </div>
   );
 };

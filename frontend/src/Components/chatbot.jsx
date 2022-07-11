@@ -9,9 +9,11 @@ import {
 } from "../Redux/ActionCreators/index";
 const Chatbot = (props) => {
   const [selected, setSelected] = useState({});
-  const [applicationForm, setApplicationForm] = useState(object);
+  const [applicationForm, setApplicationForm] = useState({});
   const [chatbotNodes, setChatbotNodes] = useState([]);
   const [formStructure, setFormStructure] = useState([]);
+  const [displayApplicantInfomation, setDisplayApplicantInfomation] = useState([]);
+
 
   let logo = useSelector(
     (state) =>
@@ -85,27 +87,36 @@ const Chatbot = (props) => {
   };
 
   const jsonForm = nextSubNodes;
+  console.log('jsonForm', jsonForm)
   var object = jsonForm && jsonForm[jsonForm.length - 1];
 
   const createForm = () => {
     var values = [];
     if (object) {
       for (var i in object.application) {
-        console.log("jsonForm", JSON.stringify(i));
         values.push({ name: i, value: object.application[i] });
       }
     }
     setFormStructure(values);
   };
 
+
   const handleChange = e => {
     setApplicationForm ({...applicationForm , [e.target.name]:e.target.value})
     console.log('e.target.value', e.target.value)
   }
-
-  const getFormDetails = _ => {
-    // applicationForm
+  console.log('applicationForm', applicationForm)
+  
+  const handleSubmit = e => {
+    e.preventDefault();
+    if (applicationForm) {
+      setDisplayApplicantInfomation([...applicationForm])
+      console.log('DisplayApplicantInfomation', displayApplicantInfomation)
+    }
   }
+ 
+
+
   return (
     <div>
       <ChatbotDisplay
@@ -121,6 +132,7 @@ const Chatbot = (props) => {
         createForm={createForm}
         formStructure={formStructure}
         handleChange={handleChange}
+        handleSubmit={handleSubmit}
       />
     </div>
   );

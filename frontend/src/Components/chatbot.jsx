@@ -9,7 +9,7 @@ import {
 } from "../Redux/ActionCreators/index";
 const Chatbot = (props) => {
   const [selected, setSelected] = useState({});
-  const [applicationForm, setApplicationForm] = useState();
+  const [applicationForm, setApplicationForm] = useState(object);
   const [chatbotNodes, setChatbotNodes] = useState([]);
   const [formStructure, setFormStructure] = useState([]);
 
@@ -98,6 +98,14 @@ const Chatbot = (props) => {
     setFormStructure(values);
   };
 
+  const handleChange = e => {
+    setApplicationForm ({...applicationForm , [e.target.name]:e.target.value})
+    console.log('e.target.value', e.target.value)
+  }
+
+  const getFormDetails = _ => {
+    // applicationForm
+  }
   return (
     <div>
       <ChatbotDisplay
@@ -112,6 +120,7 @@ const Chatbot = (props) => {
         nextSubNodes={nextSubNodes}
         createForm={createForm}
         formStructure={formStructure}
+        handleChange={handleChange}
       />
     </div>
   );

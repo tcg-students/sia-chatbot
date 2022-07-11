@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 
 export const JsonForm = (props) => {
-  const { createForm } = props;
+  const { createForm , handleChange } = props;
 
   useEffect(() => {
     createForm();
@@ -18,7 +18,7 @@ export const JsonForm = (props) => {
             <div classname="form-input">
               <label className="form-label">{item.name}: </label>
               {item.value === "textarea" ? (
-                <textarea type={item.value} name={item.name} />
+                <textarea type={item.value} name={item.name} onChange={(e)=>handleChange(e)}/>
               ) : (
                 <input type={item.value} name={item.name} />
               )}

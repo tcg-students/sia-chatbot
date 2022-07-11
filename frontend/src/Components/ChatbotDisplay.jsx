@@ -122,7 +122,6 @@ const ChatbotDisplay = (props) =>{
           : null}
       </div>
       <div>
-
       </div>
     </div>
     </div>

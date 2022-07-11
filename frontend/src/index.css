@@ -48,10 +48,12 @@
   100% {opacity:1;}
 }
 
-}
+
 
 .jsonForm{
   display: grid;
+}
+
 .treeOptions{
   padding-top:2rem;
 }

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { JsonForm } from "./jsonForm";
-import Chatinput from "./ChatInput";
+import ChatInput from "./ChatInput";
 
 const ChatbotDisplay = (props) => {
   const {
@@ -108,12 +108,15 @@ const ChatbotDisplay = (props) => {
                     createForm={createForm}
                     handleChange={handleChange}
                   />
-                );
-              }
-            })
-          : null}
+                  );
+                }
+              })
+              : null}
       </div>
-      <div></div>
+      <div>
+              <ChatInput/>
+
+      </div>
     </div>
   );
 };

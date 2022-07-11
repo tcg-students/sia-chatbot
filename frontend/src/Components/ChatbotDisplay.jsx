@@ -16,6 +16,7 @@ const ChatbotDisplay = (props) => {
     nodeDisplay,
     createForm,
     formStructure,
+    handleChange
   } = props;
 
   useEffect(() => {
@@ -51,7 +52,6 @@ const ChatbotDisplay = (props) => {
                           : "block",
                     }}
                   >
-                    {console.log(selected.option)}
                     <button onClick={() => handleInitialNodeOptions(item.id)}>
                       {item.text}
                     </button>
@@ -106,6 +106,7 @@ const ChatbotDisplay = (props) => {
                     nextSubNodes={nextSubNodes}
                     formStructure={formStructure}
                     createForm={createForm}
+                    handleChange={handleChange}
                   />
                 );
               }

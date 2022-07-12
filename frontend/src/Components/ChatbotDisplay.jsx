@@ -15,6 +15,8 @@ const ChatbotDisplay = (props) => {
     nodeDisplay,
     createForm,
     formStructure,
+    handleChange,
+    handleEdit,
     getFormDetails,
     handleChange,
     handleSubmit,
@@ -104,6 +106,7 @@ const ChatbotDisplay = (props) => {
                     {item.option}
                   </button>
                 );
+              } else if (item.application/* || handleEdit === true*/) {
               } else if (item.image) {
                 return <img src={item.image} alt="" />;
         
@@ -117,9 +120,7 @@ const ChatbotDisplay = (props) => {
                     getFormDetails={getFormDetails}
                     handleSubmit={handleSubmit}
                     displayApplicantInfomation={displayApplicantInfomation}
-                    applicationFormAndApplicantInfoShow={
-                      applicationFormAndApplicantInfoShow
-                    }
+                    applicationFormAndApplicantInfoShow={applicationFormAndApplicantInfoShow}
                     sendFormValues={sendFormValues}
                   />
                 );

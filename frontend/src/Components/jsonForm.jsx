@@ -1,5 +1,9 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
+import { Button } from 'react-bootstrap';
+import Form from 'react-bootstrap/Form';
+
+
 
 export const JsonForm = (props) => {
   const {
@@ -19,19 +23,20 @@ export const JsonForm = (props) => {
   return (
     <div>
       {!applicationFormAndApplicantInfoShow ? (
-        <form className="form" onSubmit={handleSubmit}>
-          {formStructure.map((item) => {
+        <Form.Group className="mb-3" onSubmit={handleSubmit}>
+          {formStructure.map((item  , key) => {
             return (
-              <div classname="form-input">
-                <label className="form-label">{item.name}: </label>
+              <div key={key}
+              className="mb-3"              >
+                <Form.Label>{item.name}: </Form.Label>
                 {item.value === "textarea" ? (
-                  <textarea
+                  <Form.Control as="textarea" rows={3}  
                     type={item.value}
                     name={item.name}
                     onChange={(e) => handleChange(e)}
                   />
                 ) : (
-                  <input
+                  <Form.Control 
                     type={item.value}
                     name={item.name}
                     onChange={(e) => handleChange(e)}
@@ -41,9 +46,9 @@ export const JsonForm = (props) => {
             );
           })}
           <div classname="form-button">
-            <button>Submit</button>
+            <Button variant="dark">Submit</Button>
           </div>
-        </form>
+        </Form.Group>
       ) : (
         <div>
           {displayApplicantInfomation &&

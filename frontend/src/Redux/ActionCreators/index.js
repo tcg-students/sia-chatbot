@@ -24,7 +24,6 @@ export const getInitialNode = (id) => {
   return async (dispatch) => {
     const response = await axios.get(`http://localhost:4000/get_initial_nodes/${id}`);
     const getInitialNodeData = response.data;
-    // console.log("getInitialNodeData", getInitialNodeData);
     dispatch({ type: actions.GETTING_FIRST_NODE_OPTIONS, payload: getInitialNodeData });
   };
 };
@@ -34,7 +33,15 @@ export const getNode = (id) => {
   return async (dispatch) => {
     const response = await axios.get(`http://localhost:4000/get_nodes/${id}`);
     const getInitialNodeData = response.data;
-    console.log("getInitialNodeData", getInitialNodeData);
     dispatch({ type: actions.GETTING_NODE_OPTIONS, payload: getInitialNodeData });
+  };
+};
+
+export const getApplicationFormValues = (data) => {
+  return async (dispatch) => {
+    const response = await axios.post(`http://localhost:4000/send_email` , data);
+    const getFormData = response.data;
+    console.log("getFormData", getFormData);
+    dispatch({ type: actions.SEND_APPLICANT_DETAILS, payload: getFormData });
   };
 };

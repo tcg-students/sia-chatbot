@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
 import { JsonForm } from "./jsonForm";
 import Chatinput from "./ChatInput";
 
@@ -17,7 +16,13 @@ const ChatbotDisplay = (props) => {
     createForm,
     formStructure,
     handleChange,
-    handleEdit
+    handleEdit,
+    getFormDetails,
+    handleChange,
+    handleSubmit,
+    displayApplicantInfomation,
+    applicationFormAndApplicantInfoShow,
+    sendFormValues
   } = props;
 
   useEffect(() => {
@@ -102,19 +107,28 @@ const ChatbotDisplay = (props) => {
                   </button>
                 );
               } else if (item.application/* || handleEdit === true*/) {
+              } else if (item.image) {
+                return <img src={item.image} alt="" />;
+        
+              } else if (item.application) {
                 return (
                   <JsonForm
                     nextSubNodes={nextSubNodes}
                     formStructure={formStructure}
                     createForm={createForm}
                     handleChange={handleChange}
+                    getFormDetails={getFormDetails}
+                    handleSubmit={handleSubmit}
+                    displayApplicantInfomation={displayApplicantInfomation}
+                    applicationFormAndApplicantInfoShow={applicationFormAndApplicantInfoShow}
+                    sendFormValues={sendFormValues}
                   />
                 );
               }
             })
           : null}
       </div>
-      <div></div>
+      {/* <Chatinput/> */}
     </div>
   );
 };

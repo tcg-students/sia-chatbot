@@ -16,7 +16,8 @@ const ChatbotDisplay = (props) => {
     nodeDisplay,
     createForm,
     formStructure,
-    handleChange
+    handleChange,
+    handleEdit
   } = props;
 
   useEffect(() => {
@@ -100,7 +101,7 @@ const ChatbotDisplay = (props) => {
                     {item.option}
                   </button>
                 );
-              } else if (item.application) {
+              } else if (item.application/* || handleEdit === true*/) {
                 return (
                   <JsonForm
                     nextSubNodes={nextSubNodes}

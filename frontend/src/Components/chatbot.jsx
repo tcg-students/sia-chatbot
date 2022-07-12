@@ -12,6 +12,7 @@ const Chatbot = (props) => {
   const [applicationForm, setApplicationForm] = useState(object);
   const [chatbotNodes, setChatbotNodes] = useState([]);
   const [formStructure, setFormStructure] = useState([]);
+  const [editForm, setEditForm] = useState(false);
 
   let logo = useSelector(
     (state) =>
@@ -33,6 +34,9 @@ const Chatbot = (props) => {
     getImage();
     handleInitialNodeOptions();
   }, []);
+  const handleEdit = () => {
+    setEditForm(!editForm);
+  };
 
   const getImage = (_) => {
     setTimeout(function () {
@@ -98,14 +102,14 @@ const Chatbot = (props) => {
     setFormStructure(values);
   };
 
-  const handleChange = e => {
-    setApplicationForm ({...applicationForm , [e.target.name]:e.target.value})
-    console.log('e.target.value', e.target.value)
-  }
+  const handleChange = (e) => {
+    setApplicationForm({ ...applicationForm, [e.target.name]: e.target.value });
+    console.log("e.target.value", e.target.value);
+  };
 
-  const getFormDetails = _ => {
+  const getFormDetails = (_) => {
     // applicationForm
-  }
+  };
   return (
     <div>
       <ChatbotDisplay
@@ -121,6 +125,7 @@ const Chatbot = (props) => {
         createForm={createForm}
         formStructure={formStructure}
         handleChange={handleChange}
+        handleEdit={handleEdit}
       />
     </div>
   );

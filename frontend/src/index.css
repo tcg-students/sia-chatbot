@@ -19,58 +19,39 @@
 }
 
 .logo {
-  background-color: #033333;
   animation: fadeIn 5s;
   -webkit-animation: fadeIn 5s;
   -moz-animation: fadeIn 5s;
   -o-animation: fadeIn 5s;
   -ms-animation: fadeIn 5s;
 }
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
+
+.logo {
+  animation-name: example;
+  animation-duration: 3s;
+  animation-delay: 2s;
+  animation-fill-mode: both;
 }
 
-@-moz-keyframes fadeIn {
+@keyframes example {
   0% {
-    opacity: 0;
+    background-color: #555555;
+    top: 0px;
+  }
+  50% {
+    background-color: #2a7e5f;
+    top: 0px;
   }
   100% {
-    opacity: 1;
-  }
-}
-
-@-webkit-keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-@-o-keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-@-ms-keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
+    background-color: #033333;
+    top: 0px;
   }
 }
 
 .jsonForm {
   display: grid;
+}
+
+li {
+  list-style-type: none;
 }

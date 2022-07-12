@@ -18,7 +18,9 @@ const ChatbotDisplay = (props) => {
     getFormDetails,
     handleChange,
     handleSubmit,
-
+    displayApplicantInfomation,
+    applicationFormAndApplicantInfoShow,
+    sendFormValues
   } = props;
 
   useEffect(() => {
@@ -102,6 +104,9 @@ const ChatbotDisplay = (props) => {
                     {item.option}
                   </button>
                 );
+              } else if (item.image) {
+                return <img src={item.image} alt="" />;
+        
               } else if (item.application) {
                 return (
                   <JsonForm
@@ -111,13 +116,18 @@ const ChatbotDisplay = (props) => {
                     handleChange={handleChange}
                     getFormDetails={getFormDetails}
                     handleSubmit={handleSubmit}
-                    // displayApplicantInfomation={displayApplicantInfomation}
+                    displayApplicantInfomation={displayApplicantInfomation}
+                    applicationFormAndApplicantInfoShow={
+                      applicationFormAndApplicantInfoShow
+                    }
+                    sendFormValues={sendFormValues}
                   />
                 );
               }
             })
           : null}
       </div>
+      {/* <Chatinput/> */}
     </div>
   );
 };

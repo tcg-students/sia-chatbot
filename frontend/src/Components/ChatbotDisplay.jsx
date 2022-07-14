@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { JsonForm } from "./jsonForm";
 import Chatinput from "./ChatInput";
+import EditForm from "./EditForm.jsx";
 
 const ChatbotDisplay = (props) => {
   const {
@@ -15,20 +16,20 @@ const ChatbotDisplay = (props) => {
     nodeDisplay,
     createForm,
     formStructure,
-    handleChange,
     handleEdit,
+    edit,
     getFormDetails,
     handleChange,
     handleSubmit,
     displayApplicantInfomation,
     applicationFormAndApplicantInfoShow,
-    sendFormValues
+    sendFormValues,
   } = props;
 
   useEffect(() => {
     nodeDisplay();
   }, []);
-
+  console.log("edit :>> ", edit);
   return (
     <div>
       <div className="logo">
@@ -106,11 +107,9 @@ const ChatbotDisplay = (props) => {
                     {item.option}
                   </button>
                 );
-              } else if (item.application/* || handleEdit === true*/) {
               } else if (item.image) {
                 return <img src={item.image} alt="" />;
-        
-              } else if (item.application) {
+              } else if (item.application ) {
                 return (
                   <JsonForm
                     nextSubNodes={nextSubNodes}
@@ -119,12 +118,17 @@ const ChatbotDisplay = (props) => {
                     handleChange={handleChange}
                     getFormDetails={getFormDetails}
                     handleSubmit={handleSubmit}
+                    editForm={edit}
                     displayApplicantInfomation={displayApplicantInfomation}
-                    applicationFormAndApplicantInfoShow={applicationFormAndApplicantInfoShow}
+                    applicationFormAndApplicantInfoShow={
+                      applicationFormAndApplicantInfoShow
+                    }
+                    handleEdit={handleEdit}
                     sendFormValues={sendFormValues}
+
                   />
                 );
-              }
+              } 
             })
           : null}
       </div>

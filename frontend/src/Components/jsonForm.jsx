@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
+import ConfirmDetails from "./ConfirmDetails";
+import EditForm from "./EditForm";
 
 export const JsonForm = (props) => {
   const {
@@ -9,7 +11,9 @@ export const JsonForm = (props) => {
     handleSubmit,
     displayApplicantInfomation,
     applicationFormAndApplicantInfoShow,
-    sendFormValues
+    sendFormValues,
+    handleEdit,
+    editForm,
   } = props;
 
   useEffect(() => {
@@ -18,7 +22,7 @@ export const JsonForm = (props) => {
 
   return (
     <div>
-      {!applicationFormAndApplicantInfoShow ? (
+      {!applicationFormAndApplicantInfoShow  ? (
         <form className="form" onSubmit={handleSubmit}>
           {formStructure.map((item) => {
             return (
@@ -46,30 +50,36 @@ export const JsonForm = (props) => {
         </form>
       ) : (
         <div>
-          {displayApplicantInfomation &&
-            displayApplicantInfomation.map((item, i) => {
-              return (
-                <div>
-                  <p>You are applying with the following infomation:</p>
-                  <ul key={i}>
-                    {Object.keys(item).map((key) => {
-                      return (
-                        <li key={key + i}>
-                          {key}:{item[key]}
-                        </li>
-                      );
-                    })}
-                  </ul>
-                  <div>
-                    <p>Would you like to edit or submit?</p>
-                    <input type="submit" value="Yes" />
-                    <input type="submit" onClick={sendFormValues}  value="No" />
-                  </div>
-                </div>
-              );
-            })}
+          {displayApplicantInfomation && <ConfirmDetails {...props}/>
+            // displayApplicantInfomation.map((item, i) => {
+            //   return (
+            //     <div>
+            //       <p>You are applying with the following infomation:</p>
+            //       <ul key={i}>
+            //         {Object.keys(item).map((key) => {
+            //           return (
+            //             <li key={key + i}>
+            //               {key}:{item[key]}
+            //             </li>
+            //           );
+            //         })}
+            //       </ul>
+            //       <div>
+            //         <p>Would you like to edit or submit?</p>
+            //         <input type="submit" value="Edit" onClick={handleEdit} />
+            //         <input
+            //           type="submit"
+            //           onClick={sendFormValues}
+            //           value="Submit"
+            //         />
+            //       </div>
+            //     </div>
+            //   );
+            // })
+            }
         </div>
       )}
+  {editForm &&  <EditForm {...props} />}
     </div>
   );
 };

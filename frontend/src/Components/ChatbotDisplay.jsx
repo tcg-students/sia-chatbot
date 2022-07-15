@@ -21,7 +21,9 @@ const ChatbotDisplay = (props) => {
     handleSubmit,
     displayApplicantInfomation,
     applicationFormAndApplicantInfoShow,
-    sendFormValues
+    sendFormValues,
+    disableOptions,
+  
   } = props;
 
   useEffect(() => {
@@ -49,15 +51,15 @@ const ChatbotDisplay = (props) => {
               .map((item, i) => {
                 return (
                   <div
-                    onClick={() => handleOptionsIndex("option", i)}
-                    style={{
-                      display:
-                        selected.option !== i && selected.option > -1
-                          ? "none"
-                          : "block",
-                    }}
+                    onClick={() => handleOptionsIndex("option", i)} 
+                    // style={{
+                    //   display:
+                    //     selected.option !== i && selected.option > -1
+                    //       ? "none"
+                    //       : "block",
+                    // }}
                   >
-                    <button onClick={() => handleInitialNodeOptions(item.id)}>
+                    <button onClick={() => handleInitialNodeOptions(item.id)} disabled={disableOptions}>
                       {item.text}
                     </button>
                   </div>
@@ -72,13 +74,13 @@ const ChatbotDisplay = (props) => {
             nextNodes.map((item, i) => {
               return (
                 <div
-                  onClick={() => handleOptionsIndex("option1", i)}
-                  style={{
-                    display:
-                      selected.option1 !== i && selected.option1 > -1
-                        ? "none"
-                        : "block",
-                  }}
+                  onClick={() => handleOptionsIndex("option1", i)} 
+                  // style={{
+                  //   display:
+                  //     selected.option1 !== i && selected.option1 > -1
+                  //       ? "none"
+                  //       : "block",
+                  // }}
                 >
                   {item.text ? (
                     <p>{item.text}</p>
@@ -101,7 +103,7 @@ const ChatbotDisplay = (props) => {
                 return <p>{item.text}</p>;
               } else if (item.option) {
                 return (
-                  <button onClick={() => handleNodeOptions(item.id)}>
+                  <button className="btn btn-dark" onClick={() => handleNodeOptions(item.id)}>
                     {item.option}
                   </button>
                 );

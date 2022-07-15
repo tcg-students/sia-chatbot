@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   getInitialTreeText,
   getInitialNode,
-  getNode,
+  // getNode,
   getLogo,
   getApplicationFormValues
 } from "../Redux/ActionCreators/index";
@@ -17,7 +17,9 @@ const Chatbot = (props) => {
   const [disableOptions, setDisableOptions] = useState(false);
 
   const [displayApplicantInfomation, setDisplayApplicantInfomation] = useState([]);
-  const [applicationFormAndApplicantInfoShow, setapplicationFormAndApplicantInfoShow] = useState(false);
+
+  const [applicationFormAndApplicantInfoShow,setapplicationFormAndApplicantInfoShow] = useState(false);
+
 
   let logo = useSelector(
     (state) =>
@@ -31,9 +33,7 @@ const Chatbot = (props) => {
   let nextNodes = useSelector(
     (state) => state.botConversation.optionBotMessages
   );
-  let nextSubNodes = useSelector(
-    (state) => state.botConversation.botConversationalMessages
-  );
+
   let dispatch = useDispatch();
   useEffect(() => {
     getImage();
@@ -63,18 +63,8 @@ const Chatbot = (props) => {
   const handleInitialNodeOptions = async id => {
     try {
       setTimeout(function () {
+        
         dispatch(getInitialNode(id));
-        // setDisableOptions(true)
-      }, 1000);
-    } catch (error) {
-      console.log("error", error);
-    }
-  };
-
-  const handleNodeOptions = async id => {
-    try {
-      setTimeout(function () {
-        dispatch(getNode(id));
       }, 1000);
     } catch (error) {
       console.log("error", error);
@@ -86,14 +76,14 @@ const Chatbot = (props) => {
     let newSelectedId = { ...selected };
     newSelectedId[`${field}`] = id;
     setSelected(newSelectedId);
-            setDisableOptions(true)
   };
+
 
   const nodeDisplay = _ => {
-    setChatbotNodes(nextSubNodes);
+    setChatbotNodes(nextNodes);
   };
 
-  const jsonForm = nextSubNodes;
+  const jsonForm = nextNodes;
   var object = jsonForm && jsonForm[jsonForm.length - 1];
 
   const createForm = _ => {
@@ -114,6 +104,7 @@ const Chatbot = (props) => {
     e.preventDefault();
     if (applicationForm) {
       setDisplayApplicantInfomation([applicationForm]);
+      console.log('applicationForm', applicationForm)
       setTimeout(function () {
         setapplicationFormAndApplicantInfoShow(true);
       }, 1000);
@@ -122,9 +113,10 @@ const Chatbot = (props) => {
 
   const sendFormValues = _ => {
     dispatch(getApplicationFormValues(applicationForm))
-    setTimeout(function () {
-      dispatch(getNode(100));
-    }, 3000);
+
+     setTimeout(function () {
+        dispatch(getInitialNode({nodeid:100}));
+      }, 3000);
   }
 
   return (
@@ -135,10 +127,7 @@ const Chatbot = (props) => {
         nextNodes={nextNodes}
         nodeDisplay={nodeDisplay}
         handleInitialNodeOptions={handleInitialNodeOptions}
-        handleNodeOptions={handleNodeOptions}
         selected={selected}
-        handleOptionsIndex={handleOptionsIndex}
-        nextSubNodes={nextSubNodes}
         createForm={createForm}
         formStructure={formStructure}
         handleChange={handleChange}
@@ -148,7 +137,6 @@ const Chatbot = (props) => {
         applicationFormAndApplicantInfoShow={
           applicationFormAndApplicantInfoShow
         }
-        disableOptions={disableOptions}
         sendFormValues={sendFormValues}
       />
     </div>

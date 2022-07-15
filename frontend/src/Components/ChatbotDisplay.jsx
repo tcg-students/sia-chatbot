@@ -5,13 +5,9 @@ import Chatinput from "./ChatInput";
 const ChatbotDisplay = (props) => {
   const {
     handleInitialNodeOptions,
-    handleNodeOptions,
-    selected,
-    handleOptionsIndex,
     logo,
     introTreeMessages,
     nextNodes,
-    nextSubNodes,
     nodeDisplay,
     createForm,
     formStructure,
@@ -23,8 +19,11 @@ const ChatbotDisplay = (props) => {
     applicationFormAndApplicantInfoShow,
     sendFormValues,
     disableOptions,
-  
+
   } = props;
+
+//   var objDiv = document.getElementByClass("chatbotBody");
+// objDiv.scrollTop = objDiv.scrollHeight;
 
   useEffect(() => {
     nodeDisplay();
@@ -32,103 +31,105 @@ const ChatbotDisplay = (props) => {
 
   return (
     <div>
-      <div className="logo">
-        <img src={logo} alt="tcgLogo" />
+      <div className="chatBotHeader">
+<input className="" value="Reset" />
+<h1>chat-bot</h1>
+<input className="" value="Speak to a Agent" />
       </div>
+      <div className="chatbotBody">
+        <div className="logo">
+          <img src={logo} alt="tcgLogo" />
+        </div>
 
-      <div>
-        {introTreeMessages &&
-          introTreeMessages
-            .map((item) => {
-              return <p>{item.text}</p>;
-            })
-            .slice(0, 1)}
-      </div>
-      <div className="treeOptions">
-        {introTreeMessages !== undefined
-          ? introTreeMessages &&
+        <div>
+          {introTreeMessages &&
             introTreeMessages
-              .map((item, i) => {
+              .map((item) => {
                 return (
-                  <div
-                    onClick={() => handleOptionsIndex("option", i)} 
-                    // style={{
-                    //   display:
-                    //     selected.option !== i && selected.option > -1
-                    //       ? "none"
-                    //       : "block",
-                    // }}
-                  >
-                    <button onClick={() => handleInitialNodeOptions(item.id)} disabled={disableOptions}>
-                      {item.text}
-                    </button>
+
+                  <div className="introMessage">
+                    <p>{item.text}</p>
                   </div>
                 );
               })
-              .splice(1)
-          : null}
-      </div>
-      <div>
-        {nextNodes !== undefined
-          ? nextNodes &&
-            nextNodes.map((item, i) => {
+              .slice(0, 1)}
+        </div>
+        <div className="treeOptions">
+          {introTreeMessages !== undefined
+            ? introTreeMessages &&
+              introTreeMessages
+                .map((item, i) => {
+                  return (
+                    <div style={{ padding: ".5rem" }}>
+                      <button
+                        className="optionButtons"
+                        onClick={() =>
+                          handleInitialNodeOptions({ treeid: item.id })
+                        }
+                      >
+                        {item.text}
+                      </button>
+                    </div>
+                  );
+                })
+                .splice(1)
+            : null}
+        </div>
+        <div>
+          {nextNodes !== undefined
+            ? nextNodes &&
+              nextNodes.map((item, i) => {
+                return (
+                  <div style={{ padding: ".5rem" }}>
+                    {item.text ? (
+                      <p>{item.text}</p>
+                    ) : (
+                      item.option && (
+                        <button
+                          className="optionButtons"
+                          onClick={() =>
+                            handleInitialNodeOptions({ nodeid: item.id })
+                          }
+                        >
+                          {item.option}
+                        </button>
+                      )
+                    )}
+                  </div>
+                );
+              })
+            : null}
+        </div>
+        <div>
+          {nextNodes.map((item) => {
+            if (item.application !== null) {
+              console.log("item.app: ", item.application);
               return (
-                <div
-                  onClick={() => handleOptionsIndex("option1", i)} 
-                  // style={{
-                  //   display:
-                  //     selected.option1 !== i && selected.option1 > -1
-                  //       ? "none"
-                  //       : "block",
-                  // }}
-                >
-                  {item.text ? (
-                    <p>{item.text}</p>
-                  ) : (
-                    <button onClick={() => handleNodeOptions(item.id)}>
-                      {item.option}
-                    </button>
-                  )}
-                </div>
+
+                <JsonForm
+                  formStructure={formStructure}
+                  createForm={createForm}
+                  handleChange={handleChange}
+                  getFormDetails={getFormDetails}
+                  handleSubmit={handleSubmit}
+                  displayApplicantInfomation={displayApplicantInfomation}
+                  applicationFormAndApplicantInfoShow={
+                    applicationFormAndApplicantInfoShow
+                  }
+                  sendFormValues={sendFormValues}
+                />
               );
-            })
-          : null}
+            }
+          })}
+        </div>
       </div>
-      <div>
-        {nextSubNodes !== undefined && nextSubNodes.length !== 1
-          ? nextSubNodes &&
-            nextSubNodes.map((item, i) => {
-              // return (
-              if (item.text) {
-                return <p>{item.text}</p>;
-              } else if (item.option) {
-                return (
-                  <button className="btn btn-dark" onClick={() => handleNodeOptions(item.id)}>
-                    {item.option}
-                  </button>
-                );
-              } else if (item.image) {
-                return <img src={item.image} alt="" />;
-        
-              } else if (item.application) {
-                return (
-                  <JsonForm
-                    nextSubNodes={nextSubNodes}
-                    formStructure={formStructure}
-                    createForm={createForm}
-                    handleChange={handleChange}
-                    getFormDetails={getFormDetails}
-                    handleSubmit={handleSubmit}
-                    displayApplicantInfomation={displayApplicantInfomation}
-                    applicationFormAndApplicantInfoShow={applicationFormAndApplicantInfoShow}
-                    sendFormValues={sendFormValues}
-                  />
-                );
-              }
-            })
-          : null}
+
+      <div className="chatbotFooter">
+        <Chatinput
+          introTreeMessages={introTreeMessages}
+          nextNodes={nextNodes}
+        />
       </div>
-      {/* <Chatinput/> */}
     </div>
   );
 };

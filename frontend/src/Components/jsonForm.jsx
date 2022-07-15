@@ -1,11 +1,12 @@
-import React, { useState } from "react";
-import { useEffect } from "react";
+import { useEffect , useState } from "react";
 import { Button } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
 
 
 
 export const JsonForm = (props) => {
+
+
   const {
     createForm,
     formStructure,
@@ -15,6 +16,7 @@ export const JsonForm = (props) => {
     applicationFormAndApplicantInfoShow,
     sendFormValues
   } = props;
+
 
   useEffect(() => {
     createForm();
@@ -36,6 +38,7 @@ export const JsonForm = (props) => {
                       onChange={(e) => handleChange(e)}
                     />
                   </div>
+
                 ) : (
                   <div>
                     <label className="form-label addAstericks">{item.name}</label>
@@ -54,6 +57,7 @@ export const JsonForm = (props) => {
           })}
           <div >
             <button className="form-button">Submit</button>
+
           </div>
         </form>
       ) : (
@@ -61,9 +65,11 @@ export const JsonForm = (props) => {
           {displayApplicantInfomation &&
             displayApplicantInfomation.map((item, i) => {
               return (
-                <div>
-                <div className="applicant-info">
+
+                <div className="applicantInfomationContainer">
+                  <div className="applicantInfomation">
                   <p>You are applying with the following infomation:</p>
+                  <hr/>
                   <ul key={i}>
                     {Object.keys(item).map((key) => {
                       return (
@@ -74,10 +80,13 @@ export const JsonForm = (props) => {
                     })}
                   </ul>
                   </div>
-                  <div>
-                    <p>Would you like to edit or submit?</p>
-                    <input type="submit" value="Yes" />
-                    <input type="submit" onClick={sendFormValues} value="No" />
+
+                  <div style={{color:"white"}}>
+                    <p>Would you like to edit?</p>
+                    <div className="applicantInfomationButtons">
+                    <input type="submit" className="optionButtons" value="Yes" />
+                    <input type="submit" className="optionButtons" onClick={sendFormValues}  value="No" />
+                  </div>
                   </div>
                 </div>
               );

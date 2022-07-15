@@ -55,3 +55,121 @@
 li {
   list-style-type: none;
 }
+
+.optionButtons{
+  width: 25%;
+  border-radius: 15px;
+  padding:.5rem;
+  border: 2px solid rgb(29, 198, 186);
+}
+
+.optionButtons:hover{
+  color: #111;
+  box-shadow: 0 0 20px rgb(29, 198, 186);
+  border-radius: 15px;
+  padding:.5rem;
+  border: 2px solid rgb(29, 198, 186);
+
+
+}
+
+.introMessage{
+  padding-top:2rem;
+  width: 90%;
+  margin:auto;
+  border-radius: 35px;
+  
+}
+
+.introMessage p {
+
+  border: 1px solid grey;
+  border-radius: 10px;
+  padding:2rem;
+  font-size: 1.3rem;
+  font-weight: bold;
+
+
+}
+
+.form-control{
+  width:100% !important;
+}
+
+.selectInput{
+  margin: auto !important;
+  display : flex;
+  width:25% !important;
+}
+
+.chatBotHeader{
+  height: 5rem;
+  background-color: black;
+  display: grid;
+  grid-template-columns: auto auto auto;
+}
+
+.chatBotHeader input {
+  width: 30%;
+  margin:auto;
+  height: 50px;
+  text-align: center;
+  border-radius: 15px;
+
+}
+
+.chatBotHeader h1 {
+ color: white;
+
+}
+
+.chatbotBody{  
+  height:820px !important;
+  overflow:auto !important;
+}
+
+.chatbotFooter{
+  height: 5rem;
+  background-color: black;
+}
+
+.scrollbar-hidden {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+.applicantInfomationContainer{
+  /* color:white; */
+  border: 5px solid #033333;
+  width:24%;
+  border-radius: 10px;
+  margin:auto;
+  padding:1rem;
+  background-color: #033333;
+
+}
+
+.applicantInfomation{
+  /* color:white; */
+  background-color: white;
+  border: 5px solid #033333;
+  width:90%;
+  border-radius: 10px;
+  margin:auto;
+  padding:2rem;
+}
+
+.applicantInfomation p{
+
+}
+
+.applicantInfomationButtons{
+  display: flex;
+  gap:2rem;
+width: 100%;
+margin:auto;
+}

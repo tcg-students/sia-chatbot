@@ -1,11 +1,12 @@
-import React, { useState } from "react";
-import { useEffect } from "react";
+import { useEffect , useState } from "react";
 import { Button } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
 
 
 
 export const JsonForm = (props) => {
+
+
   const {
     createForm,
     formStructure,
@@ -16,6 +17,10 @@ export const JsonForm = (props) => {
     sendFormValues
   } = props;
 
+  const disableInput = _ => {
+
+  }
+
   useEffect(() => {
     createForm();
   }, []);
@@ -23,13 +28,15 @@ export const JsonForm = (props) => {
   return (
     <div>
       {!applicationFormAndApplicantInfoShow ? (
-        <Form.Group className="mb-3" onSubmit={handleSubmit}>
+        <Form.Group className="mb-3" >
           {formStructure.map((item  , key) => {
             return (
               <div key={key}
               className="mb-3"              >
                 <Form.Label>{item.name}: </Form.Label>
+
                 {item.value === "textarea" ? (
+                  
                   <Form.Control as="textarea" rows={3}  
                     type={item.value}
                     name={item.name}
@@ -46,7 +53,7 @@ export const JsonForm = (props) => {
             );
           })}
           <div classname="form-button">
-            <Button variant="dark">Submit</Button>
+            <Button onClick={handleSubmit}variant="dark">Submit</Button>
           </div>
         </Form.Group>
       ) : (
@@ -54,8 +61,10 @@ export const JsonForm = (props) => {
           {displayApplicantInfomation &&
             displayApplicantInfomation.map((item, i) => {
               return (
-                <div>
+                <div className="applicantInfomationContainer">
+                  <div className="applicantInfomation">
                   <p>You are applying with the following infomation:</p>
+                  <hr/>
                   <ul key={i}>
                     {Object.keys(item).map((key) => {
                       return (
@@ -65,10 +74,13 @@ export const JsonForm = (props) => {
                       );
                     })}
                   </ul>
-                  <div>
+                  </div>
+                  <div style={{color:"white"}}>
                     <p>Would you like to edit or submit?</p>
-                    <input type="submit" value="Yes" />
-                    <input type="submit" onClick={sendFormValues}  value="No" />
+                    <div className="applicantInfomationButtons">
+                    <input type="submit" className="optionButtons" value="Yes" />
+                    <input type="submit" className="optionButtons" onClick={sendFormValues}  value="No" />
+                  </div>
                   </div>
                 </div>
               );

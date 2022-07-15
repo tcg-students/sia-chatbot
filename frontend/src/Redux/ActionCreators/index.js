@@ -20,22 +20,23 @@ export const getInitialTreeText = () => {
   };
 };
 
-export const getInitialNode = (id) => {
+export const getInitialNode = (obj) => {
   return async (dispatch) => {
-    const response = await axios.get(`http://localhost:4000/get_initial_nodes/${id}`);
+    const response = await axios.post(`http://localhost:4000/get_initial_nodes`,obj);
     const getInitialNodeData = response.data;
+    console.log('getInitialNodeData', response)
     dispatch({ type: actions.GETTING_FIRST_NODE_OPTIONS, payload: getInitialNodeData });
   };
 };
 
 
-export const getNode = (id) => {
-  return async (dispatch) => {
-    const response = await axios.get(`http://localhost:4000/get_nodes/${id}`);
-    const getInitialNodeData = response.data;
-    dispatch({ type: actions.GETTING_NODE_OPTIONS, payload: getInitialNodeData });
-  };
-};
+// export const getNode = (id) => {
+//   return async (dispatch) => {
+//     const response = await axios.get(`http://localhost:4000/get_nodes/${id}`);
+//     const getInitialNodeData = response.data;
+//     dispatch({ type: actions.GETTING_NODE_OPTIONS, payload: getInitialNodeData });
+//   };
+// };
 
 export const getApplicationFormValues = (data) => {
   return async (dispatch) => {

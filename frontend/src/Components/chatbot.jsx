@@ -45,7 +45,6 @@ const Chatbot = (props) => {
 
   const handleEdit = (e) => {
     e.preventDefault();
-    console.log("edit", editForm);
     setEditForm(!editForm);
   };
 

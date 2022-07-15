@@ -8,7 +8,6 @@ export const GenericForm = (props) => {
     createForm();
   }, []);
   var details = applicationForm
-console.log('details', details);
   return (
     <div>
       <form className="form" onSubmit={handleSubmit}>

@@ -21,9 +21,10 @@ export const chatbotMessagesReducer = (state = initialState, action) => {
       };
 
     case actions.GETTING_FIRST_NODE_OPTIONS:
+      console.log('action.payload', action.payload)
       return {
         ...state,
-        optionBotMessages: action.payload,
+        optionBotMessages: [...state.optionBotMessages  ,...action.payload]
       };
 
     case actions.GETTING_NODE_OPTIONS:

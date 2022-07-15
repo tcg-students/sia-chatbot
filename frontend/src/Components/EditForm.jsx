@@ -7,7 +7,7 @@ function EditForm(props) {
 
   return (
     <div>
-      {editForm && displayApplicantInfomation.length > 0 ? (
+      {editForm == true ? (
         <GenericForm {...props} />
       ) : (
         <ConfirmDetails {...props} />

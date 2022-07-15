@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { JsonForm } from "./jsonForm";
+import JsonForm from "./jsonForm";
 import Chatinput from "./ChatInput";
 import EditForm from "./EditForm.jsx";
+import { GenericForm } from "./GenericForm";
 
 const ChatbotDisplay = (props) => {
   const {
@@ -29,7 +30,12 @@ const ChatbotDisplay = (props) => {
   useEffect(() => {
     nodeDisplay();
   }, []);
-  console.log("edit :>> ", edit);
+
+  const action = (e, id) => {
+    handleEdit(e);
+    handleNodeOptions(id);
+  };
+
   return (
     <div>
       <div className="logo">
@@ -103,15 +109,15 @@ const ChatbotDisplay = (props) => {
                 return <p>{item.text}</p>;
               } else if (item.option) {
                 return (
-                  <button onClick={() => handleNodeOptions(item.id)}>
+                  <button onClick={(e) => action(e,item.id)}>
                     {item.option}
                   </button>
                 );
               } else if (item.image) {
                 return <img src={item.image} alt="" />;
-              } else if (item.application ) {
+              } else if (item.application) {
                 return (
-                  <JsonForm
+                  <EditForm
                     nextSubNodes={nextSubNodes}
                     formStructure={formStructure}
                     createForm={createForm}
@@ -125,10 +131,9 @@ const ChatbotDisplay = (props) => {
                     }
                     handleEdit={handleEdit}
                     sendFormValues={sendFormValues}
-
                   />
                 );
-              } 
+              }
             })
           : null}
       </div>

@@ -2,6 +2,9 @@ import React from "react";
 
 function ConfirmDetails(props) {
   const { displayApplicantInfomation, sendFormValues, handleEdit } = props;
+  // if (editForm === true) {
+  //   var previousDetails = [...displayApplicantInfomation];
+  // }
   return (
     <div>
       {displayApplicantInfomation &&

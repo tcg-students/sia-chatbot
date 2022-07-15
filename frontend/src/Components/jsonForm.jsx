@@ -76,7 +76,7 @@ export const JsonForm = (props) => {
                   </ul>
                   </div>
                   <div style={{color:"white"}}>
-                    <p>Would you like to edit or submit?</p>
+                    <p>Would you like to edit?</p>
                     <div className="applicantInfomationButtons">
                     <input type="submit" className="optionButtons" value="Yes" />
                     <input type="submit" className="optionButtons" onClick={sendFormValues}  value="No" />

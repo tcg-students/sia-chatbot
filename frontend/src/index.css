@@ -56,6 +56,98 @@ li {
   list-style-type: none;
 }
 
+
+.wrapper{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* margin-top: 5rem; */
+  /* height: 100vh; */
+}
+
+.form{
+  width:350px;
+  padding: 2rem 2rem;
+  border-radius: .5rem;
+  /* border: 1px solid black; */
+  box-shadow: 0 10px 25px Rgba(92,99,105,.2)
+}
+
+.form-label{
+  display: flex;
+  margin-left: 1rem;
+  margin-top: .8rem;
+}
+
+:root{
+  --first-color: hsl(224, 82%, 51%);
+  --input-color: #80868B;
+  --border-color: #DADCE0;
+  --normal-font-size: 1rem;
+  --samll-font-size: .75rem;
+  
+}
+
+.form-button{
+  display:block;
+  margin-top: 1.5rem;
+  margin-left: 5%;
+  padding: .5rem 1rem;
+  outline: none;
+  border: none;
+  background-color: var(--first-color);
+  color: #fff;
+  font-size: var(--normal-font-size);
+  border-radius: .5rem;
+  cursor: pointer;
+  transition: .3s;
+  width: 60%
+}
+
+.form-button:hover{
+  box-shadow: 0 10px 36px rgba(0,0,0,.15);
+
+}
+
+.form-textarea{
+  width: 90%;
+  height: 100%;
+  border-radius: .5rem;
+  padding: 1rem;
+}
+
+.addAstericks:after {
+  content:" *";
+  color:red;
+  width:5%
+}
+
+
+.noneAstericks{
+  margin:auto !important;
+  width: 90%;  
+  margin-top: .8rem !important;
+  padding-bottom: 1rem;
+}
+
+input[type="date"]{
+  width: 90%;
+  padding: .2rem;
+}
+
+.applicant-info{
+  width:350px;
+  padding: 2rem 2rem;
+  border-radius: .5rem;
+  /* border: 1px solid black; */
+  box-shadow: 0 10px 25px Rgba(92,99,105,.2)
+}
+
+
+.info li {
+  display: grid;
+}
+
 .optionButtons{
   width: 25%;
   border-radius: 15px;
@@ -150,7 +242,6 @@ li {
   margin:auto;
   padding:1rem;
   background-color: #033333;
-
 }
 
 .applicantInfomation{
@@ -164,7 +255,6 @@ li {
 }
 
 .applicantInfomation p{
-
 }
 
 .applicantInfomationButtons{
@@ -176,5 +266,4 @@ width: 100%;
 .applicantInfomationButtons input{
 margin: auto;
 width: 80%;
-
 }

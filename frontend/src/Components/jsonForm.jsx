@@ -17,50 +17,55 @@ export const JsonForm = (props) => {
     sendFormValues
   } = props;
 
-  const disableInput = _ => {
-
-  }
 
   useEffect(() => {
     createForm();
   }, []);
 
   return (
-    <div>
+    <div className="wrapper">
       {!applicationFormAndApplicantInfoShow ? (
-        <Form.Group className="mb-3" >
-          {formStructure.map((item  , key) => {
+        <form className="form" onSubmit={handleSubmit}>
+          {formStructure.map((item, key) => {
             return (
-              <div key={key}
-              className="mb-3"              >
-                <Form.Label>{item.name}: </Form.Label>
-
+              <div key={key}>
                 {item.value === "textarea" ? (
-                  
-                  <Form.Control as="textarea" rows={3}  
-                    type={item.value}
-                    name={item.name}
-                    onChange={(e) => handleChange(e)}
-                  />
+                  <div>
+                    <label className="form-label noneAstericks">{item.name}</label>
+                    <textarea className="form-textarea"
+                      type={item.value}
+                      name={item.name}
+                      onChange={(e) => handleChange(e)}
+                    />
+                  </div>
+
                 ) : (
-                  <Form.Control 
-                    type={item.value}
-                    name={item.name}
-                    onChange={(e) => handleChange(e)}
-                  />
+                  <div>
+                    <label className="form-label addAstericks">{item.name}</label>
+                    <input
+                      className="form-input"
+                      type={item.value}
+                      name={item.name}
+                      onChange={(e) => handleChange(e)}
+                      required
+
+                    />
+                  </div>
                 )}
               </div>
             );
           })}
-          <div classname="form-button">
-            <Button onClick={handleSubmit}variant="dark">Submit</Button>
+          <div >
+            <button className="form-button">Submit</button>
+
           </div>
-        </Form.Group>
+        </form>
       ) : (
         <div>
           {displayApplicantInfomation &&
             displayApplicantInfomation.map((item, i) => {
               return (
+
                 <div className="applicantInfomationContainer">
                   <div className="applicantInfomation">
                   <p>You are applying with the following infomation:</p>
@@ -68,13 +73,14 @@ export const JsonForm = (props) => {
                   <ul key={i}>
                     {Object.keys(item).map((key) => {
                       return (
-                        <li key={key + i}>
+                        <li className="info" key={key + i}>
                           {key}:{item[key]}
                         </li>
                       );
                     })}
                   </ul>
                   </div>
+
                   <div style={{color:"white"}}>
                     <p>Would you like to edit?</p>
                     <div className="applicantInfomationButtons">

@@ -18,6 +18,8 @@ const ChatbotDisplay = (props) => {
     displayApplicantInfomation,
     applicationFormAndApplicantInfoShow,
     sendFormValues,
+    disableOptions,
+
   } = props;
 
 //   var objDiv = document.getElementByClass("chatbotBody");
@@ -44,6 +46,7 @@ const ChatbotDisplay = (props) => {
             introTreeMessages
               .map((item) => {
                 return (
+
                   <div className="introMessage">
                     <p>{item.text}</p>
                   </div>
@@ -102,6 +105,7 @@ const ChatbotDisplay = (props) => {
             if (item.application !== null) {
               console.log("item.app: ", item.application);
               return (
+
                 <JsonForm
                   formStructure={formStructure}
                   createForm={createForm}
@@ -119,6 +123,7 @@ const ChatbotDisplay = (props) => {
           })}
         </div>
       </div>
+
       <div className="chatbotFooter">
         <Chatinput
           introTreeMessages={introTreeMessages}

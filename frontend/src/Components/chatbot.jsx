@@ -112,7 +112,6 @@ const Chatbot = (props) => {
   const handleChange = (e) => {
     setApplicationForm({ ...applicationForm, [e.target.name]: e.target.value });
   };
-
   const handleSubmit = (e) => {
     e.preventDefault();
     setEditForm(false);
@@ -153,8 +152,9 @@ const Chatbot = (props) => {
         applicationFormAndApplicantInfoShow={
           applicationFormAndApplicantInfoShow
         }
+        applicationForm={applicationForm}
         sendFormValues={sendFormValues}
-        edit={editForm}
+        editForm={editForm}
       />
     </div>
   );

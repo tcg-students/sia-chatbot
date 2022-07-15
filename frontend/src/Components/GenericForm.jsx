@@ -2,13 +2,13 @@ import React from "react";
 import { useEffect } from "react";
 
 export const GenericForm = (props) => {
-  const { createForm, formStructure, handleChange, handleSubmit,displayApplicantInfomation } = props;
+  const { createForm, formStructure, handleChange, handleSubmit,applicationForm } = props;
 
   useEffect(() => {
     createForm();
   }, []);
-console.log('displayApplicationInformation', displayApplicantInfomation);
-var details = displayApplicantInfomation[0]
+  var details = applicationForm
+console.log('details', details);
   return (
     <div>
       <form className="form" onSubmit={handleSubmit}>
@@ -21,14 +21,14 @@ var details = displayApplicantInfomation[0]
                   type={item.value}
                   name={item.name}
                   onChange={(e) => handleChange(e)}
-                  value={details[item.name]}
+                  value={details && details[item.name] || ""}
                 />
               ) : (
                 <input
                   type={item.value}
                   name={item.name}
                   onChange={(e) => handleChange(e)}
-                  value={details[item.name]}
+                  value={details && details[item.name] || ""}
                 />
               )}
             </div>

@@ -1,8 +1,5 @@
-import React, { useState, useEffect } from "react";
-import JsonForm from "./jsonForm";
-import Chatinput from "./ChatInput";
+import React, { useEffect } from "react";
 import EditForm from "./EditForm.jsx";
-import { GenericForm } from "./GenericForm";
 
 const ChatbotDisplay = (props) => {
   const {
@@ -15,16 +12,7 @@ const ChatbotDisplay = (props) => {
     nextNodes,
     nextSubNodes,
     nodeDisplay,
-    createForm,
-    formStructure,
-    handleEdit,
-    edit,
-    getFormDetails,
-    handleChange,
-    handleSubmit,
-    displayApplicantInfomation,
-    applicationFormAndApplicantInfoShow,
-    sendFormValues,
+    handleEdit
   } = props;
 
   useEffect(() => {
@@ -104,40 +92,22 @@ const ChatbotDisplay = (props) => {
         {nextSubNodes !== undefined && nextSubNodes.length !== 1
           ? nextSubNodes &&
             nextSubNodes.map((item, i) => {
-              // return (
               if (item.text) {
                 return <p>{item.text}</p>;
               } else if (item.option) {
                 return (
-                  <button onClick={(e) => action(e,item.id)}>
+                  <button onClick={(e) => action(e, item.id)}>
                     {item.option}
                   </button>
                 );
               } else if (item.image) {
                 return <img src={item.image} alt="" />;
               } else if (item.application) {
-                return (
-                  <EditForm
-                    nextSubNodes={nextSubNodes}
-                    formStructure={formStructure}
-                    createForm={createForm}
-                    handleChange={handleChange}
-                    getFormDetails={getFormDetails}
-                    handleSubmit={handleSubmit}
-                    editForm={edit}
-                    displayApplicantInfomation={displayApplicantInfomation}
-                    applicationFormAndApplicantInfoShow={
-                      applicationFormAndApplicantInfoShow
-                    }
-                    handleEdit={handleEdit}
-                    sendFormValues={sendFormValues}
-                  />
-                );
+                return <EditForm {...props} />;
               }
             })
           : null}
       </div>
-      {/* <Chatinput/> */}
     </div>
   );
 };

@@ -3,7 +3,7 @@ import { GenericForm } from "./GenericForm";
 import ConfirmDetails from "./ConfirmDetails";
 
 function EditForm(props) {
-  const { editForm, displayApplicantInfomation } = props;
+  const { editForm } = props;
 
   return (
     <div>

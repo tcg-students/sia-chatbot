@@ -11,15 +11,10 @@
 }
 .treeOptions {
   padding-top: 2rem;
-  animation: fadeIn 5s;
-  -webkit-animation: fadeIn 10s;
-  -moz-animation: fadeIn 10s;
-  -o-animation: fadeIn 10s;
-  -ms-animation: fadeIn 10s;
 }
 
 .logo {
-  animation: fadeIn 5s;
+    animation: fadeIn 5s;
   -webkit-animation: fadeIn 5s;
   -moz-animation: fadeIn 5s;
   -o-animation: fadeIn 5s;
@@ -198,6 +193,7 @@ input[type="date"]{
   height: 5rem;
   background-color: black;
   display: grid;
+  padding:.8rem;
   grid-template-columns: auto auto auto;
 }
 
@@ -216,7 +212,7 @@ input[type="date"]{
 }
 
 .chatbotBody{  
-  height:820px !important;
+  height:62.8vh !important;
   overflow:auto !important;
 }
 
@@ -248,14 +244,22 @@ input[type="date"]{
   /* color:white; */
   background-color: white;
   border: 5px solid #033333;
-  width:90%;
   border-radius: 10px;
   margin:auto;
   padding:2rem;
 }
 
-.applicantInfomation p{
+.applicantInfomation ul{
+display:grid;
+flex-direction: column;
+text-align: left !important;
+margin: 0 !important;
+padding-left:0rem;
 }
+.applicantInfomation p{
+  color:white !important;
+}
+
 
 .applicantInfomationButtons{
   display:grid;
@@ -264,6 +268,16 @@ width: 100%;
 }
 
 .applicantInfomationButtons input{
+  color:#033333;
 margin: auto;
 width: 80%;
+}
+
+.headerButtons{
+  cursor: pointer;
+}
+
+.headerButtons:hover{
+  box-shadow: 0px 0px 30px;
+  border: 2px solid rgb(29, 198, 186);
 }

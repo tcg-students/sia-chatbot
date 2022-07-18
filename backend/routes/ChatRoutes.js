@@ -1,8 +1,11 @@
 const {
   getTcgLogo,
+  insertAllNodes,
   getInitialTreeMessages,
   getInitialnodes,
   getNode,
+  createTree,
+  createSingeNode
 } = require("../chatQueries/ChatQueries");
 
 const chatRoutes = (app) => {
@@ -16,7 +19,8 @@ const chatRoutes = (app) => {
     const treeMessages = await getInitialTreeMessages();
     res.send({ treeMessages });
   });
-  // "/get_initial_nodes/:id"
+
+  
   app.post("/get_initial_nodes", async (req, res) => {
     const idObj = req.body
     console.log('idObj', idObj)
@@ -25,6 +29,17 @@ const chatRoutes = (app) => {
     res.send(getInitialNodes);
   });
 
+  app.post("/node/:treename", async (req, res) => {
+    // createSingeNode()
+    const nodes = req.body
+    console.log("nodes" , nodes)
+
+    const treeId = await createTree(req.params.treename)
+    insertAllNodes(nodes , treeId)
+    // const treeMessages = await getInitialTreeMessages();
+    // console.log("console" , req.params)
+    res.send(201);
+  });
   // app.get("/get_nodes/:id", async (req, res) => {
   //   const getNodes = await getNode(req.params.id);
   //   console.log("req.params", req.params);

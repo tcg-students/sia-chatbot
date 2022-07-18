@@ -14,34 +14,48 @@ export const chatbotMessagesReducer = (state = initialState, action) => {
         ...state,
         logo: action.payload,
       };
-      case actions.GETTING_FIRST_TREE_WELCOME_MESSAGES:
-        return {
-          ...state,
+    case actions.GETTING_FIRST_TREE_WELCOME_MESSAGES:
+      return {
+        ...state,
         welcomeMessages: action.payload,
+
       };
 
     case actions.GETTING_FIRST_NODE_OPTIONS:
-      console.log('action.payload', action.payload)
+      console.log("action.payload", action.payload);
       return {
         ...state,
-        optionBotMessages: [...state.optionBotMessages  ,...action.payload]
+        optionBotMessages: [...state.optionBotMessages, ...action.payload],
+        currentBotRes:action.payload
       };
 
     case actions.GETTING_NODE_OPTIONS:
       return {
         ...state,
-        botConversationalMessages: [...state.botConversationalMessages , ...action.payload],
+        botConversationalMessages: [
+          ...state.botConversationalMessages,
+          ...action.payload,
+        ],
       };
 
-      case actions.SEND_APPLICANT_DETAILS:
-        console.log('action.payload', action.payload)
-        return {
-          ...state,
-          applicantInfomation: action.payload
-        };
+    case actions.SEND_APPLICANT_DETAILS:
+      return {
+        ...state,
+        applicantInfomation: action.payload,
+      };
 
+    case actions.RESET_STATE:
+      return {
+        ...state,
+        welcomeMessages: action.payload || state,
+        optionBotMessages: action.payload,
+      };
 
-      
+    case actions.RESET_INITIAL_NODES:
+      return {
+        ...state,
+        optionBotMessages: action.payload,
+      };
 
     default:
       return state;

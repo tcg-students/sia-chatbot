@@ -18,35 +18,41 @@ const ChatbotDisplay = (props) => {
     displayApplicantInfomation,
     applicationFormAndApplicantInfoShow,
     sendFormValues,
-    disableOptions,
-
+    handleScroll,
+    handleResetChatbot,
+    handleInitialNodesReset
   } = props;
-
-//   var objDiv = document.getElementByClass("chatbotBody");
-// objDiv.scrollTop = objDiv.scrollHeight;
 
   useEffect(() => {
     nodeDisplay();
-  }, []);
+    handleScroll()
+  });
+
+  
 
   return (
     <div>
-      <div className="chatBotHeader">
-<input className="" value="Reset" />
-<h1>chat-bot</h1>
-<input className="" value="Speak to a Agent" />
-      </div>
-      <div className="chatbotBody">
+      <div className="chatBotHeaderContainer">
+        <div className="chatBotHeader">
+        <input className="headerButtons" onClick={handleResetChatbot} value="Reset" />
+        <h1>chat-bot</h1>
+        <input className="headerButtons" value="Speak to a Agent" />
+        </div>
+        <div>
+      {logo === undefined ? null :
         <div className="logo">
           <img src={logo} alt="tcgLogo" />
         </div>
+      }
+        </div>
+      </div>
+      <div id="chatbotBodyDiv" className="chatbotBody">
 
         <div>
-          {introTreeMessages &&
+          {introTreeMessages !== undefined &&
             introTreeMessages
               .map((item) => {
                 return (
-
                   <div className="introMessage">
                     <p>{item.text}</p>
                   </div>
@@ -60,7 +66,7 @@ const ChatbotDisplay = (props) => {
               introTreeMessages
                 .map((item, i) => {
                   return (
-                    <div style={{ padding: ".5rem" }}>
+                    <div onClick={handleInitialNodesReset} style={{ padding: ".5rem" }}>
                       <button
                         className="optionButtons"
                         onClick={() =>
@@ -105,7 +111,6 @@ const ChatbotDisplay = (props) => {
             if (item.application !== null) {
               console.log("item.app: ", item.application);
               return (
-
                 <JsonForm
                   formStructure={formStructure}
                   createForm={createForm}

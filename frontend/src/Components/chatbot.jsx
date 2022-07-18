@@ -6,7 +6,9 @@ import {
   getInitialNode,
   // getNode,
   getLogo,
-  getApplicationFormValues
+  getApplicationFormValues,
+  resetStateValues,
+  resetInitialNodes
 } from "../Redux/ActionCreators/index";
 const Chatbot = (props) => {
   const [selected, setSelected] = useState({});
@@ -15,24 +17,30 @@ const Chatbot = (props) => {
   const [formStructure, setFormStructure] = useState([]);
   const [editForm, setEditForm] = useState(false);
   const [disableOptions, setDisableOptions] = useState(false);
-
-  const [displayApplicantInfomation, setDisplayApplicantInfomation] = useState([]);
-
-  const [applicationFormAndApplicantInfoShow,setapplicationFormAndApplicantInfoShow] = useState(false);
-
-
+  const [displayApplicantInfomation, setDisplayApplicantInfomation] = useState(
+    []
+    );
+    
+  const [
+    applicationFormAndApplicantInfoShow,
+    setapplicationFormAndApplicantInfoShow,
+  ] = useState(false);
+  
   let logo = useSelector(
     (state) =>
-      state.botConversation.logo.logo &&
-      state.botConversation.logo.logo[0].image
-  );
-  let introTreeMessages = useSelector(
-    (state) => state.botConversation.welcomeMessages
-  );
+    state.botConversation.logo.logo &&
+    state.botConversation.logo.logo[0].image
+    );
+    // let introTreeMessages = useSelector(
+    //   (state) => state.botConversation.welcomeMessages
+    //   );
+      // console.log('introTreeMessages', introTreeMessages)
 
   let nextNodes = useSelector(
     (state) => state.botConversation.optionBotMessages
   );
+  console.log('nextNodes', nextNodes)
+
 
   let dispatch = useDispatch();
   useEffect(() => {
@@ -42,15 +50,15 @@ const Chatbot = (props) => {
   const handleEdit = () => {
     setEditForm(!editForm);
   };
-
-  const getImage = _ => {
+  
+  const getImage = (_) => {
     setTimeout(function () {
       dispatch(getLogo());
     }, 500);
     getWelcomeContents();
   };
-
-  const getWelcomeContents = async _ => {
+  
+  const getWelcomeContents = async (_) => {
     try {
       setTimeout(function () {
         dispatch(getInitialTreeText());
@@ -60,10 +68,10 @@ const Chatbot = (props) => {
     }
   };
 
-  const handleInitialNodeOptions = async id => {
+  const handleInitialNodeOptions = async (id) => {
+    console.log('id', id)
     try {
       setTimeout(function () {
-        
         dispatch(getInitialNode(id));
       }, 1000);
     } catch (error) {
@@ -72,21 +80,20 @@ const Chatbot = (props) => {
   };
 
   const handleOptionsIndex = (field, id) => {
-    console.log('field,id', field,id)
+    console.log("field,id", field, id);
     let newSelectedId = { ...selected };
     newSelectedId[`${field}`] = id;
     setSelected(newSelectedId);
   };
 
-
-  const nodeDisplay = _ => {
+  const nodeDisplay = (_) => {
     setChatbotNodes(nextNodes);
   };
 
   const jsonForm = nextNodes;
   var object = jsonForm && jsonForm[jsonForm.length - 1];
 
-  const createForm = _ => {
+  const createForm = (_) => {
     var values = [];
     if (object) {
       for (var i in object.application) {
@@ -96,34 +103,57 @@ const Chatbot = (props) => {
     setFormStructure(values);
   };
 
-  const handleChange = e => {
+  const handleChange = (e) => {
     setApplicationForm({ ...applicationForm, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     if (applicationForm) {
       setDisplayApplicantInfomation([applicationForm]);
-      console.log('applicationForm', applicationForm)
+      console.log("applicationForm", applicationForm);
       setTimeout(function () {
         setapplicationFormAndApplicantInfoShow(true);
       }, 1000);
     }
   };
 
-  const sendFormValues = _ => {
-    dispatch(getApplicationFormValues(applicationForm))
+  const sendFormValues = (_) => {
+    // dispatch(getApplicationFormValues(applicationForm));
+    if ("The kind of support you’d like to offer (Optiona)" in applicationForm){
+console.log('yes')
+    }else if("The kind of training or mentorship you’re able to offer (Optional)" in applicationForm){
+      console.log('mentor')
 
-     setTimeout(function () {
-        dispatch(getInitialNode({nodeid:100}));
-      }, 3000);
+    }
+
+    setTimeout(function () {
+      // dispatch(getInitialNode({ nodeid: 100 }));
+    }, 3000);
+  };
+
+  const handleScroll = _ => {
+      var elem = document.getElementById("chatbotBodyDiv");
+      elem.scrollTop = elem.scrollHeight;
+  };
+
+  const handleResetChatbot = _ => {
+dispatch(resetStateValues())
+getImage();
+    handleInitialNodeOptions();
   }
 
+  const handleInitialNodesReset= _ => {
+    dispatch(resetInitialNodes())
+    getImage();
+
+    handleInitialNodeOptions()
+  }
   return (
     <div>
       <ChatbotDisplay
         logo={logo}
-        introTreeMessages={introTreeMessages}
+        // introTreeMessages={introTreeMessages}
         nextNodes={nextNodes}
         nodeDisplay={nodeDisplay}
         handleInitialNodeOptions={handleInitialNodeOptions}
@@ -138,6 +168,9 @@ const Chatbot = (props) => {
           applicationFormAndApplicantInfoShow
         }
         sendFormValues={sendFormValues}
+        handleScroll={handleScroll}
+        handleResetChatbot={handleResetChatbot}
+        handleInitialNodesReset={handleInitialNodesReset}
       />
     </div>
   );

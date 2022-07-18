@@ -73,16 +73,17 @@ export const JsonForm = (props) => {
                   <ul key={i}>
                     {Object.keys(item).map((key) => {
                       return (
-                        <li className="info" key={key + i}>
-                          {key}:{item[key]}
+  
+  <li className="info" style={{color:"#033333"}} key={key + i}>
+                          {key}: {item[key]}
                         </li>
                       );
                     })}
                   </ul>
                   </div>
 
-                  <div style={{color:"white"}}>
-                    <p>Would you like to edit?</p>
+                  <div style={{color:"#033333"}}>
+                    <p style={{color:"white"}}>Would you like to edit?</p>
                     <div className="applicantInfomationButtons">
                     <input type="submit" className="optionButtons" value="Yes" />
                     <input type="submit" className="optionButtons" onClick={sendFormValues}  value="No" />

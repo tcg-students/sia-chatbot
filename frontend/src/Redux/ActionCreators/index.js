@@ -5,7 +5,6 @@ export const getLogo = () => {
   return async (dispatch) => {
     const response = await axios.get("http://localhost:4000/logo");
     const getData = response.data;
-    // console.log("logoAction", getData);
     dispatch({ type: actions.GET_LOGO, payload: getData });
   };
 };
@@ -15,12 +14,13 @@ export const getInitialTreeText = () => {
   return async (dispatch) => {
     const response = await axios.get("http://localhost:4000/treeMessages");
     const getData = response.data.treeMessages;
-    // console.log("getData", getData);
+    console.log('getData', getData)
     dispatch({ type: actions.GETTING_FIRST_TREE_WELCOME_MESSAGES, payload: getData });
   };
 };
 
 export const getInitialNode = (obj) => {
+  console.log('obj', obj)
   return async (dispatch) => {
     const response = await axios.post(`http://localhost:4000/get_initial_nodes`,obj);
     const getInitialNodeData = response.data;
@@ -28,15 +28,6 @@ export const getInitialNode = (obj) => {
     dispatch({ type: actions.GETTING_FIRST_NODE_OPTIONS, payload: getInitialNodeData });
   };
 };
-
-
-// export const getNode = (id) => {
-//   return async (dispatch) => {
-//     const response = await axios.get(`http://localhost:4000/get_nodes/${id}`);
-//     const getInitialNodeData = response.data;
-//     dispatch({ type: actions.GETTING_NODE_OPTIONS, payload: getInitialNodeData });
-//   };
-// };
 
 export const getApplicationFormValues = (data) => {
   return async (dispatch) => {
@@ -46,3 +37,19 @@ export const getApplicationFormValues = (data) => {
     dispatch({ type: actions.SEND_APPLICANT_DETAILS, payload: getFormData });
   };
 };
+
+export const resetStateValues = () => {
+  return async (dispatch) => {
+    dispatch({ type: actions.RESET_STATE, payload: [] });
+  };
+};
+
+export const resetInitialNodes = () => {
+  return async (dispatch) => {
+    dispatch({ type: actions.RESET_INITIAL_NODES, payload: [] });
+  };
+};
+
+
+
+

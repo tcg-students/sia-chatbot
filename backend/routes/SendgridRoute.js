@@ -8,7 +8,7 @@ const sendGridRoute = (app) => {
     const emailSendTO = "ramollosamuel2@gmail.com";
     const emailSendFrom = "sia.chatbot1@gmail.com";
 
-    const getApplicantsDetails = (_) => {
+    const getApplicantsDetails = _ => {
       if (
         "The kind of training or mentorship you’re able to offer (Optional)" in
         req.body
@@ -130,8 +130,8 @@ const sendGridRoute = (app) => {
               
               </strong>`;
       } else if (
-        "Whatsapp Number" ||
-        "Date Of Birth" in req.body
+        ("Whatsapp Number" ||
+        "Date Of Birth") in req.body
       ) {
         console.log('student Application')
         return `<strong>

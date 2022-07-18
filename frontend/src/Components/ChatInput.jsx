@@ -4,26 +4,43 @@ import { getInitialNode } from "../Redux/ActionCreators/index";
 
 
 function ChatInput(props) {
-  const {introTreeMessages}=props
+  const {introTreeMessages ,nextNodes}=props
   const [input, setInput] = useState();
-  const [ currentnodes, setCurrentNodes ] = useState([])
-
+  const [current , setCurrent] = useState([])
   let dispatch = useDispatch();
 
+  let currentNodes = useSelector(
+    (state) => state.botConversation.currentBotRes
+  );
+
+
+  
  useEffect(() => {
-  setCurrentNodes(introTreeMessages)
  },[])
  
+ 
  console.log('introTreeMessages', introTreeMessages)
- console.log('currentnodes', currentnodes)
+ const handleInput = () => {
+   setCurrent(introTreeMessages)
+   console.log('current', current)
+    try {
+      if("Hi! My name is Sia. I was created by The Coding Ground class of 2021. How can I help you today?." in currentNodes){
+ }
+  const searchValue = input - 1 ;
+  let newArr = currentNodes.filter(item=> item.option);
+console.log('newArr', newArr)
+const selectedValue = newArr[searchValue].id
+console.log('selectedValue', selectedValue)
+  setTimeout(function () {
+    dispatch(getInitialNode({nodeid:selectedValue}));
+  }, 1000);
+} catch (error) {
+  console.log("error", error);
+}
 
 
-  const handleInput = () => {
-    let selectedValue = currentnodes[input].id
-    console.log('selectedValue', selectedValue)
-    dispatch(getInitialNode(selectedValue))
-    
   };
+  
 
   return (
     <div className="selectInput">

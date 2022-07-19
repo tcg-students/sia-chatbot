@@ -33,13 +33,13 @@ const ChatbotDisplay = (props) => {
     <div>
       <div className="chatBotHeader">
 <input className="" value="Reset" />
-<h1>chat-bot</h1>
+<h1>chat-bot<span>&#33;</span></h1>
 <input className="" value="Speak to a Agent" />
       </div>
       <div className="chatbotBody">
-        <div className="logo">
+        {/* <div className="logo">
           <img src={logo} alt="tcgLogo" />
-        </div>
+        </div> */}
 
         <div>
           {introTreeMessages &&
@@ -48,7 +48,7 @@ const ChatbotDisplay = (props) => {
                 return (
 
                   <div className="introMessage">
-                    <p>{item.text}</p>
+                   <div> <p >{item.text}</p></div>
                   </div>
                 );
               })
@@ -60,7 +60,7 @@ const ChatbotDisplay = (props) => {
               introTreeMessages
                 .map((item, i) => {
                   return (
-                    <div style={{ padding: ".5rem" }}>
+                    <div >
                       <button
                         className="optionButtons"
                         onClick={() =>
@@ -80,9 +80,9 @@ const ChatbotDisplay = (props) => {
             ? nextNodes &&
               nextNodes.map((item, i) => {
                 return (
-                  <div style={{ padding: ".5rem" }}>
+                  <div className="optionButtons-content">
                     {item.text ? (
-                      <p>{item.text}</p>
+                      <p className="p-tag">{item.text}</p>
                     ) : (
                       item.option && (
                         <button

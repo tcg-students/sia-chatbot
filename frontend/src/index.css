@@ -1,3 +1,7 @@
+*{
+  margin: 0;
+  padding:0.5em;
+}
 .example1 {
   display: grid;
   gap: 1rem;
@@ -149,42 +153,76 @@ input[type="date"]{
 }
 
 .optionButtons{
+    background-color: #3da35d;
   width: 25%;
   border-radius: 15px;
   padding:.5rem;
-  border: 2px solid rgb(29, 198, 186);
+  border: 2px;
 }
 
 .optionButtons:hover{
   color: #111;
-  box-shadow: 0 0 20px rgb(29, 198, 186);
+  /* box-shadow: 0 0 20px rgb(29, 198, 186); */
   border-radius: 15px;
   padding:.5rem;
-  border: 2px solid rgb(29, 198, 186);
+  /* border: 2px solid rgb(29, 198, 186); */
 
 
 }
 
 .introMessage{
-  padding-top:2rem;
+  padding: auto;
+  /* padding-top:2rem; */
   width: 90%;
   margin:auto;
   border-radius: 35px;
   
 }
 
-.introMessage p {
+.introMessage {
+  width: 80vh;
+  /* height: 80vh;s */
+  margin: auto;
+  position: relative;
+  display: block;
+}
+p {
 
-  border: 1px solid grey;
-  border-radius: 10px;
-  padding:2rem;
-  font-size: 1.3rem;
-  font-weight: bold;
+  position: relative;
+  max-width: 30em;
 
-
+ 
+  background-color:#0ead69 ;
+  padding: 1.125em 1.5em;
+  font-size: 1.25em;
+  border-radius: 1rem;
+  box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, .3), 0 0.0625rem 0.125rem rgba(0, 0, 0, .2);
 }
 
-.form-control{
+p::before {
+
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  bottom: 100%;
+  left: 1.5em; 
+  border: .75rem solid transparent;
+  border-top: none;
+
+
+  border-bottom-color: #fff;
+  filter: drop-shadow(0 -0.0625rem 0.0625rem rgba(0, 0, 0, .1));
+}
+.dialogue-box {
+  padding: 25px 10px;
+  margin: 10px;
+  border-radius: 20px 20px 1px 20px;
+  background: #cccccc;
+  color: black;
+}
+
+/* .form-control{
   width:100% !important;
 }
 
@@ -192,6 +230,10 @@ input[type="date"]{
   margin: auto !important;
   display : flex;
   width:25% !important;
+} */
+
+span {
+  content: "\0021";
 }
 
 .chatBotHeader{
@@ -221,7 +263,7 @@ input[type="date"]{
 }
 
 .chatbotFooter{
-  height: 5rem;
+  height: 6.5rem;
   background-color: black;
 }
 
@@ -267,3 +309,37 @@ width: 100%;
 margin: auto;
 width: 80%;
 }
+
+
+.optionButtons-content{
+    float: right;
+    width: 80vh;
+      /* height: 80vh;s */
+      margin: auto;
+      position: relative;
+      display: block;
+}
+.p-tag{
+  float: left;
+  width: 80vh;
+    /* height: 80vh;s */
+    margin: auto;
+    position: relative;
+    display: block;
+}
+
+
+.selectInput{
+  display: flex;
+  scroll-padding-top: 5rem;
+  border: 1px solid black;
+  padding: 1rem;
+  /* position: fixed; */
+  background-color: black;
+  margin: auto;
+  width: 50.4rem;
+  /* margin-left: 36rem; */
+  height: 11vh;
+}
+
+

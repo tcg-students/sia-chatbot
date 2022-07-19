@@ -13,13 +13,11 @@ const Chatbot = (props) => {
   const [applicationForm, setApplicationForm] = useState({});
   const [chatbotNodes, setChatbotNodes] = useState([]);
   const [formStructure, setFormStructure] = useState([]);
-  const [displayApplicantInfomation, setDisplayApplicantInfomation] = useState(
-    []
-  );
-  const [
-    applicationFormAndApplicantInfoShow,
-    setapplicationFormAndApplicantInfoShow,
-  ] = useState(false);
+  const [editForm, setEditForm] = useState(false);
+  const [disableOptions, setDisableOptions] = useState(false);
+
+  const [displayApplicantInfomation, setDisplayApplicantInfomation] = useState([]);
+  const [applicationFormAndApplicantInfoShow, setapplicationFormAndApplicantInfoShow] = useState(false);
 
   let logo = useSelector(
     (state) =>
@@ -63,6 +61,7 @@ const Chatbot = (props) => {
     try {
       setTimeout(function () {
         dispatch(getInitialNode(id));
+        // setDisableOptions(true)
       }, 1000);
     } catch (error) {
       console.log("error", error);
@@ -80,9 +79,11 @@ const Chatbot = (props) => {
   };
 
   const handleOptionsIndex = (field, id) => {
+    console.log('field,id', field,id)
     let newSelectedId = { ...selected };
     newSelectedId[`${field}`] = id;
     setSelected(newSelectedId);
+            setDisableOptions(true)
   };
 
   const nodeDisplay = _ => {
@@ -118,9 +119,9 @@ const Chatbot = (props) => {
 
   const sendFormValues = _ => {
     dispatch(getApplicationFormValues(applicationForm))
-     setTimeout(function () {
-        dispatch(getNode(100));
-      }, 3000);
+    setTimeout(function () {
+      dispatch(getNode(100));
+    }, 3000);
   }
 
   return (
@@ -143,6 +144,7 @@ const Chatbot = (props) => {
         applicationFormAndApplicantInfoShow={
           applicationFormAndApplicantInfoShow
         }
+        disableOptions={disableOptions}
         sendFormValues={sendFormValues}
       />
     </div>

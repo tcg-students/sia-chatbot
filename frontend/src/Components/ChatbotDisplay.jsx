@@ -130,6 +130,7 @@ const ChatbotDisplay = (props) => {
       </div>
 
       <div className="chatbotFooter">
+        <p style={{color:"white"}}>Command:</p>
         <Chatinput
           introTreeMessages={introTreeMessages}
           nextNodes={nextNodes}

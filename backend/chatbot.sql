@@ -41,6 +41,7 @@ VALUES (
 VALUES (
     'Tumisang Ramollo'
   );
+ 
 INSERT INTO `node` (text)
 VALUES (
     'Thank you! What kind of support are you interested in offering?'
@@ -51,19 +52,25 @@ INSERT INTO `node` (text)
 VALUES (
     'Tumisang Ramollo'
   );
+  INSERT INTO `node` (text)
+VALUES (
+    'Tumisang Ramollo'
+  );
+
+  
 INSERT INTO `node` (option)
 VALUES ('Traditional one-one mentorship/training');
 INSERT INTO `node` (text)
 VALUES (
-    'Tumisang Ramollo'
+    '1. Traditional one-one mentorship/training'
   );
-INSERT INTO `node` (text)
-VALUES (
-    'Please add your details below so that we can get in touch!'
+  VALUES (
+    'What kind of training or mentorship are you able to offer?'
   );
+
 INSERT INTO `node` (application)
 VALUES (
-    '{\n    \"mentorship\": {\n        \"name\":\"text\",\n        \"businessName\":\"text\",\n        \"emailAddress\":\"email\",\n        \"contactNumber\":\"number\",\n        \"message\":\"text\"\n    }\n}'
+    '{\n    \"mentorship\": {\n        \"name\":\"text\",\n        \"businessName\":\"text\",\n        \"emailAddress\":\"email\",\n        \"contactNumber\":\"number\",\n        \"Traditional one-one mentorship/training\":\"textarea\"\n    }\n}'
   );
 INSERT INTO `node` (text)
 VALUES (
@@ -81,7 +88,7 @@ VALUES (
   );
 INSERT INTO `node` (application)
 VALUES (
-    '{\n    \"mentorship\": {\n        \"name\":\"text\",\n        \"businessName\":\"text\",\n        \"emailAddress\":\"email\",\n        \"contactNumber\":\"number\",\n        \"message\":\"text\"\n    }\n}'
+    '{\n    \"mentorship\": {\n        \"name\":\"text\",\n        \"businessName\":\"text\",\n        \"emailAddress\":\"email\",\n        \"contactNumber\":\"number\",\n        \"Distance/virtual mentorship/training\":\"textarea\"\n    }\n}'
   );
 INSERT INTO `node` (text)
 VALUES (
@@ -99,7 +106,7 @@ VALUES (
   );
 INSERT INTO `node` (application)
 VALUES (
-    '{\n    \"mentorship\": {\n        \"name\":\"text\",\n        \"businessName\":\"text\",\n        \"emailAddress\":\"email\",\n        \"contactNumber\":\"number\",\n        \"message\":\"text\"\n    }\n}'
+    '{\n    \"mentorship\": {\n        \"name\":\"text\",\n        \"businessName\":\"text\",\n        \"emailAddress\":\"email\",\n        \"contactNumber\":\"number\",\n        \"Group training\":\"textarea\"\n    }\n}'
   );
 INSERT INTO `node` (text)
 VALUES (

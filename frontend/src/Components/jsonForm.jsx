@@ -35,6 +35,7 @@ export const JsonForm = (props) => {
                     <textarea className="form-textarea"
                       type={item.value}
                       name={item.name}
+                      placeholder="Message"
                       onChange={(e) => handleChange(e)}
                     />
                   </div>
@@ -43,6 +44,8 @@ export const JsonForm = (props) => {
                   <div>
                     <label className="form-label addAstericks">{item.name}</label>
                     <input
+                                          placeholder={`Enter your ${item.name.toLowerCase()}`}
+
                       className="form-input"
                       type={item.value}
                       name={item.name}
@@ -94,6 +97,7 @@ export const JsonForm = (props) => {
             })}
         </div>
       )}
+      
     </div>
   );
 };

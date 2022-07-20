@@ -31,15 +31,13 @@ const Chatbot = (props) => {
     state.botConversation.logo.logo &&
     state.botConversation.logo.logo[0].image
     );
-    // let introTreeMessages = useSelector(
-    //   (state) => state.botConversation.welcomeMessages
-    //   );
-      // console.log('introTreeMessages', introTreeMessages)
+    let introTreeMessages = useSelector(
+      (state) => state.botConversation.welcomeMessages
+      );
 
   let nextNodes = useSelector(
     (state) => state.botConversation.optionBotMessages
   );
-  console.log('nextNodes', nextNodes)
 
 
   let dispatch = useDispatch();
@@ -69,7 +67,6 @@ const Chatbot = (props) => {
   };
 
   const handleInitialNodeOptions = async (id) => {
-    console.log('id', id)
     try {
       setTimeout(function () {
         dispatch(getInitialNode(id));
@@ -80,7 +77,6 @@ const Chatbot = (props) => {
   };
 
   const handleOptionsIndex = (field, id) => {
-    console.log("field,id", field, id);
     let newSelectedId = { ...selected };
     newSelectedId[`${field}`] = id;
     setSelected(newSelectedId);
@@ -111,7 +107,6 @@ const Chatbot = (props) => {
     e.preventDefault();
     if (applicationForm) {
       setDisplayApplicantInfomation([applicationForm]);
-      console.log("applicationForm", applicationForm);
       setTimeout(function () {
         setapplicationFormAndApplicantInfoShow(true);
       }, 1000);
@@ -119,16 +114,10 @@ const Chatbot = (props) => {
   };
 
   const sendFormValues = (_) => {
-    // dispatch(getApplicationFormValues(applicationForm));
-    if ("The kind of support you’d like to offer (Optiona)" in applicationForm){
-console.log('yes')
-    }else if("The kind of training or mentorship you’re able to offer (Optional)" in applicationForm){
-      console.log('mentor')
-
-    }
+    dispatch(getApplicationFormValues(applicationForm));
 
     setTimeout(function () {
-      // dispatch(getInitialNode({ nodeid: 100 }));
+      dispatch(getInitialNode({ nodeid: 100 }));
     }, 3000);
   };
 
@@ -153,7 +142,7 @@ getImage();
     <div>
       <ChatbotDisplay
         logo={logo}
-        // introTreeMessages={introTreeMessages}
+        introTreeMessages={introTreeMessages}
         nextNodes={nextNodes}
         nodeDisplay={nodeDisplay}
         handleInitialNodeOptions={handleInitialNodeOptions}

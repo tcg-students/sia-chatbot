@@ -217,8 +217,19 @@ input[type="date"]{
 }
 
 .chatbotFooter{
+  display: grid;
+  grid-template-columns: auto auto;
   height: 5rem;
   background-color: black;
+}
+
+.chatbotFooter p {
+  padding: 2rem;
+}
+
+.chatbotFooter input {
+  margin-bottom: 1.5rem;
+  width:100px;
 }
 
 .scrollbar-hidden {
@@ -257,7 +268,8 @@ margin: 0 !important;
 padding-left:0rem;
 }
 .applicantInfomation p{
-  color:white !important;
+  color:#033333 !important;
+  text-align: left !important;
 }
 
 

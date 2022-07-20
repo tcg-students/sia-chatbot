@@ -39,6 +39,9 @@ const Chatbot = (props) => {
     getImage();
     handleInitialNodeOptions();
   }, []);
+  const handleEdit = () => {
+    setEditForm(!editForm);
+  };
 
   const getImage = _ => {
     setTimeout(function () {

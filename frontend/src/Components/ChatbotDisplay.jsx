@@ -30,9 +30,9 @@ const ChatbotDisplay = (props) => {
   }, []);
 
   return (
-    <div>
+    <div className="bot-body">
       <div className="chatBotHeader">
-<input className="" value="Reset" />
+<input className="reset-button" value="Reset" />
 <h1>chat-bot<span>&#33;</span></h1>
 <input className="" value="Speak to a Agent" />
       </div>
@@ -48,7 +48,7 @@ const ChatbotDisplay = (props) => {
                 return (
 
                   <div className="introMessage">
-                   <div> <p >{item.text}</p></div>
+                   <div> <p className="welcome-text">{item.text}</p></div>
                   </div>
                 );
               })
@@ -75,16 +75,19 @@ const ChatbotDisplay = (props) => {
                 .splice(1)
             : null}
         </div>
-        <div>
+        <div className="node-button-content">
           {nextNodes !== undefined
             ? nextNodes &&
               nextNodes.map((item, i) => {
                 return (
-                  <div className="optionButtons-content">
+                  <div>
                     {item.text ? (
-                      <p className="p-tag">{item.text}</p>
-                    ) : (
-                      item.option && (
+                      <div className="p-tag">
+                      <p className="p-tag-text">{item.text}</p>
+                      </div>
+                      ) : (
+                        item.option && (
+                         
                         <button
                           className="optionButtons"
                           onClick={() =>
@@ -93,9 +96,11 @@ const ChatbotDisplay = (props) => {
                         >
                           {item.option}
                         </button>
+                        
                       )
-                    )}
-                  </div>
+                  )
+                }
+                </div>
                 );
               })
             : null}

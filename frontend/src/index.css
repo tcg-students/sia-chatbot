@@ -1,6 +1,6 @@
-*{
+.chatBotHeader{
   margin: 0;
-  padding:0.5em;
+  /* padding:0.5em; */
 }
 .example1 {
   display: grid;
@@ -91,7 +91,8 @@ li {
   --samll-font-size: .75rem;
   
 }
-
+/* .bot-body{   
+} */
 .form-button{
   display:block;
   margin-top: 1.5rem;
@@ -153,11 +154,19 @@ input[type="date"]{
 }
 
 .optionButtons{
+margin: 1rem;
     background-color: #3da35d;
-  width: 25%;
+  width: 100%;
   border-radius: 15px;
   padding:.5rem;
   border: 2px;
+}
+
+.nodeOptionsButtons{
+  width: 100%;
+    border-radius: 15px;
+    padding: .5rem;
+    border: 2px;
 }
 
 .optionButtons:hover{
@@ -166,41 +175,36 @@ input[type="date"]{
   border-radius: 15px;
   padding:.5rem;
   /* border: 2px solid rgb(29, 198, 186); */
-
-
 }
 
 .introMessage{
   padding: auto;
   /* padding-top:2rem; */
-  width: 90%;
+  /* width: 90%; */
   margin:auto;
   border-radius: 35px;
   
 }
 
 .introMessage {
-  width: 80vh;
+  width: 80%;
   /* height: 80vh;s */
   margin: auto;
   position: relative;
   display: block;
 }
-p {
-
+.welcome-text{
+margin-top: 1rem;
   position: relative;
-  max-width: 30em;
-
- 
+  max-width: 40em;
   background-color:#0ead69 ;
-  padding: 1.125em 1.5em;
+  padding: -7.125em 1.5em;
   font-size: 1.25em;
   border-radius: 1rem;
   box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, .3), 0 0.0625rem 0.125rem rgba(0, 0, 0, .2);
 }
 
-p::before {
-
+.welcome-text::before {
   content: '';
   position: absolute;
   width: 0;
@@ -212,8 +216,8 @@ p::before {
 
 
   border-bottom-color: #fff;
-  filter: drop-shadow(0 -0.0625rem 0.0625rem rgba(0, 0, 0, .1));
-}
+  filter: drop-shadow(0 -0.0625rem 0.0625rem rgba(0, 0, 0, .1)); }
+ 
 .dialogue-box {
   padding: 25px 10px;
   margin: 10px;
@@ -296,8 +300,8 @@ span {
   padding:2rem;
 }
 
-.applicantInfomation p{
-}
+/* .applicantInfomation p{
+} */
 
 .applicantInfomationButtons{
   display:grid;
@@ -311,26 +315,25 @@ width: 80%;
 }
 
 
-.optionButtons-content{
-    float: right;
-    width: 80vh;
-      /* height: 80vh;s */
-      margin: auto;
-      position: relative;
-      display: block;
-}
-.p-tag{
-  float: left;
-  width: 80vh;
-    /* height: 80vh;s */
+.nodeOptionsButtons{
+  width: 50%;
+    /* height: 80vh; */
     margin: auto;
     position: relative;
     display: block;
 }
+.p-tag{
+  background-color:#4361ee ;
+
+  justify-content: center;
+  width: 84%; 
+  margin: auto;
+
+}
 
 
 .selectInput{
-  display: flex;
+  /* display: flex; */
   scroll-padding-top: 5rem;
   border: 1px solid black;
   padding: 1rem;
@@ -341,5 +344,13 @@ width: 80%;
   /* margin-left: 36rem; */
   height: 11vh;
 }
-
+.treeOptions {
+  /* justify-content: center; */
+  width: 48%;
+  margin: auto;
+}
+.node-button-content{
+    width: 48%;
+      margin: auto;
+    }
 

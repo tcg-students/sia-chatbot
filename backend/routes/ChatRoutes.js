@@ -24,26 +24,19 @@ const chatRoutes = (app) => {
   app.post("/get_initial_nodes", async (req, res) => {
     const idObj = req.body
     console.log('idObj', idObj)
-    const getInitialNodes = await getInitialnodes(idObj/*req.params.id*/);
-    // console.log("getInitialNodes", getInitialNodes);
+    const getInitialNodes = await getInitialnodes(idObj);
     res.send(getInitialNodes);
   });
 
   app.post("/node/:treename", async (req, res) => {
-    // createSingeNode()
     const nodes = req.body
     console.log("nodes" , nodes)
 
     const treeId = await createTree(req.params.treename)
     insertAllNodes(nodes , treeId)
-    // const treeMessages = await getInitialTreeMessages();
-    // console.log("console" , req.params)
     res.send(201);
   });
-  // app.get("/get_nodes/:id", async (req, res) => {
-  //   const getNodes = await getNode(req.params.id);
-  //   console.log("req.params", req.params);
-  //   res.send(getNodes);
+
   // });
 
 };

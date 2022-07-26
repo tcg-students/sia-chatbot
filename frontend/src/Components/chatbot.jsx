@@ -6,11 +6,13 @@ import withReactContent from "sweetalert2-react-content";
 import {
   getInitialTreeText,
   getInitialNode,
-  // getNode,
   getLogo,
   getApplicationFormValues,
   resetStateValues,
   resetInitialNodes,
+  removeLastNodes,
+  getInitialNode2
+
 } from "../Redux/ActionCreators/index";
 const Chatbot = (props) => {
   const [selected, setSelected] = useState({});
@@ -18,7 +20,7 @@ const Chatbot = (props) => {
   const [chatbotNodes, setChatbotNodes] = useState([]);
   const [formStructure, setFormStructure] = useState([]);
   const [editForm, setEditForm] = useState(false);
-  const [disableOptions, setDisableOptions] = useState(false);
+  const [compareNode , setCompareNode] = useState([]);
 
   const [displayApplicantInfomation, setDisplayApplicantInfomation] = useState(
     []
@@ -31,17 +33,24 @@ const Chatbot = (props) => {
 
   let logo = useSelector(
     (state) =>
-      state.botConversation.logo.logo &&
-      state.botConversation.logo.logo[0].image
-  );
-  let introTreeMessages = useSelector(
-    (state) => state.botConversation.welcomeMessages
-  );
+    state.botConversation.logo.logo &&
+    state.botConversation.logo.logo[0].image
+    );
+    let introTreeMessages = useSelector(
+      (state) => state.botConversation.welcomeMessages
+      );
+//       state.botConversation.logo.logo &&
+//       state.botConversation.logo.logo[0].image
+//   );
+//   let introTreeMessages = useSelector(
+//     (state) => state.botConversation.welcomeMessages
+//   );
 
   let nextNodes = useSelector(
     (state) => state.botConversation.optionBotMessages
   );
 
+  let stateId = useSelector(state => state.botConversation.id)
   const MySwal = withReactContent(Swal);
 
   let dispatch = useDispatch();
@@ -71,6 +80,25 @@ const Chatbot = (props) => {
   };
 
   const handleInitialNodeOptions = async (id) => {
+    console.log('stateId ', stateId,id )
+    dispatch(getInitialNode2(id))
+    if (stateId === id.nodeid){
+      return
+    }
+    if(id.treeid){
+  
+  }
+    if(id.nodeid){
+      console.log("nextNodes" ,id ,  compareNode)
+      for(var i in  compareNode){
+        if(compareNode[i].id === id.nodeid){
+          console.log("match")
+          dispatch(removeLastNodes())
+        }
+      }
+      setCompareNode(nextNodes)
+    }
+
     try {
       setTimeout(function () {
         dispatch(getInitialNode(id));
@@ -90,11 +118,12 @@ const Chatbot = (props) => {
     setChatbotNodes(nextNodes);
   };
 
-  const jsonForm = nextNodes;
+  const jsonForm = nextNodes.filter(item => item.id !== 0);
   var object = jsonForm && jsonForm[jsonForm.length - 1];
 
   const createForm = (_) => {
     var values = [];
+    // console.log("log" , jsonForm)
     if (object) {
       for (var i in object.application) {
         values.push({ name: i, value: object.application[i] });

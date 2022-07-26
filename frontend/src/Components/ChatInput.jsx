@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { getInitialNode } from "../Redux/ActionCreators/index";
 
 function ChatInput(props) {
+
   const { introTreeMessages, nextNodes } = props;
   const [input, setInput] = useState();
   let dispatch = useDispatch();
@@ -11,6 +12,7 @@ function ChatInput(props) {
     (state) => state.botConversation.currentBotRes
   );
   useEffect(() => {}, []);
+
 
   const handleInput = () => {
     let newIntroOptions = currentNodes.length > 0 ? currentNodes : introTreeMessages

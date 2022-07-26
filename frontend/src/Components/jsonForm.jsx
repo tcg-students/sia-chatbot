@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
-import { Button } from "react-bootstrap";
-import Form from "react-bootstrap/Form";
-
 export const JsonForm = (props) => {
+
   const {
     createForm,
     formStructure,
@@ -63,8 +61,10 @@ export const JsonForm = (props) => {
               </div>
             );
           })}
-          <div>
-            <button className="form-button">Submit</button>
+          <div >
+            <button type="submit" className="form-button">Submit</button>
+
+
           </div>
         </form>
       ) : (
@@ -79,6 +79,7 @@ export const JsonForm = (props) => {
                     <ul key={i}>
                       {Object.keys(item).map((key) => {
                         return (
+
                           <li
                             className="info"
                             style={{ color: "#033333" }}
@@ -94,6 +95,7 @@ export const JsonForm = (props) => {
                   <div style={{ color: "#033333" }}>
                     <p style={{ color: "white" }}>Would you like to edit?</p>
                     <div className="applicantInfomationButtons">
+
                       <input
                         type="submit"
                         className="optionButtons"

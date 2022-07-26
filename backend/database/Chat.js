@@ -10,7 +10,6 @@ var db = mariadb.createPool({
   user: username,
   password: password,
   database: siaChatbot,
-  // limitNOFILE : Infinity
 });
 
 async function fetchConn() {

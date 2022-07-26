@@ -20,34 +20,38 @@ const ChatbotDisplay = (props) => {
     sendFormValues,
     handleScroll,
     handleResetChatbot,
-    handleInitialNodesReset
+    handleInitialNodesReset,
+    nodeTextStyling,
   } = props;
 
   useEffect(() => {
     nodeDisplay();
-    handleScroll()
+    handleScroll();
   });
 
-  
+ 
 
   return (
     <div>
       <div className="chatBotHeaderContainer">
         <div className="chatBotHeader">
-        <input className="headerButtons" onClick={handleResetChatbot} value="Reset" />
-        <h1>chat-bot</h1>
-        <input className="headerButtons" value="Speak to a Agent" />
+          <input
+            className="headerButtons"
+            onClick={handleResetChatbot}
+            value="Reset"/>
+          
+          <h1>chat-bot</h1>
+          <input className="headerButtons" value="Speak to a Agent" disabled/>
         </div>
-        <div>
-      {logo === undefined ? null :
-        <div className="logo">
-          <img src={logo} alt="tcgLogo" />
-        </div>
-      }
+        <div className="logoContainer">
+          {logo === undefined ? null : (
+            <div className="logo">
+              <img src={logo} alt="tcgLogo" />
+            </div>
+          )}
         </div>
       </div>
       <div id="chatbotBodyDiv" className="chatbotBody">
-
         <div>
           {introTreeMessages !== undefined &&
             introTreeMessages
@@ -60,15 +64,16 @@ const ChatbotDisplay = (props) => {
               })
               .slice(0, 1)}
         </div>
+
         <div className="treeOptions">
           {introTreeMessages !== undefined
             ? introTreeMessages &&
               introTreeMessages
                 .map((item, i) => {
                   return (
-                    <div onClick={handleInitialNodesReset} style={{ padding: ".5rem" }}>
+                    <div onClick={handleInitialNodesReset}>
                       <button
-                        className="optionButtons"
+                        className="treeOptionButtons"
                         onClick={() =>
                           handleInitialNodeOptions({ treeid: item.id })
                         }
@@ -85,20 +90,31 @@ const ChatbotDisplay = (props) => {
           {nextNodes !== undefined
             ? nextNodes &&
               nextNodes.map((item, i) => {
+                {
+                  console.log("item", i);
+                }
                 return (
                   <div style={{ padding: ".5rem" }}>
                     {item.text ? (
-                      <p>{item.text}</p>
+                      <div>
+                        <p
+                          className={nodeTextStyling(item.text)}
+                        >
+                          {item.text}
+                        </p>
+                      </div>
                     ) : (
                       item.option && (
-                        <button
-                          className="optionButtons"
-                          onClick={() =>
-                            handleInitialNodeOptions({ nodeid: item.id })
-                          }
-                        >
-                          {item.option}
-                        </button>
+                        <div>
+                          <button
+                            className="optionButtons"
+                            onClick={() =>
+                              handleInitialNodeOptions({ nodeid: item.id })
+                            }
+                          >
+                            {item.option}
+                          </button>
+                        </div>
                       )
                     )}
                   </div>
@@ -130,7 +146,7 @@ const ChatbotDisplay = (props) => {
       </div>
 
       <div className="chatbotFooter">
-        <p style={{color:"white"}}>Command:</p>
+        <p style={{ color: "white" }}>Command:</p>
         <Chatinput
           introTreeMessages={introTreeMessages}
           nextNodes={nextNodes}

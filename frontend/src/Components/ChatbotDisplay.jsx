@@ -84,7 +84,7 @@ const ChatbotDisplay = (props) => {
         <div>
           {nextNodes !== undefined
             ? nextNodes &&
-              nextNodes.map((item, i) => {
+              nextNodes.filter(item => item.id !== 0).map((item, i) => {
                 return (
                   <div style={{ padding: ".5rem" }}>
                     {item.text ? (

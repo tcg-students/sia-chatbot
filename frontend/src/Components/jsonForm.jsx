@@ -1,11 +1,6 @@
-import { useEffect , useState } from "react";
-import { Button } from 'react-bootstrap';
-import Form from 'react-bootstrap/Form';
-
-
+import { useEffect, useState } from "react";
 
 export const JsonForm = (props) => {
-
 
   const {
     createForm,
@@ -56,7 +51,7 @@ export const JsonForm = (props) => {
             );
           })}
           <div >
-            <button className="form-button">Submit</button>
+            <button type="submit" className="form-button">Submit</button>
 
           </div>
         </form>
@@ -68,26 +63,26 @@ export const JsonForm = (props) => {
 
                 <div className="applicantInfomationContainer">
                   <div className="applicantInfomation">
-                  <p>You are applying with the following infomation:</p>
-                  <hr/>
-                  <ul key={i}>
-                    {Object.keys(item).map((key) => {
-                      return (
-  
-  <li className="info" style={{color:"#033333"}} key={key + i}>
-                          {key}: {item[key]}
-                        </li>
-                      );
-                    })}
-                  </ul>
+                    <p>You are applying with the following infomation:</p>
+                    <hr />
+                    <ul key={i}>
+                      {Object.keys(item).map((key) => {
+                        return (
+
+                          <li className="info" style={{ color: "#033333" }} key={key + i}>
+                            {key}: {item[key]}
+                          </li>
+                        );
+                      })}
+                    </ul>
                   </div>
 
-                  <div style={{color:"#033333"}}>
-                    <p style={{color:"white"}}>Would you like to edit?</p>
+                  <div style={{ color: "#033333" }}>
+                    <p style={{ color: "white" }}>Would you like to edit?</p>
                     <div className="applicantInfomationButtons">
-                    <input type="submit" className="optionButtons" value="Yes" />
-                    <input type="submit" className="optionButtons" onClick={sendFormValues}  value="No" />
-                  </div>
+                      <input type="submit" className="optionButtons" value="Yes" />
+                      <input type="submit" className="optionButtons" onClick={sendFormValues} value="No" />
+                    </div>
                   </div>
                 </div>
               );

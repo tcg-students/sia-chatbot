@@ -59,6 +59,7 @@ export const chatbotMessagesReducer = (state = initialState, action) => {
         var choppedList = textList.splice(0, secondLastIndex + 1)
 
         console.log("choppedList" , choppedList)
+
       return {
         ...state,
         currentNodes: [...action.payload],

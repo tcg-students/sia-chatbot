@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import ChatbotDisplay from "./ChatbotDisplay";
 import { useDispatch, useSelector } from "react-redux";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
 import {
   getInitialTreeText,
   getInitialNode,
@@ -10,6 +12,7 @@ import {
   resetInitialNodes,
   removeLastNodes,
   getInitialNode2
+
 } from "../Redux/ActionCreators/index";
 const Chatbot = (props) => {
   const [selected, setSelected] = useState({});
@@ -17,17 +20,17 @@ const Chatbot = (props) => {
   const [chatbotNodes, setChatbotNodes] = useState([]);
   const [formStructure, setFormStructure] = useState([]);
   const [editForm, setEditForm] = useState(false);
-  const [disableOptions, setDisableOptions] = useState(false);
   const [compareNode , setCompareNode] = useState([]);
+
   const [displayApplicantInfomation, setDisplayApplicantInfomation] = useState(
     []
-    );
-    
+  );
+
   const [
     applicationFormAndApplicantInfoShow,
     setapplicationFormAndApplicantInfoShow,
   ] = useState(false);
-  
+
   let logo = useSelector(
     (state) =>
     state.botConversation.logo.logo &&
@@ -36,12 +39,19 @@ const Chatbot = (props) => {
     let introTreeMessages = useSelector(
       (state) => state.botConversation.welcomeMessages
       );
+//       state.botConversation.logo.logo &&
+//       state.botConversation.logo.logo[0].image
+//   );
+//   let introTreeMessages = useSelector(
+//     (state) => state.botConversation.welcomeMessages
+//   );
 
   let nextNodes = useSelector(
     (state) => state.botConversation.optionBotMessages
   );
 
   let stateId = useSelector(state => state.botConversation.id)
+  const MySwal = withReactContent(Swal);
 
   let dispatch = useDispatch();
   useEffect(() => {
@@ -51,14 +61,14 @@ const Chatbot = (props) => {
   const handleEdit = () => {
     setEditForm(!editForm);
   };
-  
+
   const getImage = (_) => {
     setTimeout(function () {
       dispatch(getLogo());
     }, 500);
     getWelcomeContents();
   };
-  
+
   const getWelcomeContents = async (_) => {
     try {
       setTimeout(function () {
@@ -88,6 +98,7 @@ const Chatbot = (props) => {
       }
       setCompareNode(nextNodes)
     }
+
     try {
       setTimeout(function () {
         dispatch(getInitialNode(id));
@@ -98,7 +109,6 @@ const Chatbot = (props) => {
   };
 
   const handleOptionsIndex = (field, id) => {
-    console.log("field,id", field, id);
     let newSelectedId = { ...selected };
     newSelectedId[`${field}`] = id;
     setSelected(newSelectedId);
@@ -130,44 +140,69 @@ const Chatbot = (props) => {
     e.preventDefault();
     if (applicationForm) {
       setDisplayApplicantInfomation([applicationForm]);
-      console.log("applicationForm", applicationForm);
       setTimeout(function () {
         setapplicationFormAndApplicantInfoShow(true);
       }, 1000);
     }
   };
-
+  console.log('setDisplayApplicantInfomation', displayApplicantInfomation)
+  
   const sendFormValues = (_) => {
-    // dispatch(getApplicationFormValues(applicationForm));
-    if ("The kind of support you’d like to offer (Optiona)" in applicationForm){
-console.log('yes')
-    }else if("The kind of training or mentorship you’re able to offer (Optional)" in applicationForm){
-      console.log('mentor')
-
-    }
+    dispatch(getApplicationFormValues(applicationForm));
+    console.log("first", applicationForm);
+    const MySwal = withReactContent(Swal);
+    MySwal.fire({
+      title:
+        "Your details were submitted successfully. We’ll be in contact soon!",
+      timer: 5000,
+      showConfirmButton: false,
+    });
 
     setTimeout(function () {
-      // dispatch(getInitialNode({ nodeid: 100 }));
-    }, 3000);
+      dispatch(resetStateValues());
+      getImage();
+      handleInitialNodeOptions();
+      setDisplayApplicantInfomation([]);
+      setapplicationFormAndApplicantInfoShow(false)
+    }, 5000);
   };
 
-  const handleScroll = _ => {
-      var elem = document.getElementById("chatbotBodyDiv");
-      elem.scrollTop = elem.scrollHeight;
+  const handleScroll = (_) => {
+    var elem = document.getElementById("chatbotBodyDiv");
+    elem.scrollTop = elem.scrollHeight;
   };
 
-  const handleResetChatbot = _ => {
-dispatch(resetStateValues())
-getImage();
-    handleInitialNodeOptions();
-  }
-
-  const handleInitialNodesReset= _ => {
-    dispatch(resetInitialNodes())
+  const handleResetChatbot = (_) => {
+    dispatch(resetStateValues());
     getImage();
+    handleInitialNodeOptions();
+    setDisplayApplicantInfomation([]);
+    setapplicationFormAndApplicantInfoShow(false)
 
-    handleInitialNodeOptions()
-  }
+  };
+
+  const handleInitialNodesReset = (_) => {
+    dispatch(resetInitialNodes());
+    getImage();
+    handleInitialNodeOptions();
+    setDisplayApplicantInfomation([]);
+  };
+
+  const nodeTextStyling = (text) => {
+    let pattern = /(\d[.])/g;
+    let foundMatch = pattern.test(text);
+    console.log("foundMatch", foundMatch);
+    if (foundMatch) {
+      console.log("yes");
+      return "p-tag-text";
+    } else {
+      console.log("no");
+      return "p-tag-text1";
+    }
+
+    // }
+  };
+
   return (
     <div>
       <ChatbotDisplay
@@ -190,6 +225,7 @@ getImage();
         handleScroll={handleScroll}
         handleResetChatbot={handleResetChatbot}
         handleInitialNodesReset={handleInitialNodesReset}
+        nodeTextStyling={nodeTextStyling}
       />
     </div>
   );

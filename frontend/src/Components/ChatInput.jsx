@@ -18,25 +18,25 @@ function ChatInput(props) {
     let newIntroOptions = currentNodes.length > 0 ? currentNodes : introTreeMessages
       if (newIntroOptions.find(item => item.node_id === undefined)
         ) {
-        console.log(true);
+        // console.log(true);
         const searchValue = input;
-        console.log('searchValue', searchValue)
+        // console.log('searchValue', searchValue)
         const selectedValue = newIntroOptions[searchValue].id;
-        console.log('selectedValue', selectedValue)
+        // console.log('selectedValue', selectedValue)
         setTimeout(function () {
           dispatch(getInitialNode({ treeid: selectedValue }));
         }, 1000);
       } else {
         
-        console.log(false);
+        // console.log(false);
         
-        console.log('currentNodes', currentNodes);
+        // console.log('currentNodes', currentNodes);
         
         const searchValue = input - 1;
         let newCurrentNodes = currentNodes.filter((item) => item.option);
-        console.log("newCurrentNodes", newCurrentNodes);
+        // console.log("newCurrentNodes", newCurrentNodes);
         const selectedValue = newCurrentNodes[searchValue].id;
-        console.log("selectedValue", selectedValue);
+        // console.log("selectedValue", selectedValue);
         setTimeout(function () {
           dispatch(getInitialNode({ nodeid: selectedValue }));
         }, 1000);

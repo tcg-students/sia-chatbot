@@ -126,7 +126,7 @@ const ChatbotDisplay = (props) => {
         <div>
           {nextNodes.map((item) => {
             if (item.application !== null) {
-              console.log("item.app: ", item.application);
+              // console.log("item.app: ", item.application);
               return (
                 <JsonForm
                   formStructure={formStructure}

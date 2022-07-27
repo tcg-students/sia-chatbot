@@ -83,7 +83,6 @@ export const chatbotMessagesReducer = (state = initialState, action) => {
       };
 
     case actions.RESET_STATE:
-      console.log('clear state', action.payload)
       return {
         ...state,
         welcomeMessages: action.payload || state,

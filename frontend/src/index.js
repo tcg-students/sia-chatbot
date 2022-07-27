@@ -7,7 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux";
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
+const root = ReactDOM.createRoot(document.getElementById("sia-chatbot-container"));
 root.render(
   <React.StrictMode>
     <Provider store={store}>

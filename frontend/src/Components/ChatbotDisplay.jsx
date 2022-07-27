@@ -1,6 +1,7 @@
-import React, { useEffect } from "react";
-import { FormInteractionController } from "./FormInteractionController";
+import React, { useState, useEffect } from "react";
+import { FormIneractionController } from "./FormIneractionController";
 import Chatinput from "./ChatInput";
+import EditForm from "./EditForm.jsx";
 
 const ChatbotDisplay = (props) => {
   const {
@@ -9,6 +10,16 @@ const ChatbotDisplay = (props) => {
     introTreeMessages,
     nextNodes,
     nodeDisplay,
+    createForm,
+    formStructure,
+    handleEdit,
+    edit,
+    getFormDetails,
+    handleChange,
+    handleSubmit,
+    displayApplicantInfomation,
+    applicationFormAndApplicantInfoShow,
+    sendFormValues,
     handleScroll,
     handleResetChatbot,
     handleInitialNodesReset,
@@ -19,6 +30,9 @@ const ChatbotDisplay = (props) => {
     nodeDisplay();
     handleScroll();
   });
+
+ 
+
   return (
     <div>
       <div className="chatBotHeaderContainer">
@@ -26,11 +40,10 @@ const ChatbotDisplay = (props) => {
           <input
             className="headerButtons"
             onClick={handleResetChatbot}
-            value="Reset"
-          />
-
+            value="Reset"/>
+          
           <h1>chat-bot</h1>
-          <input className="headerButtons" value="Speak to a Agent" disabled />
+          <input className="headerButtons" value="Speak to a Agent" disabled/>
         </div>
         <div className="logoContainer">
           {logo === undefined ? null : (
@@ -53,6 +66,7 @@ const ChatbotDisplay = (props) => {
               })
               .slice(0, 1)}
         </div>
+
         <div className="treeOptions">
           {introTreeMessages !== undefined
             ? introTreeMessages &&
@@ -77,44 +91,54 @@ const ChatbotDisplay = (props) => {
         <div>
           {nextNodes !== undefined
             ? nextNodes &&
-              nextNodes
-                .filter((item) => item.id !== 0)
-                .map((item, i) => {
-                  return (
-                    <div style={{ padding: ".5rem" }}>
-                      {item.text ? (
+              nextNodes.filter(item => item.id !== 0).map((item, i) => {
+//               nextNodes.map((item, i) => {
+//                 {
+//                   console.log("item", i);
+//                 }
+                return (
+                  <div style={{ padding: ".5rem" }}>
+                    {item.text ? (
+                      <div>
+                        <p
+                          className={nodeTextStyling(item.text)}
+                        >
+                          {item.text}
+                        </p>
+                      </div>
+                    ) : (
+                      item.option && (
                         <div>
-                          <p className={nodeTextStyling(item.text)}>
-                            {item.text}
-                          </p>
+                          <button
+                            className="optionButtons"
+                            onClick={() =>
+                              handleInitialNodeOptions({ nodeid: item.id })
+                            }
+                          >
+                            {item.option}
+                          </button>
                         </div>
-                      ) : (
-                        item.option && (
-                          <div>
-                            <button
-                              className="optionButtons"
-                              onClick={() =>
-                                handleInitialNodeOptions({ nodeid: item.id })
-                              }
-                            >
-                              {item.option}
-                            </button>
-                          </div>
-                        )
-                      )}
-                    </div>
-                  );
-                })
+                      )
+                    )}
+                  </div>
+                );
+              })
             : null}
         </div>
+        <div>
+          {nextNodes.map((item) => {
+            if (item.application !== null) {
+              // console.log("item.app: ", item.application);
+              return (
+                <FormIneractionController
+                {...props}
+                />
+              );
+            }
+          })}
+        </div>
       </div>
-      <div>
-        {nextNodes.map((item, i) => {
-          if (item.application) {
-            return <FormInteractionController {...props} />;
-          }
-        })}
-      </div>
+
       <div className="chatbotFooter">
         <p style={{ color: "white" }}>Command:</p>
         <Chatinput

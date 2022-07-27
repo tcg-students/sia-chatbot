@@ -9,7 +9,7 @@ export const GenericForm = (props) => {
   }, []);
 
   return (
-    <div>
+    <div className="wrapper">
         <form className="form" onSubmit={handleSubmit}>
           {formStructure.map((item, key) => {
             return (

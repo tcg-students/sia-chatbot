@@ -19,7 +19,6 @@ const Chatbot = (props) => {
   const [formStructure, setFormStructure] = useState([]);
   const [editForm, setEditForm] = useState(false);
   const [compareNode, setCompareNode] = useState([]);
-
   const [displayApplicantInfomation, setDisplayApplicantInfomation] = useState(
     []
   );
@@ -42,8 +41,9 @@ const Chatbot = (props) => {
     (state) => state.botConversation.optionBotMessages
   );
 
-  let stateId = useSelector((state) => state.botConversation.id);
 
+  let stateId = useSelector((state) => state.botConversation.id);
+  
   const MySwal = withReactContent(Swal);
 
   let dispatch = useDispatch();
@@ -70,7 +70,7 @@ const Chatbot = (props) => {
       setTimeout(function () {
         dispatch(getInitialTreeText());
       }, 1000);
-      setCompareNode([]);
+      setCompareNode([])
     } catch (error) {
       console.log("error", error);
     }
@@ -97,6 +97,7 @@ const Chatbot = (props) => {
       console.log("error", error);
     }
   };
+
 
   const nodeDisplay = (_) => {
     setChatbotNodes(nextNodes);
@@ -168,7 +169,8 @@ const Chatbot = (props) => {
     getImage();
     handleInitialNodeOptions();
     setDisplayApplicantInfomation([]);
-    setCompareNode([]);
+    setCompareNode([])
+
   };
 
   const nodeTextStyling = (text) => {
@@ -176,6 +178,7 @@ const Chatbot = (props) => {
     let foundMatch = pattern.test(text);
     // console.log("foundMatch", foundMatch);
     if (foundMatch) {
+
       return "p-tag-text";
     } else {
       return "p-tag-text1";

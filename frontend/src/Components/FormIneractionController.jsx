@@ -1,12 +1,18 @@
-import React, {  useEffect } from "react";
+import React, { useEffect } from "react";
 import ConfirmDetails from "./ConfirmDetails";
 import EditForm from "./EditForm";
 import { GenericForm } from "./GenericForm";
 
-export const FormInteractionController = (props) => {
+export const FormIneractionController = (props) => {
   const {
     createForm,
+    formStructure,
+    handleChange,
+    handleSubmit,
+    displayApplicantInfomation,
     applicationFormAndApplicantInfoShow,
+    sendFormValues,
+    handleEdit,
     editForm,
   } = props;
 
@@ -15,11 +21,11 @@ export const FormInteractionController = (props) => {
   }, []);
 
   return (
-    <div className="wrapper">
+    <div>
       {!applicationFormAndApplicantInfoShow ? (
         <GenericForm {...props} />
       ) : (
-        <div>{!editForm && <ConfirmDetails {...props} />}</div>
+        !editForm && <ConfirmDetails {...props} />
       )}
       {editForm && <EditForm {...props} />}
     </div>

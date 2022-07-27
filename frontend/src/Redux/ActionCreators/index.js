@@ -1,5 +1,3 @@
-
-
 import axios from "axios";
 import * as actions from "../ActionTypes/index";
 
@@ -26,6 +24,9 @@ export const getInitialNode = (obj) => {
     const getInitialNodeData = response.data;
     // console.log("obj" , obj , " getInitialNodeData" ,  getInitialNodeData)
     dispatch({ type: actions.GETTING_FIRST_NODE_OPTIONS, idObj : obj,  payload: getInitialNodeData });
+// =======
+//     dispatch({ type: actions.GETTING_FIRST_NODE_OPTIONS, payload: getInitialNodeData });
+// >>>>>>> development
   };
 };
 
@@ -64,3 +65,7 @@ export const resetInitialNodes = () => {
     dispatch({ type: actions.RESET_INITIAL_NODES, payload: [] });
   };
 };
+
+
+
+

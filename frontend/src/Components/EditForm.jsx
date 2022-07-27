@@ -3,11 +3,11 @@ import { GenericForm } from "./GenericForm";
 import ConfirmDetails from "./ConfirmDetails";
 
 function EditForm(props) {
-  const { editForm } = props;
+  const { editForm, displayApplicantInfomation } = props;
 
   return (
     <div>
-      {editForm == true ? (
+      {editForm && displayApplicantInfomation.length > 0 ? (
         <GenericForm {...props} />
       ) : (
         <ConfirmDetails {...props} />

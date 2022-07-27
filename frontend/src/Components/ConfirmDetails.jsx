@@ -2,27 +2,49 @@ import React from "react";
 
 function ConfirmDetails(props) {
   const { displayApplicantInfomation, sendFormValues, handleEdit } = props;
- 
+  // if (editForm === true) {
+  //   var previousDetails = [...displayApplicantInfomation];
+  // }
   return (
     <div>
-      {displayApplicantInfomation &&
+      {displayApplicantInfomation !== [] &&
         displayApplicantInfomation.map((item, i) => {
           return (
-            <div>
-              <p>You are applying with the following infomation:</p>
-              <ul key={i}>
-                {Object.keys(item).map((key) => {
-                  return (
-                    <li key={key + i}>
-                      {key}:{item[key]}
-                    </li>
-                  );
-                })}
-              </ul>
-              <div>
-                <p>Would you like to edit or submit?</p>
-                <input type="submit" value="Edit" onClick={handleEdit} />
-                <input type="submit" onClick={sendFormValues} value="Submit" />
+            <div className="applicantInfomationContainer">
+              <div className="applicantInfomation">
+                <p>You are applying with the following infomation:</p>
+                <hr />
+                <ul key={i}>
+                  {Object.keys(item).map((key) => {
+                    return (
+                      <li
+                        className="info"
+                        style={{ color: "#033333" }}
+                        key={key + i}
+                      >
+                        {key}: {item[key]}
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+
+              <div style={{ color: "#033333" }}>
+                <p style={{ color: "white" }}>Would you like to edit?</p>
+                <div className="applicantInfomationButtons">
+                  <input
+                    type="submit"
+                    className="optionButtons"
+                    value="Yes"
+                    onClick={handleEdit}
+                  />
+                  <input
+                    type="submit"
+                    className="optionButtons"
+                    onClick={sendFormValues}
+                    value="No"
+                  />
+                </div>
               </div>
             </div>
           );

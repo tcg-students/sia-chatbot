@@ -50,6 +50,8 @@ const Chatbot = (props) => {
     (state) => state.botConversation.optionBotMessages
   );
 
+  console.log('nextNodes', nextNodes)
+
   let stateId = useSelector(state => state.botConversation.id)
   const MySwal = withReactContent(Swal);
 
@@ -89,7 +91,7 @@ const Chatbot = (props) => {
   
   }
     if(id.nodeid){
-      console.log("nextNodes" ,id ,  compareNode)
+      // console.log("nextNodes" ,id ,  compareNode)
       for(var i in  compareNode){
         if(compareNode[i].id === id.nodeid){
           console.log("match")
@@ -107,12 +109,8 @@ const Chatbot = (props) => {
       console.log("error", error);
     }
   };
+      console.log("compareNode" ,  compareNode)
 
-  const handleOptionsIndex = (field, id) => {
-    let newSelectedId = { ...selected };
-    newSelectedId[`${field}`] = id;
-    setSelected(newSelectedId);
-  };
 
   const nodeDisplay = (_) => {
     setChatbotNodes(nextNodes);
@@ -145,7 +143,7 @@ const Chatbot = (props) => {
       }, 1000);
     }
   };
-  console.log('setDisplayApplicantInfomation', displayApplicantInfomation)
+  // console.log('setDisplayApplicantInfomation', displayApplicantInfomation)
   
   const sendFormValues = (_) => {
     dispatch(getApplicationFormValues(applicationForm));
@@ -191,12 +189,12 @@ const Chatbot = (props) => {
   const nodeTextStyling = (text) => {
     let pattern = /(\d[.])/g;
     let foundMatch = pattern.test(text);
-    console.log("foundMatch", foundMatch);
+    // console.log("foundMatch", foundMatch);
     if (foundMatch) {
-      console.log("yes");
+      // console.log("yes");
       return "p-tag-text";
     } else {
-      console.log("no");
+      // console.log("no");
       return "p-tag-text1";
     }
 

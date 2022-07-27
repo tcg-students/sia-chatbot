@@ -48,13 +48,16 @@ const ChatbotDisplay = (props) => {
                 return (
 
                   <div className="introMessage">
-                   <div> <p className="welcome-text">{item.text}</p></div>
+                   <div className="welcome-text"> <p >{item.text}</p>
+                   </div>
                   </div>
                 );
               })
               .slice(0, 1)}
         </div>
-        <div className="treeOptions">
+        <div
+          // className="treeOptions"
+        >
           {introTreeMessages !== undefined
             ? introTreeMessages &&
               introTreeMessages
@@ -62,7 +65,7 @@ const ChatbotDisplay = (props) => {
                   return (
                     <div >
                       <button
-                        className="optionButtons"
+                        // className="optionButtons"
                         onClick={() =>
                           handleInitialNodeOptions({ treeid: item.id })
                         }
@@ -81,15 +84,18 @@ const ChatbotDisplay = (props) => {
               nextNodes.map((item, i) => {
                 return (
                   <div>
+                    {console.log(i)}
                     {item.text ? (
-                      <div className="p-tag">
-                      <p className="p-tag-text">{item.text}</p>
+                      <div
+                        // className="p-tag"
+                      >
+                        <p className={i===0?"p-tag-text":"p-tag-text2"}>{item.text}</p>
                       </div>
                       ) : (
                         item.option && (
                          
                         <button
-                          className="optionButtons"
+                          // className="optionButtons"
                           onClick={() =>
                             handleInitialNodeOptions({ nodeid: item.id })
                           }

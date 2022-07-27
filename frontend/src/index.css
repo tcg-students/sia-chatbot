@@ -1,55 +1,20 @@
 .chatBotHeader{
+  text-align: center;
+  color: white;
+  background-color: black;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  padding: 0.5rem;
   margin: 0;
-  /* padding:0.5em; */
-}
-.example1 {
-  display: grid;
-  gap: 1rem;
-  margin-top: 1rem;
 }
 
-.example2 {
-  display: grid;
-  gap: 1rem;
-  margin-top: 2rem;
-}
-.treeOptions {
-  padding-top: 2rem;
-  animation: fadeIn 5s;
-  -webkit-animation: fadeIn 10s;
-  -moz-animation: fadeIn 10s;
-  -o-animation: fadeIn 10s;
-  -ms-animation: fadeIn 10s;
-}
+.chatBotHeader input {
+    text-align: center;
+  width: 40%;
+  margin:auto;
+  border-radius: 2rem;
+  height:6vh;
 
-.logo {
-  animation: fadeIn 5s;
-  -webkit-animation: fadeIn 5s;
-  -moz-animation: fadeIn 5s;
-  -o-animation: fadeIn 5s;
-  -ms-animation: fadeIn 5s;
-}
-
-.logo {
-  animation-name: example;
-  animation-duration: 3s;
-  animation-delay: 2s;
-  animation-fill-mode: both;
-}
-
-@keyframes example {
-  0% {
-    background-color: #555555;
-    top: 0px;
-  }
-  50% {
-    background-color: #2a7e5f;
-    top: 0px;
-  }
-  100% {
-    background-color: #033333;
-    top: 0px;
-  }
 }
 
 .jsonForm {
@@ -65,8 +30,6 @@ li {
   display: flex;
   justify-content: center;
   align-items: center;
-  /* margin-top: 5rem; */
-  /* height: 100vh; */
 }
 
 .form{
@@ -91,8 +54,7 @@ li {
   --samll-font-size: .75rem;
   
 }
-/* .bot-body{   
-} */
+
 .form-button{
   display:block;
   margin-top: 1.5rem;
@@ -153,47 +115,49 @@ input[type="date"]{
   display: grid;
 }
 
-.optionButtons{
+/* .optionButtons{
 margin: 1rem;
     background-color: #3da35d;
   width: 100%;
   border-radius: 15px;
   padding:.5rem;
   border: 2px;
-}
+} */
 
-.nodeOptionsButtons{
+/* .nodeOptionsButtons{
   width: 100%;
     border-radius: 15px;
     padding: .5rem;
     border: 2px;
-}
+} */
 
-.optionButtons:hover{
+/* .optionButtons:hover{
   color: #111;
-  /* box-shadow: 0 0 20px rgb(29, 198, 186); */
   border-radius: 15px;
   padding:.5rem;
-  /* border: 2px solid rgb(29, 198, 186); */
-}
+} */
 
-.introMessage{
-  padding: auto;
-  /* padding-top:2rem; */
-  /* width: 90%; */
-  margin:auto;
-  border-radius: 35px;
-  
-}
 
-.introMessage {
-  width: 80%;
-  /* height: 80vh;s */
-  margin: auto;
-  position: relative;
-  display: block;
-}
-.welcome-text{
+/* .introMessage {
+  width: 100%;
+} */
+
+/* .welcome-text{ */
+/* padding-left:  2rem; */
+  /* margin: auto;
+    position: relative;
+    max-width: 60%;
+    background-color: #0ead69;
+    padding: -7.125em 1.5em;
+    font-size: 1.25em;
+    border-radius: 1rem;
+    box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, .3), 0 0.0625rem 0.125rem rgba(0, 0, 0, .2);
+} */
+/* .welcome-text p{
+  padding: 1rem;
+} */
+
+/* .welcome-text{
 margin-top: 1rem;
   position: relative;
   max-width: 40em;
@@ -202,9 +166,9 @@ margin-top: 1rem;
   font-size: 1.25em;
   border-radius: 1rem;
   box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, .3), 0 0.0625rem 0.125rem rgba(0, 0, 0, .2);
-}
+} */
 
-.welcome-text::before {
+/* .welcome-text::before {
   content: '';
   position: absolute;
   width: 0;
@@ -213,18 +177,17 @@ margin-top: 1rem;
   left: 1.5em; 
   border: .75rem solid transparent;
   border-top: none;
-
-
   border-bottom-color: #fff;
-  filter: drop-shadow(0 -0.0625rem 0.0625rem rgba(0, 0, 0, .1)); }
+  filter: drop-shadow(0 -0.0625rem 0.0625rem rgba(0, 0, 0, .1)); 
+} */
  
-.dialogue-box {
+/* .dialogue-box {
   padding: 25px 10px;
   margin: 10px;
   border-radius: 20px 20px 1px 20px;
   background: #cccccc;
   color: black;
-}
+} */
 
 /* .form-control{
   width:100% !important;
@@ -236,40 +199,40 @@ margin-top: 1rem;
   width:25% !important;
 } */
 
-span {
+/* span {
   content: "\0021";
-}
+} */
 
-.chatBotHeader{
+/* .chatBotHeader{
   height: 5rem;
   background-color: black;
   display: grid;
   grid-template-columns: auto auto auto;
-}
+} */
 
-.chatBotHeader input {
+/* .chatBotHeader input {
   width: 30%;
   margin:auto;
   height: 50px;
   text-align: center;
   border-radius: 15px;
 
-}
+} */
 
-.chatBotHeader h1 {
+/* .chatBotHeader h1 {
  color: white;
 
-}
+} */
 
-.chatbotBody{  
-  height:820px !important;
+/* .chatbotBody{  
+  height:79vh !important;
   overflow:auto !important;
-}
+} */
 
-.chatbotFooter{
+/* .chatbotFooter{
   height: 6.5rem;
   background-color: black;
-}
+} */
 
 .scrollbar-hidden {
   -ms-overflow-style: none;
@@ -315,42 +278,73 @@ width: 80%;
 }
 
 
-.nodeOptionsButtons{
-  width: 50%;
+/* .nodeOptionsButtons{
+  width: 50%; */
     /* height: 80vh; */
-    margin: auto;
-    position: relative;
+    /* margin: 0.5rem rem 0rem;
+        position: relative;
     display: block;
-}
-.p-tag{
-  background-color:#4361ee ;
+} */
+ /* .p-tag{
+margin: 1rem;
+    display: flex;
+}  */
 
-  justify-content: center;
-  width: 84%; 
-  margin: auto;
+/* .p-tag-text {
+  background-image: linear-gradient(to right, purple, blue);
+  float: right !important;
+  width: 40%;
+    padding: 0.5rem;
+  border-radius:5px !important;
+  color: white;
+} */
 
-}
+/* .p-tag-text2{
+    float: left !important;
+  border: 2px solid grey;
+  border-radius: 5px;
+    width: 40%;
+        padding: 0.5rem;
+        margin-bottom: 2rem;
+} */
 
 
 .selectInput{
-  /* display: flex; */
+  display: flex;
   scroll-padding-top: 5rem;
   border: 1px solid black;
   padding: 1rem;
-  /* position: fixed; */
+  position: fixed;
+  bottom: 0px;
   background-color: black;
   margin: auto;
-  width: 50.4rem;
+  width: 100%;
   /* margin-left: 36rem; */
   height: 11vh;
 }
-.treeOptions {
-  /* justify-content: center; */
-  width: 48%;
-  margin: auto;
+/* .treeOptions {
+  width: 39%;
+} */
+/* .treeOptions div {
+ 
+} */
+/* .node-button-content{
+    
+    } */
+
+/* /////////////////////////// */
+
+.welcome-text{
+  margin-top: 1rem;
+    max-width: 40%;
+    background-color: #0ead69;
+    padding: .5rem;
+    font-size: 1.25em;
+    border-radius: 1rem;
+    box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, .3), 0 0.0625rem 0.125rem rgba(0, 0, 0, .2);
 }
-.node-button-content{
-    width: 48%;
-      margin: auto;
-    }
+
+.welcome-text p {
+  margin: 0 !important;
+}
 

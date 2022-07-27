@@ -42,7 +42,9 @@ const Chatbot = (props) => {
     (state) => state.botConversation.optionBotMessages
   );
 
+
   let stateId = useSelector((state) => state.botConversation.id);
+  
   const MySwal = withReactContent(Swal);
 
   let dispatch = useDispatch();
@@ -73,7 +75,7 @@ const Chatbot = (props) => {
   };
 
   const handleInitialNodeOptions = async (id) => {
-    // console.log("stateId ", stateId, id);
+
     try {
       dispatch(getInitialNode2(id));
       if (stateId === id.nodeid) {
@@ -94,7 +96,7 @@ const Chatbot = (props) => {
       console.log("error", error);
     }
   };
-  console.log("compareNode", compareNode);
+
 
   const nodeDisplay = (_) => {
     setChatbotNodes(nextNodes);
@@ -171,8 +173,9 @@ const Chatbot = (props) => {
   const nodeTextStyling = (text) => {
     let pattern = /(\d[.])/g;
     let foundMatch = pattern.test(text);
-    console.log("foundMatch", foundMatch);
+    // console.log("foundMatch", foundMatch);
     if (foundMatch) {
+
       return "p-tag-text";
     } else {
       return "p-tag-text1";

@@ -4,14 +4,15 @@ pipeline {
         stage("Build") {
             steps {
                 git branch: 'development', credentialsId: 'tcg-sia-chatbot', url: 'https://github.com/tcg-students/sia-chatbot'
-                sh "cd frontend && sudo npm install"
-                sh "sudo npm run build"
+               // sh "cd frontend && sudo npm install"
+               // sh "sudo npm run build"
             }
         }
         stage("Deploy") {
             steps {
-                sh "sudo rm -rf /var/www/html/sia-chatbot"
-                sh "sudo cp -r ${WORKSPACE}/build/ /var/www/html/sia-chatbot/"
+                 echo "deploy!!"
+                //sh "sudo rm -rf /var/www/html/sia-chatbot"
+                //sh "sudo cp -r ${WORKSPACE}/build/ /var/www/html/sia-chatbot/"
             }
         }
     }

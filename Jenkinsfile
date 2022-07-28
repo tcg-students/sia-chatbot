@@ -4,7 +4,6 @@ pipeline {
         stage("Build") {
             steps { 
                  echo "Build!!"
-13
                  sh "ls -al"
                sh "cd frontend && sudo npm install"
                // sh "sudo npm run build"

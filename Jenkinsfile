@@ -11,6 +11,7 @@ pipeline {
         stage("Deploy") {
             steps {
                  echo "deploy!!"
+                 sh "ls -al"
                 //sh "sudo rm -rf /var/www/html/sia-chatbot"
                 //sh "sudo cp -r ${WORKSPACE}/build/ /var/www/html/sia-chatbot/"
             }

@@ -2,9 +2,11 @@ pipeline {
      agent any
      stages {
         stage("Build") {
-            steps {
-                git branch: 'development', credentialsId: 'tcg-sia-chatbot', url: 'https://github.com/tcg-students/sia-chatbot'
-               // sh "cd frontend && sudo npm install"
+            steps { 
+                 echo "Build!!"
+13
+                 sh "ls -al"
+               sh "cd frontend && sudo npm install"
                // sh "sudo npm run build"
             }
         }

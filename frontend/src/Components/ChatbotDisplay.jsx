@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { JsonForm } from "./jsonForm";
+import { FormIneractionController } from "./FormIneractionController";
 import Chatinput from "./ChatInput";
+import EditForm from "./EditForm.jsx";
 
 const ChatbotDisplay = (props) => {
   const {
@@ -12,6 +13,7 @@ const ChatbotDisplay = (props) => {
     createForm,
     formStructure,
     handleEdit,
+    edit,
     getFormDetails,
     handleChange,
     handleSubmit,
@@ -38,15 +40,17 @@ const ChatbotDisplay = (props) => {
           <input
             className="headerButtons"
             onClick={handleResetChatbot}
-            value="Reset"/>
-          
-          <h1>chat-bot</h1>
-          <input className="headerButtons" value="Speak to a Agent" disabled/>
+            value="Reset"
+          />
+
+          <div style={{ display: "flex", marginTop: "auto", gap: "10px" }}>
+            <img style={{ height: "6vh" }} src={logo} alt="tcgLogo" />
+            <h1>Sia Chatbot</h1>
+          </div>
         </div>
         <div className="logoContainer">
           {logo === undefined ? null : (
             <div className="logo">
-              <img src={logo} alt="tcgLogo" />
             </div>
           )}
         </div>
@@ -128,17 +132,8 @@ const ChatbotDisplay = (props) => {
             if (item.application !== null) {
               // console.log("item.app: ", item.application);
               return (
-                <JsonForm
-                  formStructure={formStructure}
-                  createForm={createForm}
-                  handleChange={handleChange}
-                  getFormDetails={getFormDetails}
-                  handleSubmit={handleSubmit}
-                  displayApplicantInfomation={displayApplicantInfomation}
-                  applicationFormAndApplicantInfoShow={
-                    applicationFormAndApplicantInfoShow
-                  }
-                  sendFormValues={sendFormValues}
+                <FormIneractionController
+                {...props}
                 />
               );
             }

@@ -1,3 +1,4 @@
+import React from "react" ; 
 import Chatbot from './Components/chatbot';
 
 function App() {

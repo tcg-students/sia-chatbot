@@ -19,7 +19,6 @@ const chatRoutes = (app) => {
     const treeMessages = await getInitialTreeMessages();
     res.send({ treeMessages });
   });
-
   
   app.post("/get_initial_nodes", async (req, res) => {
     const idObj = req.body

@@ -6,7 +6,7 @@ pipeline {
                  echo "Build!!"
                  sh "ls -al"
                  sh "cd frontend && sudo npm install"
-                 sh "sudo npm run build"
+                 sh "cd frontend && sudo npm run build"
             }
         }
         stage("Deploy") {

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { FormIneractionController } from "./FormIneractionController";
 import Chatinput from "./ChatInput";
 import EditForm from "./EditForm.jsx";
+import '../responsive.css'
 
 const ChatbotDisplay = (props) => {
   const {
@@ -44,15 +45,9 @@ const ChatbotDisplay = (props) => {
           />
 
           <div style={{ display: "flex", marginTop: "auto", gap: "10px" }}>
-            <img style={{ height: "6vh" }} src={logo} alt="tcgLogo" />
+            <img className="logo" style={{ height: "6vh" }} src={logo} alt="tcgLogo" />
             <h1>Sia Chatbot</h1>
           </div>
-        </div>
-        <div className="logoContainer">
-          {logo === undefined ? null : (
-            <div className="logo">
-            </div>
-          )}
         </div>
       </div>
       <div id="chatbotBodyDiv" className="chatbotBody">

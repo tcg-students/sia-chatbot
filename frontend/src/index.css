@@ -18,19 +18,6 @@
   animation-fill-mode: both;
 }
 
-@keyframes example {
-  0% {
-    background-color: #555555;
-    top: 0px;
-  }
-  50% {
-    background-color: #2a7e5f;
-    top: 0px;
-  }
-  100% {
-    background-color: #033333;
-    top: 0px;
-  }
 }
 
 .chatBotHeader {
@@ -261,6 +248,7 @@ input[type="date"] {
   display: none;
 }
 
+
 .selectInput {
   margin: auto !important;
   display: flex;
@@ -309,6 +297,7 @@ input[type="date"] {
   margin: auto;
   width: 80%;
 }
+
 
 .applicantInfomationButtons input:hover{
   color: #033333;

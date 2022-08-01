@@ -65,7 +65,8 @@ const ChatbotDisplay = (props) => {
               .map((item) => {
                 return (
                   <div className="introMessage">
-                    <p>{item.text}</p>
+                   <div className="welcome-text"> <p >{item.text}</p>
+                   </div>
                   </div>
                 );
               })
@@ -78,6 +79,7 @@ const ChatbotDisplay = (props) => {
               introTreeMessages
                 .map((item, i) => {
                   return (
+
                     <div onClick={handleInitialNodesReset}>
                       <button
                         className="treeOptionButtons"
@@ -93,7 +95,7 @@ const ChatbotDisplay = (props) => {
                 .splice(1)
             : null}
         </div>
-        <div>
+        <div className="node-button-content">
           {nextNodes !== undefined
             ? nextNodes &&
               nextNodes.filter(item => item.id !== 0).map((item, i) => {
@@ -102,8 +104,10 @@ const ChatbotDisplay = (props) => {
 //                   console.log("item", i);
 //                 }
                 return (
-                  <div style={{ padding: ".5rem" }}>
+                  <div>
+                    {console.log(i)}
                     {item.text ? (
+         
                       <div>
                         <p
                           className={nodeTextStyling(item.text)}
@@ -124,8 +128,9 @@ const ChatbotDisplay = (props) => {
                           </button>
                         </div>
                       )
-                    )}
-                  </div>
+                  )
+                }
+                </div>
                 );
               })
             : null}

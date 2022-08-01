@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { JsonForm } from "./jsonForm";
+import { FormIneractionController } from "./FormIneractionController";
 import Chatinput from "./ChatInput";
+import EditForm from "./EditForm.jsx";
 
 const ChatbotDisplay = (props) => {
   const {
@@ -12,6 +13,7 @@ const ChatbotDisplay = (props) => {
     createForm,
     formStructure,
     handleEdit,
+    edit,
     getFormDetails,
     handleChange,
     handleSubmit,
@@ -33,20 +35,25 @@ const ChatbotDisplay = (props) => {
 
   return (
     <div>
-      <div className="chatBotHeaderContainer">
-        <div className="chatBotHeader">
-          <input
-            className="headerButtons"
-            onClick={handleResetChatbot}
-            value="Reset"/>
-          
-          <h1>chat-bot</h1>
-          <input className="headerButtons" value="Speak to a Agent" disabled/>
+    <div className="container">
+      <div className="header">
+<button className="reset-button">Reset</button>
+<h1 style={{color: "white", fontSize: "2rem"}}>chat-bot!</h1>
+<button className="speak-to-an-agent">Speak to an agent</button>
+      </div>
+      <div className="logo">
+        <img src={logo} alt="tcgLogo" />
+      </div>
+
+
+          <div style={{ display: "flex", marginTop: "auto", gap: "10px" }}>
+            <img style={{ height: "6vh" }} src={logo} alt="tcgLogo" />
+            <h1>Sia Chatbot</h1>
+          </div>
         </div>
         <div className="logoContainer">
           {logo === undefined ? null : (
             <div className="logo">
-              <img src={logo} alt="tcgLogo" />
             </div>
           )}
         </div>
@@ -128,23 +135,15 @@ const ChatbotDisplay = (props) => {
             if (item.application !== null) {
               // console.log("item.app: ", item.application);
               return (
-                <JsonForm
-                  formStructure={formStructure}
-                  createForm={createForm}
-                  handleChange={handleChange}
-                  getFormDetails={getFormDetails}
-                  handleSubmit={handleSubmit}
-                  displayApplicantInfomation={displayApplicantInfomation}
-                  applicationFormAndApplicantInfoShow={
-                    applicationFormAndApplicantInfoShow
-                  }
-                  sendFormValues={sendFormValues}
+                <FormIneractionController
+                {...props}
                 />
               );
             }
           })}
         </div>
       </div>
+
 
       <div className="chatbotFooter">
         <p style={{ color: "white" }}>Command:</p>
@@ -153,6 +152,7 @@ const ChatbotDisplay = (props) => {
           nextNodes={nextNodes}
         />
       </div>
+    </div>
     </div>
   );
 };

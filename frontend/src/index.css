@@ -1,29 +1,165 @@
+.logoContainer{
+
+}
+
+.logo{
+  width: 10%;
+  margin:auto;
+}
+
+.logoContainer {
+  animation: fadeIn 5s;
+  -webkit-animation: fadeIn 5s;
+  -moz-animation: fadeIn 5s;
+  -o-animation: fadeIn 5s;
+  -ms-animation: fadeIn 5s;
+}
+
+.logoContainer {
+  animation-name: example;
+  animation-duration: 3s;
+  animation-delay: 2s;
+  animation-fill-mode: both;
+}
+
+}
+
 .chatBotHeader{
-  text-align: center;
-  color: white;
+  color:white;
+  height: 5rem;
   background-color: black;
   display: grid;
+  padding:.8rem;
   grid-template-columns: auto auto auto;
-  padding: 0.5rem;
-  margin: 0;
+  text-align: center;
+
 }
 
 .chatBotHeader input {
-    text-align: center;
-  width: 40%;
+  width: 30%;
   margin:auto;
-  border-radius: 2rem;
-  height:6vh;
+  height: 50px;
+  text-align: center;
+  border-radius: 15px;
+}
+
+.chatbotBody{  
+  height:62.8vh !important;
+  overflow:auto !important;
+}
+
+.introMessage{
+  width:100%;
+  border-radius: 35px;
+  padding: 1rem;
+  text-align: center;
+  color: white;
 
 }
 
-.jsonForm {
-  display: grid;
+.introMessage p {
+  border: 1px solid grey;
+  border-radius: 10px;
+  padding:1rem;
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: black;
+
+
+
+
 }
 
-li {
-  list-style-type: none;
+.treeOptions div {
+  padding: 1rem !important;
 }
+
+.treeOptions div button{
+  text-align: left;
+  padding: 1rem !important;
+  border: 2px solid rgb(29, 198, 186);
+  border-radius: 1rem;
+  width:40%;
+  color: black;
+  /* border: 2px solid rgb(173, 168, 168); */
+
+}
+
+
+.treeOptions div button:hover{
+  /* color: white; */
+  text-align: left;
+  padding: 1rem !important;
+  border: 2px solid rgb(29, 198, 186);
+  border-radius: 1rem;
+  width:40%;
+  color:black;
+  box-shadow: 0 0 20px #3da35d;
+  border-radius: 15px;
+  padding:.5rem;
+  /* border: 2px solid rgb(173, 168, 168); */
+}
+
+.p-tag-text{
+  padding: .5rem;
+  width: 40%;
+  float: right;
+  border: 1px solid grey;
+  border-radius: 10px;
+}
+
+
+.p-tag-text1{
+  color:white;
+  background-image: linear-gradient(to right, purple , #6495ED);
+  text-align: center !important;
+  width: 100%;
+  padding: .5rem;
+  border-radius: 10px;
+ margin-top:3rem;
+
+}
+
+.chatbotFooter{
+  position:static;
+  background-color: black;
+}
+
+.chatbotFooter p {
+  padding: 2rem;
+}
+
+.chatbotFooter input {
+  width:100px;
+}
+
+
+
+ .optionButtons {
+  text-align: left;
+  padding: 1rem !important;
+  border: 2px solid rgb(29, 198, 186);
+  border-radius: 1rem;
+  width:40%;
+  color:black;
+}
+
+.optionButtons:hover{
+text-align: left;
+  padding: 1rem !important;
+  border: 2px solid rgb(29, 198, 186);
+  border-radius: 1rem;
+  width:40%;
+  color:black;
+  box-shadow: 0 0 20px #3da35d;
+  border-radius: 15px;
+  padding:.5rem;
+}
+
+.form-control{
+  width:100% !important;
+}
+
 
 
 .wrapper{
@@ -37,12 +173,13 @@ li {
   padding: 2rem 2rem;
   border-radius: .5rem;
   /* border: 1px solid black; */
-  box-shadow: 0 10px 25px Rgba(92,99,105,.2)
+  box-shadow: 0 10px 25px Rgba(92,99,105,.2);
+  margin-bottom: 2rem;
 }
 
 .form-label{
   display: flex;
-  margin-left: 1rem;
+  margin-left: 0rem;
   margin-top: .8rem;
 }
 
@@ -91,7 +228,6 @@ li {
 
 
 .noneAstericks{
-  margin:auto !important;
   width: 90%;  
   margin-top: .8rem !important;
   padding-bottom: 1rem;
@@ -115,125 +251,6 @@ input[type="date"]{
   display: grid;
 }
 
-/* .optionButtons{
-margin: 1rem;
-    background-color: #3da35d;
-  width: 100%;
-  border-radius: 15px;
-  padding:.5rem;
-  border: 2px;
-} */
-
-/* .nodeOptionsButtons{
-  width: 100%;
-    border-radius: 15px;
-    padding: .5rem;
-    border: 2px;
-} */
-
-/* .optionButtons:hover{
-  color: #111;
-  border-radius: 15px;
-  padding:.5rem;
-} */
-
-
-/* .introMessage {
-  width: 100%;
-} */
-
-/* .welcome-text{ */
-/* padding-left:  2rem; */
-  /* margin: auto;
-    position: relative;
-    max-width: 60%;
-    background-color: #0ead69;
-    padding: -7.125em 1.5em;
-    font-size: 1.25em;
-    border-radius: 1rem;
-    box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, .3), 0 0.0625rem 0.125rem rgba(0, 0, 0, .2);
-} */
-/* .welcome-text p{
-  padding: 1rem;
-} */
-
-/* .welcome-text{
-margin-top: 1rem;
-  position: relative;
-  max-width: 40em;
-  background-color:#0ead69 ;
-  padding: -7.125em 1.5em;
-  font-size: 1.25em;
-  border-radius: 1rem;
-  box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, .3), 0 0.0625rem 0.125rem rgba(0, 0, 0, .2);
-} */
-
-/* .welcome-text::before {
-  content: '';
-  position: absolute;
-  width: 0;
-  height: 0;
-  bottom: 100%;
-  left: 1.5em; 
-  border: .75rem solid transparent;
-  border-top: none;
-  border-bottom-color: #fff;
-  filter: drop-shadow(0 -0.0625rem 0.0625rem rgba(0, 0, 0, .1)); 
-} */
- 
-/* .dialogue-box {
-  padding: 25px 10px;
-  margin: 10px;
-  border-radius: 20px 20px 1px 20px;
-  background: #cccccc;
-  color: black;
-} */
-
-/* .form-control{
-  width:100% !important;
-}
-
-.selectInput{
-  margin: auto !important;
-  display : flex;
-  width:25% !important;
-} */
-
-/* span {
-  content: "\0021";
-} */
-
-/* .chatBotHeader{
-  height: 5rem;
-  background-color: black;
-  display: grid;
-  grid-template-columns: auto auto auto;
-} */
-
-/* .chatBotHeader input {
-  width: 30%;
-  margin:auto;
-  height: 50px;
-  text-align: center;
-  border-radius: 15px;
-
-} */
-
-/* .chatBotHeader h1 {
- color: white;
-
-} */
-
-/* .chatbotBody{  
-  height:79vh !important;
-  overflow:auto !important;
-} */
-
-/* .chatbotFooter{
-  height: 6.5rem;
-  background-color: black;
-} */
-
 .scrollbar-hidden {
   -ms-overflow-style: none;
   scrollbar-width: none;
@@ -243,8 +260,18 @@ margin-top: 1rem;
   display: none;
 }
 
+.selectInput{
+  margin: auto !important;
+  display : flex;
+  width:25% !important;
+} */
+
+
+::-webkit-scrollbar {
+  display: none;
+}
+
 .applicantInfomationContainer{
-  /* color:white; */
   border: 5px solid #033333;
   width:80%;
   border-radius: 10px;
@@ -254,97 +281,42 @@ margin-top: 1rem;
 }
 
 .applicantInfomation{
-  /* color:white; */
   background-color: white;
   border: 5px solid #033333;
-  width:90%;
   border-radius: 10px;
   margin:auto;
   padding:2rem;
 }
 
-/* .applicantInfomation p{
-} */
-
-.applicantInfomationButtons{
+.applicantInfomation ul{
   display:grid;
-  grid-template-columns: auto auto;
-width: 100%;
-}
-
-.applicantInfomationButtons input{
-margin: auto;
-width: 80%;
-}
-
-
-/* .nodeOptionsButtons{
-  width: 50%; */
-    /* height: 80vh; */
-    /* margin: 0.5rem rem 0rem;
-        position: relative;
-    display: block;
-} */
- /* .p-tag{
-margin: 1rem;
-    display: flex;
-}  */
-
-/* .p-tag-text {
-  background-image: linear-gradient(to right, purple, blue);
-  float: right !important;
-  width: 40%;
-    padding: 0.5rem;
-  border-radius:5px !important;
-  color: white;
-} */
-
-/* .p-tag-text2{
-    float: left !important;
-  border: 2px solid grey;
-  border-radius: 5px;
-    width: 40%;
-        padding: 0.5rem;
-        margin-bottom: 2rem;
-} */
-
-
-.selectInput{
-  display: flex;
-  scroll-padding-top: 5rem;
-  border: 1px solid black;
-  padding: 1rem;
-  position: fixed;
-  bottom: 0px;
-  background-color: black;
-  margin: auto;
-  width: 100%;
-  /* margin-left: 36rem; */
-  height: 11vh;
-}
-/* .treeOptions {
-  width: 39%;
-} */
-/* .treeOptions div {
- 
-} */
-/* .node-button-content{
-    
-    } */
-
-/* /////////////////////////// */
-
-.welcome-text{
-  margin-top: 1rem;
-    max-width: 40%;
-    background-color: #0ead69;
-    padding: .5rem;
-    font-size: 1.25em;
-    border-radius: 1rem;
-    box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, .3), 0 0.0625rem 0.125rem rgba(0, 0, 0, .2);
-}
-
-.welcome-text p {
+  flex-direction: column;
+  text-align: left !important;
   margin: 0 !important;
-}
+  padding-left:0rem;
+  }
+  .applicantInfomation p{
+    color:#033333 !important;
+    text-align: left !important;
+  }
 
+  .applicantInfomationButtons{
+    display:grid;
+    grid-template-columns: auto auto;
+  width: 100%;
+  }
+  
+  .applicantInfomationButtons input{
+    color:#033333;
+  margin: auto;
+  width: 80%;
+  }
+
+  .headerButtons{
+    cursor: pointer;
+  }
+  
+  .headerButtons:hover{
+    box-shadow: 0px 0px 30px;
+    border: 2px solid rgb(29, 198, 186);
+  }

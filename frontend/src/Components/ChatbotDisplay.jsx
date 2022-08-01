@@ -18,35 +18,45 @@ const ChatbotDisplay = (props) => {
     displayApplicantInfomation,
     applicationFormAndApplicantInfoShow,
     sendFormValues,
-    disableOptions,
-
+    handleScroll,
+    handleResetChatbot,
+    handleInitialNodesReset,
+    nodeTextStyling,
   } = props;
-
-//   var objDiv = document.getElementByClass("chatbotBody");
-// objDiv.scrollTop = objDiv.scrollHeight;
 
   useEffect(() => {
     nodeDisplay();
-  }, []);
+    handleScroll();
+  });
+
+ 
 
   return (
-    <div className="bot-body">
-      <div className="chatBotHeader">
-<input className="reset-button" value="Reset" />
-<h1>chat-bot<span>&#33;</span></h1>
-<input className="" value="Speak to a Agent" />
-      </div>
-      <div className="chatbotBody">
-        {/* <div className="logo">
-          <img src={logo} alt="tcgLogo" />
-        </div> */}
 
+      <div className="chatBotHeaderContainer">
+        <div className="chatBotHeader">
+          <input
+            className="headerButtons"
+            onClick={handleResetChatbot}
+            value="Reset"/>
+          
+          <h1>chat-bot</h1>
+          <input className="headerButtons" value="Speak to a Agent" disabled/>
+        </div>
+        <div className="logoContainer">
+          {logo === undefined ? null : (
+            <div className="logo">
+              <img src={logo} alt="tcgLogo" />
+            </div>
+          )}
+        </div>
+      </div>
+      <div id="chatbotBodyDiv" className="chatbotBody">
         <div>
-          {introTreeMessages &&
+          {introTreeMessages !== undefined &&
             introTreeMessages
               .map((item) => {
                 return (
-
                   <div className="introMessage">
                    <div className="welcome-text"> <p >{item.text}</p>
                    </div>
@@ -55,17 +65,17 @@ const ChatbotDisplay = (props) => {
               })
               .slice(0, 1)}
         </div>
-        <div
-          // className="treeOptions"
-        >
+
+        <div className="treeOptions">
           {introTreeMessages !== undefined
             ? introTreeMessages &&
               introTreeMessages
                 .map((item, i) => {
                   return (
-                    <div >
+
+                    <div onClick={handleInitialNodesReset}>
                       <button
-                        // className="optionButtons"
+                        className="treeOptionButtons"
                         onClick={() =>
                           handleInitialNodeOptions({ treeid: item.id })
                         }
@@ -81,28 +91,35 @@ const ChatbotDisplay = (props) => {
         <div className="node-button-content">
           {nextNodes !== undefined
             ? nextNodes &&
-              nextNodes.map((item, i) => {
+              nextNodes.filter(item => item.id !== 0).map((item, i) => {
+//               nextNodes.map((item, i) => {
+//                 {
+//                   console.log("item", i);
+//                 }
                 return (
                   <div>
                     {console.log(i)}
                     {item.text ? (
-                      <div
-                        // className="p-tag"
-                      >
-                        <p className={i===0?"p-tag-text":"p-tag-text2"}>{item.text}</p>
-                      </div>
-                      ) : (
-                        item.option && (
-                         
-                        <button
-                          // className="optionButtons"
-                          onClick={() =>
-                            handleInitialNodeOptions({ nodeid: item.id })
-                          }
+         
+                      <div>
+                        <p
+                          className={nodeTextStyling(item.text)}
                         >
-                          {item.option}
-                        </button>
-                        
+                          {item.text}
+                        </p>
+                      </div>
+                    ) : (
+                      item.option && (
+                        <div>
+                          <button
+                            className="optionButtons"
+                            onClick={() =>
+                              handleInitialNodeOptions({ nodeid: item.id })
+                            }
+                          >
+                            {item.option}
+                          </button>
+                        </div>
                       )
                   )
                 }
@@ -114,9 +131,8 @@ const ChatbotDisplay = (props) => {
         <div>
           {nextNodes.map((item) => {
             if (item.application !== null) {
-              console.log("item.app: ", item.application);
+              // console.log("item.app: ", item.application);
               return (
-
                 <JsonForm
                   formStructure={formStructure}
                   createForm={createForm}
@@ -136,6 +152,7 @@ const ChatbotDisplay = (props) => {
       </div>
 
       <div className="chatbotFooter">
+        <p style={{ color: "white" }}>Command:</p>
         <Chatinput
           introTreeMessages={introTreeMessages}
           nextNodes={nextNodes}

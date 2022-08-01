@@ -1,25 +1,33 @@
 import React, { useState, useEffect } from "react";
 import ChatbotDisplay from "./ChatbotDisplay";
 import { useDispatch, useSelector } from "react-redux";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
 import {
   getInitialTreeText,
   getInitialNode,
-  // getNode,
   getLogo,
-  getApplicationFormValues
+  getApplicationFormValues,
+  resetStateValues,
+  resetInitialNodes,
+  removeLastNodes,
+  getInitialNode2,
 } from "../Redux/ActionCreators/index";
 const Chatbot = (props) => {
-  const [selected, setSelected] = useState({});
   const [applicationForm, setApplicationForm] = useState({});
   const [chatbotNodes, setChatbotNodes] = useState([]);
   const [formStructure, setFormStructure] = useState([]);
   const [editForm, setEditForm] = useState(false);
-  const [disableOptions, setDisableOptions] = useState(false);
+  const [compareNode, setCompareNode] = useState([]);
 
-  const [displayApplicantInfomation, setDisplayApplicantInfomation] = useState([]);
+  const [displayApplicantInfomation, setDisplayApplicantInfomation] = useState(
+    []
+  );
 
-  const [applicationFormAndApplicantInfoShow,setapplicationFormAndApplicantInfoShow] = useState(false);
-
+  const [
+    applicationFormAndApplicantInfoShow,
+    setapplicationFormAndApplicantInfoShow,
+  ] = useState(false);
 
   let logo = useSelector(
     (state) =>
@@ -34,6 +42,11 @@ const Chatbot = (props) => {
     (state) => state.botConversation.optionBotMessages
   );
 
+
+  let stateId = useSelector((state) => state.botConversation.id);
+  
+  const MySwal = withReactContent(Swal);
+
   let dispatch = useDispatch();
   useEffect(() => {
     getImage();
@@ -43,27 +56,40 @@ const Chatbot = (props) => {
     setEditForm(!editForm);
   };
 
-  const getImage = _ => {
+  const getImage = (_) => {
     setTimeout(function () {
       dispatch(getLogo());
     }, 500);
     getWelcomeContents();
   };
 
-  const getWelcomeContents = async _ => {
+  const getWelcomeContents = async (_) => {
     try {
       setTimeout(function () {
         dispatch(getInitialTreeText());
       }, 1000);
+      setCompareNode([])
     } catch (error) {
       console.log("error", error);
     }
   };
 
-  const handleInitialNodeOptions = async id => {
+  const handleInitialNodeOptions = async (id) => {
+
     try {
+      dispatch(getInitialNode2(id));
+      if (stateId === id.nodeid) {
+        return;
+      }
+      if (id.nodeid) {
+        for (var i in compareNode) {
+          if (compareNode[i].id === id.nodeid) {
+            dispatch(removeLastNodes());
+          }
+        }
+        setCompareNode(nextNodes);
+      }
       setTimeout(function () {
-        
         dispatch(getInitialNode(id));
       }, 1000);
     } catch (error) {
@@ -71,22 +97,15 @@ const Chatbot = (props) => {
     }
   };
 
-  const handleOptionsIndex = (field, id) => {
-    console.log('field,id', field,id)
-    let newSelectedId = { ...selected };
-    newSelectedId[`${field}`] = id;
-    setSelected(newSelectedId);
-  };
 
-
-  const nodeDisplay = _ => {
+  const nodeDisplay = (_) => {
     setChatbotNodes(nextNodes);
   };
 
-  const jsonForm = nextNodes;
+  const jsonForm = nextNodes.filter((item) => item.id !== 0);
   var object = jsonForm && jsonForm[jsonForm.length - 1];
 
-  const createForm = _ => {
+  const createForm = (_) => {
     var values = [];
     if (object) {
       for (var i in object.application) {
@@ -96,28 +115,74 @@ const Chatbot = (props) => {
     setFormStructure(values);
   };
 
-  const handleChange = e => {
+  const handleChange = (e) => {
     setApplicationForm({ ...applicationForm, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     if (applicationForm) {
       setDisplayApplicantInfomation([applicationForm]);
-      console.log('applicationForm', applicationForm)
       setTimeout(function () {
         setapplicationFormAndApplicantInfoShow(true);
       }, 1000);
     }
   };
 
-  const sendFormValues = _ => {
-    dispatch(getApplicationFormValues(applicationForm))
+  const sendFormValues = (_) => {
+    dispatch(getApplicationFormValues(applicationForm));
+    const MySwal = withReactContent(Swal);
+    MySwal.fire({
+      title:
+        "Your details were submitted successfully. We’ll be in contact soon!",
+      timer: 5000,
+      showConfirmButton: false,
+    });
 
-     setTimeout(function () {
-        dispatch(getInitialNode({nodeid:100}));
-      }, 3000);
-  }
+    setTimeout(function () {
+      dispatch(resetStateValues());
+      getImage();
+      handleInitialNodeOptions();
+      setDisplayApplicantInfomation([]);
+      setapplicationFormAndApplicantInfoShow(false);
+    }, 5000);
+  };
+
+  const handleScroll = (_) => {
+    var elem = document.getElementById("chatbotBodyDiv");
+    elem.scrollTop = elem.scrollHeight;
+  };
+
+  const handleResetChatbot = (_) => {
+    dispatch(resetStateValues());
+    getImage();
+    handleInitialNodeOptions();
+    setDisplayApplicantInfomation([]);
+    setapplicationFormAndApplicantInfoShow(false);
+  };
+
+  const handleInitialNodesReset = (_) => {
+    dispatch(resetInitialNodes());
+    getImage();
+    handleInitialNodeOptions();
+    setDisplayApplicantInfomation([]);
+    setCompareNode([])
+
+  };
+
+  const nodeTextStyling = (text) => {
+    let pattern = /(\d[.])/g;
+    let foundMatch = pattern.test(text);
+    // console.log("foundMatch", foundMatch);
+    if (foundMatch) {
+
+      return "p-tag-text";
+    } else {
+      return "p-tag-text1";
+    }
+
+    // }
+  };
 
   return (
     <div>
@@ -127,7 +192,6 @@ const Chatbot = (props) => {
         nextNodes={nextNodes}
         nodeDisplay={nodeDisplay}
         handleInitialNodeOptions={handleInitialNodeOptions}
-        selected={selected}
         createForm={createForm}
         formStructure={formStructure}
         handleChange={handleChange}
@@ -138,6 +202,10 @@ const Chatbot = (props) => {
           applicationFormAndApplicantInfoShow
         }
         sendFormValues={sendFormValues}
+        handleScroll={handleScroll}
+        handleResetChatbot={handleResetChatbot}
+        handleInitialNodesReset={handleInitialNodesReset}
+        nodeTextStyling={nodeTextStyling}
       />
     </div>
   );

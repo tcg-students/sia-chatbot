@@ -11,7 +11,7 @@ export const JsonForm = (props) => {
     sendFormValues,
   } = props;
 
-  useEffect(() => {
+  useEffect(() => { 
     createForm();
   }, []);
 

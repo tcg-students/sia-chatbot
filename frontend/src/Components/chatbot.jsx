@@ -50,8 +50,6 @@ const Chatbot = (props) => {
     (state) => state.botConversation.optionBotMessages
   );
 
-  console.log('nextNodes', nextNodes)
-
   let stateId = useSelector(state => state.botConversation.id)
   const MySwal = withReactContent(Swal);
 
@@ -83,25 +81,26 @@ const Chatbot = (props) => {
 
   const handleInitialNodeOptions = async (id) => {
     console.log('stateId ', stateId,id )
+    setCompareNode(nextNodes)
     dispatch(getInitialNode2(id))
     if (stateId === id.nodeid){
-      return
+      // return
     }
-    if(id.treeid){
-  
-  }
+    if(id.treeid){       
+      
+    }
+    try {
     if(id.nodeid){
       // console.log("nextNodes" ,id ,  compareNode)
       for(var i in  compareNode){
         if(compareNode[i].id === id.nodeid){
           console.log("match")
-          dispatch(removeLastNodes())
+          dispatch(removeLastNodes(id))
+          return
         }
       }
-      setCompareNode(nextNodes)
     }
 
-    try {
       setTimeout(function () {
         dispatch(getInitialNode(id));
       }, 1000);
@@ -109,8 +108,6 @@ const Chatbot = (props) => {
       console.log("error", error);
     }
   };
-      console.log("compareNode" ,  compareNode)
-
 
   const nodeDisplay = (_) => {
     setChatbotNodes(nextNodes);
@@ -175,7 +172,7 @@ const Chatbot = (props) => {
     getImage();
     handleInitialNodeOptions();
     setDisplayApplicantInfomation([]);
-    setapplicationFormAndApplicantInfoShow(false)
+    setapplicationFormAndApplicantInfoShow(false);
 
   };
 
@@ -184,6 +181,7 @@ const Chatbot = (props) => {
     getImage();
     handleInitialNodeOptions();
     setDisplayApplicantInfomation([]);
+    setCompareNode([])
   };
 
   const nodeTextStyling = (text) => {

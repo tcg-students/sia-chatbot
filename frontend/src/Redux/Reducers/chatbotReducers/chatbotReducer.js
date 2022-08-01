@@ -3,7 +3,7 @@ const REMOVE_LAST_NODES = "REMOVE_LAST_NODES"
 let initialState = {
   logo: [],
   nodeId: [],
-  currentNodes: [],
+  // currentNodes: [],
   welcomeMessages: [],
   optionBotMessages: [],
   id:null
@@ -52,17 +52,32 @@ export const chatbotMessagesReducer = (state = initialState, action) => {
         }
 
     case REMOVE_LAST_NODES:
-        var textList = [...state.optionBotMessages]
-        var newListCopy = [...state.optionBotMessages]
-        var newListWithOutLast = newListCopy.slice(0, -1)
-        var secondLastIndex = newListWithOutLast.findLastIndex(item => item.id == 0);  
-        var choppedList = textList.splice(0, secondLastIndex + 1)
+      var newList = [...state.optionBotMessages]
+      var choppedList = []
+        var nodeId = action.payload
+        var findNodeId = state.optionBotMessages.findIndex((item) => item.id === nodeId.nodeid); 
+        for(var i = findNodeId ; i < state.optionBotMessages.length ; i++){
+          if(state.optionBotMessages[i] === 0){
+            console.log("index index" , i)
+            var choppedList = newList.splice(0, newList.length-1)
+            console.log("find match " , JSON.stringify(choppedList))
+            break 
+          }
+        }
+
+
+        // console.log("findNodeId findNodeId" , findNodeId)
+        // var textList = [...state.optionBotMessages]
+        // var newListCopy = [...state.optionBotMessages]
+        // var newListWithOutLast = newListCopy.slice(0, -1)
+        // var secondLastIndex = newListWithOutLast.findLastIndex(item => item.id == 0);  
+        // var choppedList = textList.splice(0, secondLastIndex + 1)
 
         console.log("choppedList" , choppedList)
 
       return {
         ...state,
-        currentNodes: [...action.payload],
+        // currentNodes: [...action.payload],
         optionBotMessages: [...choppedList],
         currentBotRes: action.payload
       };

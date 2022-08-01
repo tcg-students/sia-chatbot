@@ -1,46 +1,38 @@
 import React, { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
-import {JsonForm} from './jsonForm'
-import Chatinput from './ChatInput'
+import { FormIneractionController } from "./FormIneractionController";
+import Chatinput from "./ChatInput";
+import EditForm from "./EditForm.jsx";
 
-
-const ChatbotDisplay = (props) =>{
-  const [chatbotNodes, setChatbotNodes] = useState([]);
+const ChatbotDisplay = (props) => {
+  const {
+    handleInitialNodeOptions,
+    logo,
+    introTreeMessages,
+    nextNodes,
+    nodeDisplay,
+    createForm,
+    formStructure,
+    handleEdit,
+    edit,
+    getFormDetails,
+    handleChange,
+    handleSubmit,
+    displayApplicantInfomation,
+    applicationFormAndApplicantInfoShow,
+    sendFormValues,
+    handleScroll,
+    handleResetChatbot,
+    handleInitialNodesReset,
+    nodeTextStyling,
+  } = props;
 
   useEffect(() => {
     nodeDisplay();
-  }, []);
+    handleScroll();
+  });
 
-  let logo = useSelector(
-    (state) =>
-      state.botConversation.logo.logo &&
-      state.botConversation.logo.logo[0].image
-  );
-  let introTreeMessages = useSelector(
-    (state) => state.botConversation.welcomeMessages
-  );
+ 
 
-  let nextNodes = useSelector(
-    (state) => state.botConversation.optionBotMessages
-  );
-  let nextSubNodes = useSelector(
-    (state) => state.botConversation.botConversationalMessages
-  );
-  console.log('nextSubNodes', nextSubNodes)
-
-  const nodeDisplay = () => {
-    setChatbotNodes(nextSubNodes);
-  };
-  
-  const {
-    handleInitialNodeOptions,
-    handleNodeOptions,
-    selected,
-    handleOptionsIndex,
-    handleChange,
-    input,
-    handleInput
-  } = props;
   return (
     <div>
     <div className="container">
@@ -53,79 +45,116 @@ const ChatbotDisplay = (props) =>{
         <img src={logo} alt="tcgLogo" />
       </div>
 
-      <div></div>
-      <div className="treeOptions">
-        {introTreeMessages !== undefined
-          ? introTreeMessages &&
-            introTreeMessages.map((item, i) => {
-              return (
-                <div
-                onClick={() => handleOptionsIndex("option", i)}
-                style={{
-                  display:
-                  selected.option !== i && selected.option > -1
-                  ? "none"
-                  : "block",
-                }}
-                
-                >
-                  {console.log(selected.option)}
-                  <button onClick={() => handleInitialNodeOptions(item.id)}>
-                    {item.text}
-                  </button>
-                </div>
-              );
-            })
-          : null}
+
+          <div style={{ display: "flex", marginTop: "auto", gap: "10px" }}>
+            <img style={{ height: "6vh" }} src={logo} alt="tcgLogo" />
+            <h1>Sia Chatbot</h1>
+          </div>
+        </div>
+        <div className="logoContainer">
+          {logo === undefined ? null : (
+            <div className="logo">
+            </div>
+          )}
+        </div>
       </div>
-      <div>
-        {nextNodes !== undefined
-          ? nextNodes &&
-            nextNodes.map((item, i) => {
-              return (
-                <div
-                  onClick={() => handleOptionsIndex("option1", i)}
-                  style={{
-                    display:
-                      selected.option1 !== i && selected.option1 > -1
-                        ? "none"
-                        : "block",
-                  }}
-                >
-                  {item.text ? (
+      <div id="chatbotBodyDiv" className="chatbotBody">
+        <div>
+          {introTreeMessages !== undefined &&
+            introTreeMessages
+              .map((item) => {
+                return (
+                  <div className="introMessage">
                     <p>{item.text}</p>
-                  ) : (
-                    <button onClick={() => handleNodeOptions(item.id)}>
-                      {item.option}
-                    </button>
-                  )}
-                </div>
-              );
-            })
-          : null}
-      </div>
-      <div>
-        {nextSubNodes !== undefined && nextSubNodes.length !== 1
-          ? nextSubNodes &&
-          nextSubNodes.map((item, i) => {
-              // return (
-                if(item.text){
-                 return  <p>{item.text}</p>
-                } else if (item.option){
-                  return <button onClick={() => handleNodeOptions(item.id)}>
-                         {item.option}
+                  </div>
+                );
+              })
+              .slice(0, 1)}
+        </div>
+
+        <div className="treeOptions">
+          {introTreeMessages !== undefined
+            ? introTreeMessages &&
+              introTreeMessages
+                .map((item, i) => {
+                  return (
+                    <div onClick={handleInitialNodesReset}>
+                      <button
+                        className="treeOptionButtons"
+                        onClick={() =>
+                          handleInitialNodeOptions({ treeid: item.id })
+                        }
+                      >
+                        {item.text}
                       </button>
-                }else if (item.application){
-                  return <JsonForm nextSubNodes={nextSubNodes}/>
-                }
-            })
-          : null}
+                    </div>
+                  );
+                })
+                .splice(1)
+            : null}
+        </div>
+        <div>
+          {nextNodes !== undefined
+            ? nextNodes &&
+              nextNodes.filter(item => item.id !== 0).map((item, i) => {
+//               nextNodes.map((item, i) => {
+//                 {
+//                   console.log("item", i);
+//                 }
+                return (
+                  <div style={{ padding: ".5rem" }}>
+                    {item.text ? (
+                      <div>
+                        <p
+                          className={nodeTextStyling(item.text)}
+                        >
+                          {item.text}
+                        </p>
+                      </div>
+                    ) : (
+                      item.option && (
+                        <div>
+                          <button
+                            className="optionButtons"
+                            onClick={() =>
+                              handleInitialNodeOptions({ nodeid: item.id })
+                            }
+                          >
+                            {item.option}
+                          </button>
+                        </div>
+                      )
+                    )}
+                  </div>
+                );
+              })
+            : null}
+        </div>
+        <div>
+          {nextNodes.map((item) => {
+            if (item.application !== null) {
+              // console.log("item.app: ", item.application);
+              return (
+                <FormIneractionController
+                {...props}
+                />
+              );
+            }
+          })}
+        </div>
       </div>
-      <div>
+
+
+      <div className="chatbotFooter">
+        <p style={{ color: "white" }}>Command:</p>
+        <Chatinput
+          introTreeMessages={introTreeMessages}
+          nextNodes={nextNodes}
+        />
       </div>
     </div>
     </div>
   );
-}
+};
 
 export default ChatbotDisplay;

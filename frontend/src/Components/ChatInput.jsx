@@ -1,5 +1,5 @@
-import React, { useDispatch, useSelector } from "react-redux";
-import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import React , { useState, useEffect } from "react";
 import { getInitialNode } from "../Redux/ActionCreators/index";
 
 function ChatInput(props) {
@@ -11,12 +11,16 @@ function ChatInput(props) {
   let currentNodes = useSelector(
     (state) => state.botConversation.currentBotRes
   );
-  useEffect(() => {}, []);
 
+  console.log('currentNodes', currentNodes)
 
   const handleInput = () => {
-    let newIntroOptions = currentNodes.length > 0 ? currentNodes : introTreeMessages
+
+    let newIntroOptions = currentNodes && currentNodes.length > 0 ? currentNodes : introTreeMessages
+  console.log('newIntroOptions', newIntroOptions)
+
       if (newIntroOptions.find(item => item.node_id === undefined)
+
         ) {
         // console.log(true);
         const searchValue = input;
@@ -27,14 +31,9 @@ function ChatInput(props) {
           dispatch(getInitialNode({ treeid: selectedValue }));
         }, 1000);
       } else {
-        
-        // console.log(false);
-        
-        // console.log('currentNodes', currentNodes);
-        
         const searchValue = input - 1;
         let newCurrentNodes = currentNodes.filter((item) => item.option);
-        // console.log("newCurrentNodes", newCurrentNodes);
+        console.log("newCurrentNodes", newCurrentNodes);
         const selectedValue = newCurrentNodes[searchValue].id;
         // console.log("selectedValue", selectedValue);
         setTimeout(function () {
@@ -42,6 +41,7 @@ function ChatInput(props) {
         }, 1000);
       }
     setInput("")
+    
   };
 
 
@@ -52,6 +52,8 @@ function ChatInput(props) {
         type="number"
         value={input}
         onChange={(e) => setInput(e.target.value)}
+        placeholder="Response Command"
+
       />
       <input
         type="button"

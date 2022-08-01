@@ -19,7 +19,6 @@ const Chatbot = (props) => {
   const [formStructure, setFormStructure] = useState([]);
   const [editForm, setEditForm] = useState(false);
   const [compareNode, setCompareNode] = useState([]);
-
   const [displayApplicantInfomation, setDisplayApplicantInfomation] = useState(
     []
   );
@@ -52,7 +51,10 @@ const Chatbot = (props) => {
     getImage();
     handleInitialNodeOptions();
   }, []);
-  const handleEdit = () => {
+
+  const handleEdit = (e) => {
+    e.preventDefault();
+    console.log("edit", editForm);
     setEditForm(!editForm);
   };
 
@@ -121,6 +123,8 @@ const Chatbot = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setEditForm(false);
+
     if (applicationForm) {
       setDisplayApplicantInfomation([applicationForm]);
       setTimeout(function () {
@@ -138,13 +142,13 @@ const Chatbot = (props) => {
       timer: 5000,
       showConfirmButton: false,
     });
-
     setTimeout(function () {
       dispatch(resetStateValues());
       getImage();
       handleInitialNodeOptions();
       setDisplayApplicantInfomation([]);
       setapplicationFormAndApplicantInfoShow(false);
+      setApplicationForm({})
     }, 5000);
   };
 
@@ -173,15 +177,13 @@ const Chatbot = (props) => {
   const nodeTextStyling = (text) => {
     let pattern = /(\d[.])/g;
     let foundMatch = pattern.test(text);
-    // console.log("foundMatch", foundMatch);
+
     if (foundMatch) {
-
-      return "p-tag-text";
-    } else {
       return "p-tag-text1";
-    }
 
-    // }
+    } else {
+      return "p-tag-text";
+    }
   };
 
   return (
@@ -206,6 +208,8 @@ const Chatbot = (props) => {
         handleResetChatbot={handleResetChatbot}
         handleInitialNodesReset={handleInitialNodesReset}
         nodeTextStyling={nodeTextStyling}
+        editForm={editForm}
+        applicationForm={applicationForm}
       />
     </div>
   );

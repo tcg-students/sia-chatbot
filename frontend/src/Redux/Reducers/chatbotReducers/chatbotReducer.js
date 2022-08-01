@@ -87,6 +87,7 @@ export const chatbotMessagesReducer = (state = initialState, action) => {
         ...state,
         welcomeMessages: action.payload || state,
         optionBotMessages: action.payload,
+        currentBotRes:[]
       };
 
     case actions.RESET_INITIAL_NODES:

@@ -35,25 +35,20 @@ const ChatbotDisplay = (props) => {
 
   return (
     <div>
-    <div className="container">
-      <div className="header">
-<button className="reset-button">Reset</button>
-<h1 style={{color: "white", fontSize: "2rem"}}>chat-bot!</h1>
-<button className="speak-to-an-agent">Speak to an agent</button>
-      </div>
-      <div className="logo">
-        <img src={logo} alt="tcgLogo" />
-      </div>
-
-
-          <div style={{ display: "flex", marginTop: "auto", gap: "10px" }}>
-            <img style={{ height: "6vh" }} src={logo} alt="tcgLogo" />
-            <h1>Sia Chatbot</h1>
-          </div>
+      <div className="chatBotHeaderContainer">
+        <div className="chatBotHeader">
+          <input
+            className="headerButtons"
+            onClick={handleResetChatbot}
+            value="Reset"/>
+          
+          <h1>chat-bot</h1>
+          <input className="headerButtons" value="Speak to a Agent" disabled/>
         </div>
         <div className="logoContainer">
           {logo === undefined ? null : (
             <div className="logo">
+              <img src={logo} alt="tcgLogo" />
             </div>
           )}
         </div>
@@ -64,7 +59,7 @@ const ChatbotDisplay = (props) => {
             introTreeMessages
               .map((item) => {
                 return (
-                  <div className="introMessage">
+                  <div className="inztroMessage">
                     <p>{item.text}</p>
                   </div>
                 );
@@ -144,7 +139,6 @@ const ChatbotDisplay = (props) => {
         </div>
       </div>
 
-
       <div className="chatbotFooter">
         <p style={{ color: "white" }}>Command:</p>
         <Chatinput
@@ -152,7 +146,6 @@ const ChatbotDisplay = (props) => {
           nextNodes={nextNodes}
         />
       </div>
-    </div>
     </div>
   );
 };

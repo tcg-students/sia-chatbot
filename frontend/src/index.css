@@ -18,21 +18,6 @@
   animation-fill-mode: both;
 }
 
-@keyframes example {
-  0% {
-    background-color: #555555;
-    top: 0px;
-  }
-  50% {
-    background-color: #2a7e5f;
-    top: 0px;
-  }
-  100% {
-    background-color: #033333;
-    top: 0px;
-  }
-}
-
 .chatBotHeader {
   color: white;
   height: 5.5rem;
@@ -133,6 +118,7 @@
   width: 40%;
   padding: .5rem;
   border-radius: 10px;
+
 
 }
 
@@ -261,6 +247,7 @@ input[type="date"] {
   display: none;
 }
 
+
 .selectInput {
   margin: auto !important;
   display: flex;
@@ -306,9 +293,11 @@ input[type="date"] {
 
 .applicantInfomationButtons input {
   color: #033333;
+
   margin: auto;
   width: 80%;
 }
+
 
 .applicantInfomationButtons input:hover{
   color: #033333;

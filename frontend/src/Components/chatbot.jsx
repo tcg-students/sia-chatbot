@@ -54,7 +54,7 @@ const Chatbot = (props) => {
 
   const handleEdit = (e) => {
     e.preventDefault();
-    console.log("edit", editForm);
+
     setEditForm(!editForm);
   };
 
@@ -77,7 +77,6 @@ const Chatbot = (props) => {
   };
 
   const handleInitialNodeOptions = async (id) => {
-
     try {
       dispatch(getInitialNode2(id));
       if (stateId === id.nodeid) {
@@ -177,6 +176,7 @@ const Chatbot = (props) => {
   const nodeTextStyling = (text) => {
     let pattern = /(\d[.])/g;
     let foundMatch = pattern.test(text);
+
 
     if (foundMatch) {
       return "p-tag-text1";

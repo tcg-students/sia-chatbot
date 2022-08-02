@@ -1,13 +1,19 @@
 pipeline {
      agent any
      stages {
-        stage("Build") {
+        stage("Build Frontend") {
             steps { 
-                 echo "Build!!"
-                 sh "ls -al"
+                 echo "Build Frontend!!"
                  sh "cd frontend && rm -rf package-lock.json yarn-lock" 
                  sh "cd frontend && sudo npm install"
                  sh "cd frontend && sudo npm run build"
+            }
+        }
+          stage("Build Backend") {
+            steps { 
+                 echo "Build Backend!!"
+                 sh "cd backend && rm -rf package-lock.json yarn-lock" 
+                 sh "cd backend && sudo npm install
             }
         }
         stage("Deploy") {

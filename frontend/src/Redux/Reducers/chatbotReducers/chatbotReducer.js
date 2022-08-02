@@ -59,7 +59,7 @@ export const chatbotMessagesReducer = (state = initialState, action) => {
         for(var i = findNodeId ; i < state.optionBotMessages.length ; i++){
           if(state.optionBotMessages[i] === 0){
             console.log("index index" , i)
-            var choppedList = newList.splice(0, newList.length-1)
+            var choppedList = newList.splice(i + 2, newList.length-1)
             console.log("find match " , JSON.stringify(choppedList))
             break 
           }

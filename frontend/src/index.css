@@ -121,6 +121,7 @@
   padding: .5rem;
   border-radius: 10px;
 
+
 }
 
 .optionButtonsContainer{
@@ -294,6 +295,7 @@ input[type="date"] {
 
 .applicantInfomationButtons input {
   color: #033333;
+
   margin: auto;
   width: 80%;
 }

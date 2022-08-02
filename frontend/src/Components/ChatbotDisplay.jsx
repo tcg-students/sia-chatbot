@@ -35,6 +35,7 @@ const ChatbotDisplay = (props) => {
 
   return (
     <div>
+
     <div className="container">
       <div className="header">
 <button className="reset-button">Reset</button>

@@ -92,10 +92,7 @@ const ChatbotDisplay = (props) => {
           {nextNodes !== undefined
             ? nextNodes &&
               nextNodes.filter(item => item.id !== 0).map((item, i) => {
-//               nextNodes.map((item, i) => {
-//                 {
-//                   console.log("item", i);
-//                 }
+
                 return (
                   <div style={{ padding: ".5rem" }}>
                     {item.text ? (
@@ -128,7 +125,6 @@ const ChatbotDisplay = (props) => {
         <div>
           {nextNodes.map((item) => {
             if (item.application !== null) {
-              // console.log("item.app: ", item.application);
               return (
                 <FormIneractionController
                 {...props}

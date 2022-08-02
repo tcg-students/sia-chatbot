@@ -130,17 +130,8 @@ const ChatbotDisplay = (props) => {
             if (item.application !== null) {
               // console.log("item.app: ", item.application);
               return (
-                <JsonForm
-                  formStructure={formStructure}
-                  createForm={createForm}
-                  handleChange={handleChange}
-                  getFormDetails={getFormDetails}
-                  handleSubmit={handleSubmit}
-                  displayApplicantInfomation={displayApplicantInfomation}
-                  applicationFormAndApplicantInfoShow={
-                    applicationFormAndApplicantInfoShow
-                  }
-                  sendFormValues={sendFormValues}
+                <FormIneractionController
+                {...props}
                 />
               );
             }

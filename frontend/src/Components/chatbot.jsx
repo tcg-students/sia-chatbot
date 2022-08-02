@@ -54,6 +54,7 @@ const Chatbot = (props) => {
 
   const handleEdit = (e) => {
     e.preventDefault();
+
     setEditForm(!editForm);
   };
 
@@ -175,8 +176,11 @@ const Chatbot = (props) => {
   const nodeTextStyling = (text) => {
     let pattern = /(\d[.])/g;
     let foundMatch = pattern.test(text);
+
+
     if (foundMatch) {
       return "p-tag-text1";
+
     } else {
       return "p-tag-text";
     }

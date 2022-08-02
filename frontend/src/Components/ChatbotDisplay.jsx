@@ -35,13 +35,17 @@ const ChatbotDisplay = (props) => {
 
   return (
     <div>
-      <div className="chatBotHeaderContainer">
-        <div className="chatBotHeader">
-          <input
-            className="headerButtons"
-            onClick={handleResetChatbot}
-            value="Reset"
-          />
+
+    <div className="container">
+      <div className="header">
+<button className="reset-button">Reset</button>
+<h1 style={{color: "white", fontSize: "2rem"}}>chat-bot!</h1>
+<button className="speak-to-an-agent">Speak to an agent</button>
+      </div>
+      <div className="logo">
+        <img src={logo} alt="tcgLogo" />
+      </div>
+
 
           <div style={{ display: "flex", marginTop: "auto", gap: "10px" }}>
             <img style={{ height: "6vh" }} src={logo} alt="tcgLogo" />
@@ -62,7 +66,8 @@ const ChatbotDisplay = (props) => {
               .map((item) => {
                 return (
                   <div className="introMessage">
-                    <p>{item.text}</p>
+                   <div className="welcome-text"> <p >{item.text}</p>
+                   </div>
                   </div>
                 );
               })
@@ -75,6 +80,7 @@ const ChatbotDisplay = (props) => {
               introTreeMessages
                 .map((item, i) => {
                   return (
+
                     <div onClick={handleInitialNodesReset}>
                       <button
                         className="treeOptionButtons"
@@ -90,7 +96,7 @@ const ChatbotDisplay = (props) => {
                 .splice(1)
             : null}
         </div>
-        <div>
+        <div className="node-button-content">
           {nextNodes !== undefined
             ? nextNodes &&
               nextNodes.filter(item => item.id !== 0).map((item, i) => {
@@ -99,8 +105,10 @@ const ChatbotDisplay = (props) => {
 //                   console.log("item", i);
 //                 }
                 return (
-                  <div style={{ padding: ".5rem" }}>
+                  <div>
+                    {console.log(i)}
                     {item.text ? (
+         
                       <div>
                         <p
                           className={nodeTextStyling(item.text)}
@@ -121,8 +129,9 @@ const ChatbotDisplay = (props) => {
                           </button>
                         </div>
                       )
-                    )}
-                  </div>
+                  )
+                }
+                </div>
                 );
               })
             : null}
@@ -141,6 +150,7 @@ const ChatbotDisplay = (props) => {
         </div>
       </div>
 
+
       <div className="chatbotFooter">
         <p style={{ color: "white" }}>Command:</p>
         <Chatinput
@@ -148,6 +158,7 @@ const ChatbotDisplay = (props) => {
           nextNodes={nextNodes}
         />
       </div>
+    </div>
     </div>
   );
 };

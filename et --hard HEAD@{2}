@@ -1,0 +1,153 @@
+[33m6584c4a[m[33m ([m[1;36mHEAD -> [m[1;32mcommand-input[m[33m)[m HEAD@{0}: checkout: moving from command-input to command-input
+[33m6584c4a[m[33m ([m[1;36mHEAD -> [m[1;32mcommand-input[m[33m)[m HEAD@{1}: rebase: updating HEAD
+[33m1ae1cd2[m[33m ([m[1;31morigin/development[m[33m, [m[1;31morigin/backend/feature/ability-to-update-json-tree-function[m[33m)[m HEAD@{2}: pull origin development: checkout 1ae1cd24fb694556d77b79b43a36f7eb1dcb963e
+[33m6584c4a[m[33m ([m[1;36mHEAD -> [m[1;32mcommand-input[m[33m)[m HEAD@{3}: checkout: moving from f0a55f8377098f6235b9f926816042df34607170 to command-input
+[33mf0a55f8[m[33m ([m[1;31morigin/command-input[m[33m)[m HEAD@{4}: commit: refactored code and fixed code errors
+[33m8411e53[m HEAD@{5}: pull: checkout 8411e534bf4d4ef8b3b066c3062b89fa30425ac6
+[33m6584c4a[m[33m ([m[1;36mHEAD -> [m[1;32mcommand-input[m[33m)[m HEAD@{6}: commit: added classes to go with styling
+[33m0d4999c[m HEAD@{7}: rebase: updating HEAD
+[33m8411e53[m HEAD@{8}: pull: checkout 8411e534bf4d4ef8b3b066c3062b89fa30425ac6
+[33m0d4999c[m HEAD@{9}: checkout: moving from 5c4eca2fcc47cc652fc2b1ccecefc740bbc4ea7d to command-input
+[33m5c4eca2[m HEAD@{10}: commit: accepted incoming changes and removed errors
+[33m1ae1cd2[m[33m ([m[1;31morigin/development[m[33m, [m[1;31morigin/backend/feature/ability-to-update-json-tree-function[m[33m)[m HEAD@{11}: pull origin development: checkout 1ae1cd24fb694556d77b79b43a36f7eb1dcb963e
+[33m8411e53[m HEAD@{12}: commit: accepted incoming changes and removed errors
+[33mdd5f63f[m HEAD@{13}: pull: checkout dd5f63f501745be9c3f83e77b2926f6cfd28951b
+[33m0d4999c[m HEAD@{14}: rebase finished: returning to refs/heads/command-input
+[33m0d4999c[m HEAD@{15}: pull origin development: checkout 0d4999c4a456edb1df6114157dd9476af9c1b2c3
+[33mdd5f63f[m HEAD@{16}: checkout: moving from 0d4999c4a456edb1df6114157dd9476af9c1b2c3 to command-input
+[33m0d4999c[m HEAD@{17}: pull origin development: checkout 0d4999c4a456edb1df6114157dd9476af9c1b2c3
+[33mdd5f63f[m HEAD@{18}: checkout: moving from 0d4999c4a456edb1df6114157dd9476af9c1b2c3 to command-input
+[33m0d4999c[m HEAD@{19}: pull origin development --rebase --autostash: checkout 0d4999c4a456edb1df6114157dd9476af9c1b2c3
+[33mdd5f63f[m HEAD@{20}: pull origin development --rebase --autostash: updating HEAD
+[33mdd5f63f[m HEAD@{21}: pull --rebase --autostash: updating HEAD
+[33mdd5f63f[m HEAD@{22}: rebase finished: returning to refs/heads/command-input
+[33mdd5f63f[m HEAD@{23}: pull --rebase --autostash: checkout dd5f63f501745be9c3f83e77b2926f6cfd28951b
+[33mb63e19d[m HEAD@{24}: pull --rebase --autostash: updating HEAD
+[33mb63e19d[m HEAD@{25}: commit (amend): New commit message
+[33mdd5f63f[m HEAD@{26}: checkout: moving from development to command-input
+[33m71a0944[m[33m ([m[1;32mdevelopment[m[33m)[m HEAD@{27}: checkout: moving from development to development
+[33m71a0944[m[33m ([m[1;32mdevelopment[m[33m)[m HEAD@{28}: commit: testinggit checkout command-input
+[33meb173b4[m[33m ([m[1;32medit-form[m[33m)[m HEAD@{29}: checkout: moving from edit-form to development
+[33meb173b4[m[33m ([m[1;32medit-form[m[33m)[m HEAD@{30}: pull origin development: Fast-forward
+[33ma865967[m HEAD@{31}: checkout: moving from development to edit-form
+[33meb173b4[m[33m ([m[1;32medit-form[m[33m)[m HEAD@{32}: pull: Fast-forward
+[33m6fcabf3[m[33m ([m[1;31morigin/FixForBug[m[33m)[m HEAD@{33}: checkout: moving from edit-form to development
+[33ma865967[m HEAD@{34}: commit: added a new component for editing a form
+[33m6fcabf3[m[33m ([m[1;31morigin/FixForBug[m[33m)[m HEAD@{35}: checkout: moving from development to edit-form
+[33m6fcabf3[m[33m ([m[1;31morigin/FixForBug[m[33m)[m HEAD@{36}: pull: Fast-forward
+[33m7c2838b[m HEAD@{37}: checkout: moving from edit-form to development
+[33m7c2838b[m HEAD@{38}: checkout: moving from development to edit-form
+[33m7c2838b[m HEAD@{39}: checkout: moving from chatbot-styling to development
+[33m2fedd90[m[33m ([m[1;31morigin/chatbot-styling[m[33m, [m[1;32mchatbot-styling[m[33m)[m HEAD@{40}: rebase (abort): updating HEAD
+[33mc6f7272[m HEAD@{41}: commit: fix merge files
+[33ma7e564e[m HEAD@{42}: pull --tags origin chatbot-styling (pick): feature/ added form button and ternary operator
+[33m16cc087[m HEAD@{43}: pull --tags origin chatbot-styling (pick): added props to jsonForm components
+[33m9beeea9[m HEAD@{44}: pull --tags origin chatbot-styling (pick): reusable components for application form
+[33m54c3621[m HEAD@{45}: pull --tags origin chatbot-styling (start): checkout 54c36217715401cca29cfbb367ba55add040aa84
+[33m2fedd90[m[33m ([m[1;31morigin/chatbot-styling[m[33m, [m[1;32mchatbot-styling[m[33m)[m HEAD@{46}: commit: fix merge conflicts
+[33m1c20ebe[m HEAD@{47}: checkout: moving from b5dbe86061710d804e5d9e2c108757d175fbbc2d to chatbot-styling
+[33mb5dbe86[m HEAD@{48}: pull origin development (pick): Add css classes on html components
+[33m0138769[m HEAD@{49}: pull origin development (pick): Add css props
+[33m6fcabf3[m[33m ([m[1;31morigin/FixForBug[m[33m)[m HEAD@{50}: pull origin development (start): checkout 6fcabf38531e2e21b4a3b22d2b437d7f335124c7
+[33md99ccf9[m HEAD@{51}: pull (pick): feature/ added form button and ternary operator
+[33mf1ac8ee[m HEAD@{52}: pull (pick): added props to jsonForm components
+[33m907f17e[m HEAD@{53}: pull (pick): reusable components for application form
+[33m54c3621[m HEAD@{54}: pull (start): checkout 54c36217715401cca29cfbb367ba55add040aa84
+[33m1c20ebe[m HEAD@{55}: rebase (abort): updating HEAD
+[33m1c20ebe[m HEAD@{56}: rebase (abort): updating HEAD
+[33m1c20ebe[m HEAD@{57}: checkout: moving from 7e31492e4c5b64350afbf64bed59976d3d6c4b1b to chatbot-styling
+[33m7e31492[m HEAD@{58}: pull (pick): feature/ added form button and ternary operator
+[33mc98854b[m HEAD@{59}: pull (pick): added props to jsonForm components
+[33m770f366[m HEAD@{60}: pull (pick): reusable components for application form
+[33m54c3621[m HEAD@{61}: pull (start): checkout 54c36217715401cca29cfbb367ba55add040aa84
+[33m1c20ebe[m HEAD@{62}: rebase (abort): updating HEAD
+[33m1c20ebe[m HEAD@{63}: rebase (abort): updating HEAD
+[33m1c20ebe[m HEAD@{64}: checkout: moving from f6d20890fbe74d408aefb75b0d875e896844673d to chatbot-styling
+[33mf6d2089[m HEAD@{65}: commit: merged files
+[33m70426d3[m HEAD@{66}: pull (pick): feature/ added form button and ternary operator
+[33m6f7e610[m HEAD@{67}: pull (pick): added props to jsonForm components
+[33mbb7db19[m HEAD@{68}: pull (pick): reusable components for application form
+[33m54c3621[m HEAD@{69}: pull (start): checkout 54c36217715401cca29cfbb367ba55add040aa84
+[33m1c20ebe[m HEAD@{70}: checkout: moving from ed33613fafb06d3b419e39010b0e43d9399b4c93 to chatbot-styling
+[33med33613[m HEAD@{71}: commit: pushing stashed files
+[33mc687529[m HEAD@{72}: pull (pick): feature/ added form button and ternary operator
+[33m0473903[m HEAD@{73}: pull (pick): added props to jsonForm components
+[33mc8e2a80[m HEAD@{74}: pull (pick): reusable components for application form
+[33m54c3621[m HEAD@{75}: pull (start): checkout 54c36217715401cca29cfbb367ba55add040aa84
+[33m1c20ebe[m HEAD@{76}: pull origin development (finish): returning to refs/heads/chatbot-styling
+[33m1c20ebe[m HEAD@{77}: pull origin development (pick): Add css classes on html components
+[33m79ca2f7[m HEAD@{78}: pull origin development (pick): Add css props
+[33mf54edb9[m HEAD@{79}: pull origin development (start): checkout f54edb93adec37fb0a45ef1639ff0352ed8217c0
+[33m54c3621[m HEAD@{80}: commit: Add css classes on html components
+[33m0248ff7[m HEAD@{81}: commit: Add css props
+[33m7c2838b[m HEAD@{82}: checkout: moving from Lindokuhle to chatbot-styling
+[33m2695b24[m HEAD@{83}: checkout: moving from chatbot-styling to Lindokuhle
+[33m7c2838b[m HEAD@{84}: checkout: moving from Lindokuhle to chatbot-styling
+[33m2695b24[m HEAD@{85}: checkout: moving from chatbot-styling to Lindokuhle
+[33m7c2838b[m HEAD@{86}: checkout: moving from Lindokuhle to chatbot-styling
+[33m2695b24[m HEAD@{87}: commit (amend): merge conflicts
+[33md921b98[m HEAD@{88}: commit: merge conflicts
+[33mfe85b7c[m HEAD@{89}: checkout: moving from chatbot-styling to Lindokuhle
+[33m7c2838b[m HEAD@{90}: checkout: moving from development to chatbot-styling
+[33m7c2838b[m HEAD@{91}: pull: Fast-forward
+[33me8299d5[m HEAD@{92}: checkout: moving from Lindokuhle to development
+[33mfe85b7c[m HEAD@{93}: reset: moving to HEAD
+[33mfe85b7c[m HEAD@{94}: checkout: moving from chatbot-styling to Lindokuhle
+[33me8299d5[m HEAD@{95}: checkout: moving from b550e12a68e827ea9541dcc6a873a46ed57f8937 to chatbot-styling
+[33mb550e12[m HEAD@{96}: commit: added files from the pull request
+[33mc184813[m[33m ([m[1;31morigin/Lindokuhle[m[33m)[m HEAD@{97}: pull (start): checkout c18481387b60fd4e9a703e1005ff93a2fde85834
+[33mfe85b7c[m HEAD@{98}: checkout: moving from development to Lindokuhle
+[33me8299d5[m HEAD@{99}: checkout: moving from Lindokuhle to development
+[33mfe85b7c[m HEAD@{100}: rebase (abort): updating HEAD
+[33m16c8270[m HEAD@{101}: commit: fixing unmerged files
+[33mc184813[m[33m ([m[1;31morigin/Lindokuhle[m[33m)[m HEAD@{102}: pull (start): checkout c18481387b60fd4e9a703e1005ff93a2fde85834
+[33mfe85b7c[m HEAD@{103}: rebase (abort): updating HEAD
+[33mc184813[m[33m ([m[1;31morigin/Lindokuhle[m[33m)[m HEAD@{104}: pull (start): checkout c18481387b60fd4e9a703e1005ff93a2fde85834
+[33mfe85b7c[m HEAD@{105}: rebase (abort): updating HEAD
+[33mc184813[m[33m ([m[1;31morigin/Lindokuhle[m[33m)[m HEAD@{106}: pull (start): checkout c18481387b60fd4e9a703e1005ff93a2fde85834
+[33mfe85b7c[m HEAD@{107}: checkout: moving from 8243fde9243bc3180c6c3e48517e82ddceba51d3 to Lindokuhle
+[33m8243fde[m HEAD@{108}: commit: removed file
+[33md649391[m HEAD@{109}: commit: resolved merge conflicts
+[33mc184813[m[33m ([m[1;31morigin/Lindokuhle[m[33m)[m HEAD@{110}: pull (start): checkout c18481387b60fd4e9a703e1005ff93a2fde85834
+[33mfe85b7c[m HEAD@{111}: rebase (abort): updating HEAD
+[33mc184813[m[33m ([m[1;31morigin/Lindokuhle[m[33m)[m HEAD@{112}: pull (start): checkout c18481387b60fd4e9a703e1005ff93a2fde85834
+[33mfe85b7c[m HEAD@{113}: rebase (abort): updating HEAD
+[33mc184813[m[33m ([m[1;31morigin/Lindokuhle[m[33m)[m HEAD@{114}: pull (start): checkout c18481387b60fd4e9a703e1005ff93a2fde85834
+[33mfe85b7c[m HEAD@{115}: checkout: moving from e208b358ed57b1d7613dd9069a2a56fabffd1505 to Lindokuhle
+[33me208b35[m HEAD@{116}: commit: adding files from the changes
+[33meb57c1d[m HEAD@{117}: commit: accepted incoming changes from the pull request
+[33mc184813[m[33m ([m[1;31morigin/Lindokuhle[m[33m)[m HEAD@{118}: pull (start): checkout c18481387b60fd4e9a703e1005ff93a2fde85834
+[33mfe85b7c[m HEAD@{119}: checkout: moving from dba9d6341242465ad83fbce8f97ac7dff2e4bbd4 to Lindokuhle
+[33mdba9d63[m HEAD@{120}: commit: fixing errors that came after pulling
+[33mc184813[m[33m ([m[1;31morigin/Lindokuhle[m[33m)[m HEAD@{121}: pull (start): checkout c18481387b60fd4e9a703e1005ff93a2fde85834
+[33mfe85b7c[m HEAD@{122}: commit: added styling to chatbot
+[33mc80f234[m HEAD@{123}: pull origin development (finish): returning to refs/heads/Lindokuhle
+[33mc80f234[m HEAD@{124}: pull origin development (pick): modified file
+[33m7c2838b[m HEAD@{125}: pull origin development (start): checkout 7c2838b9dbfd99497e9a81a2c2bdccb45ce81f63
+[33m063ac8b[m HEAD@{126}: pull origin development (finish): returning to refs/heads/Lindokuhle
+[33m063ac8b[m HEAD@{127}: pull origin development (pick): modified file
+[33m75ba878[m HEAD@{128}: pull origin development (start): checkout 75ba878ccb968c5d4e2964524aea5cc6b0d0f491
+[33mc184813[m[33m ([m[1;31morigin/Lindokuhle[m[33m)[m HEAD@{129}: commit: modified file
+[33me8299d5[m HEAD@{130}: pull origin development: Fast-forward
+[33mc5665dd[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmaster[m[33m)[m HEAD@{131}: checkout: moving from development to Lindokuhle
+[33me8299d5[m HEAD@{132}: checkout: moving from Lindokuhle to development
+[33mc5665dd[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmaster[m[33m)[m HEAD@{133}: checkout: moving from development to Lindokuhle
+[33me8299d5[m HEAD@{134}: checkout: moving from Lindokuhle to development
+[33mc5665dd[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmaster[m[33m)[m HEAD@{135}: checkout: moving from development to Lindokuhle
+[33me8299d5[m HEAD@{136}: pull: Fast-forward
+[33me066def[m HEAD@{137}: pull: Fast-forward
+[33m1ae5f74[m HEAD@{138}: pull: Fast-forward
+[33m9ece7a0[m HEAD@{139}: pull: Fast-forward
+[33m569a3bb[m HEAD@{140}: checkout: moving from development to development
+[33m569a3bb[m HEAD@{141}: checkout: moving from Lindokuhle to development
+[33mc5665dd[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmaster[m[33m)[m HEAD@{142}: checkout: moving from master to Lindokuhle
+[33mc5665dd[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmaster[m[33m)[m HEAD@{143}: checkout: moving from Lindokuhle to master
+[33mc5665dd[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmaster[m[33m)[m HEAD@{144}: checkout: moving from development to Lindokuhle
+[33m569a3bb[m HEAD@{145}: pull (finish): returning to refs/heads/development
+[33m569a3bb[m HEAD@{146}: pull (pick): corrected the spelling error found in the name financial instead of finantial
+[33m9998a81[m HEAD@{147}: pull (start): checkout 9998a81eac570043555e0a46306c9cfd8ecef3bb
+[33m879bd52[m HEAD@{148}: commit: corrected the spelling error found in the name financial instead of finantial
+[33mefe4543[m HEAD@{149}: checkout: moving from Lindokuhle to development
+[33mc5665dd[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmaster[m[33m)[m HEAD@{150}: checkout: moving from master to Lindokuhle
+[33mc5665dd[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmaster[m[33m)[m HEAD@{151}: pull: Fast-forward
+[33m90b0a33[m HEAD@{152}: clone: from https://github.com/tcg-students/sia-chatbot.git

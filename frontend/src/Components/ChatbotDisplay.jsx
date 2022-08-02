@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { FormIneractionController } from "./FormIneractionController";
 import Chatinput from "./ChatInput";
-import EditForm from "./EditForm.jsx";
 
 const ChatbotDisplay = (props) => {
   const {
@@ -13,7 +11,6 @@ const ChatbotDisplay = (props) => {
     createForm,
     formStructure,
     handleEdit,
-    edit,
     getFormDetails,
     handleChange,
     handleSubmit,
@@ -35,26 +32,20 @@ const ChatbotDisplay = (props) => {
 
   return (
     <div>
-
-    <div className="container">
-      <div className="header">
-<button className="reset-button">Reset</button>
-<h1 style={{color: "white", fontSize: "2rem"}}>chat-bot!</h1>
-<button className="speak-to-an-agent">Speak to an agent</button>
-      </div>
-      <div className="logo">
-        <img src={logo} alt="tcgLogo" />
-      </div>
-
-
-          <div style={{ display: "flex", marginTop: "auto", gap: "10px" }}>
-            <img style={{ height: "6vh" }} src={logo} alt="tcgLogo" />
-            <h1>Sia Chatbot</h1>
-          </div>
+      <div className="chatBotHeaderContainer">
+        <div className="chatBotHeader">
+          <input
+            className="headerButtons"
+            onClick={handleResetChatbot}
+            value="Reset"/>
+          
+          <h1>chat-bot</h1>
+          <input className="headerButtons" value="Speak to a Agent" disabled/>
         </div>
         <div className="logoContainer">
           {logo === undefined ? null : (
             <div className="logo">
+              <img src={logo} alt="tcgLogo" />
             </div>
           )}
         </div>
@@ -65,9 +56,8 @@ const ChatbotDisplay = (props) => {
             introTreeMessages
               .map((item) => {
                 return (
-                  <div className="introMessage">
-                   <div className="welcome-text"> <p >{item.text}</p>
-                   </div>
+                  <div className="inztroMessage">
+                    <p>{item.text}</p>
                   </div>
                 );
               })
@@ -80,7 +70,6 @@ const ChatbotDisplay = (props) => {
               introTreeMessages
                 .map((item, i) => {
                   return (
-
                     <div onClick={handleInitialNodesReset}>
                       <button
                         className="treeOptionButtons"
@@ -96,7 +85,7 @@ const ChatbotDisplay = (props) => {
                 .splice(1)
             : null}
         </div>
-        <div className="node-button-content">
+        <div>
           {nextNodes !== undefined
             ? nextNodes &&
               nextNodes.filter(item => item.id !== 0).map((item, i) => {
@@ -105,10 +94,8 @@ const ChatbotDisplay = (props) => {
 //                   console.log("item", i);
 //                 }
                 return (
-                  <div>
-                    {console.log(i)}
+                  <div style={{ padding: ".5rem" }}>
                     {item.text ? (
-         
                       <div>
                         <p
                           className={nodeTextStyling(item.text)}
@@ -129,9 +116,8 @@ const ChatbotDisplay = (props) => {
                           </button>
                         </div>
                       )
-                  )
-                }
-                </div>
+                    )}
+                  </div>
                 );
               })
             : null}
@@ -141,15 +127,23 @@ const ChatbotDisplay = (props) => {
             if (item.application !== null) {
               // console.log("item.app: ", item.application);
               return (
-                <FormIneractionController
-                {...props}
+                <JsonForm
+                  formStructure={formStructure}
+                  createForm={createForm}
+                  handleChange={handleChange}
+                  getFormDetails={getFormDetails}
+                  handleSubmit={handleSubmit}
+                  displayApplicantInfomation={displayApplicantInfomation}
+                  applicationFormAndApplicantInfoShow={
+                    applicationFormAndApplicantInfoShow
+                  }
+                  sendFormValues={sendFormValues}
                 />
               );
             }
           })}
         </div>
       </div>
-
 
       <div className="chatbotFooter">
         <p style={{ color: "white" }}>Command:</p>
@@ -158,7 +152,6 @@ const ChatbotDisplay = (props) => {
           nextNodes={nextNodes}
         />
       </div>
-    </div>
     </div>
   );
 };

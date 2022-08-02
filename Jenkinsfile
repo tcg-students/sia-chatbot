@@ -9,7 +9,7 @@ pipeline {
                  sh "cd frontend && sudo npm run build"
             }
         }
-          stage("Build Backend") {
+       stage("Build Backend") {
             steps { 
                  echo "Build Backend!!"
                  sh "cd backend && rm -rf package-lock.json yarn-lock" 

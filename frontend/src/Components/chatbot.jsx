@@ -39,23 +39,17 @@ const Chatbot = (props) => {
 
   let nextNodes = useSelector(
     (state) => state.botConversation.optionBotMessages
-    );
+  );
 
-    let currentNodes = useSelector(
-      (state) => state.botConversation.currentBotRes
-    );
+  let stateId = useSelector((state) => state.botConversation.id);
 
-
-
-    let stateId = useSelector((state) => state.botConversation.id);
-  
   const MySwal = withReactContent(Swal);
 
   let dispatch = useDispatch();
   useEffect(() => {
     return () => {
-      handleResetChatbot()
-    }
+      handleResetChatbot();
+    };
   }, []);
 
   const handleEdit = (e) => {
@@ -65,23 +59,23 @@ const Chatbot = (props) => {
   };
 
   const getImage = (_) => {
-    setTimeout(function () {
+    setTimeout(function() {
       dispatch(getLogo());
     }, 500);
-    getInitialContents()
+    getInitialContents();
   };
 
   const getInitialContents = async () => {
     try {
-      setTimeout(function () {
+      setTimeout(function() {
         dispatch(getInitialTreeText());
       }, 1000);
-      setTimeout(function () {
-        dispatch(getInitialNode({treeid:1}));
+      setTimeout(function() {
+        dispatch(getInitialNode({ treeid: 1 }));
       }, 1800);
-      setCompareNode([])
+      setCompareNode([]);
 
-      return 
+      return;
     } catch (error) {
       console.log("error", error);
     }
@@ -101,14 +95,14 @@ const Chatbot = (props) => {
         }
         setCompareNode(nextNodes);
       }
-      setTimeout(function () {
+      setTimeout(function() {
         dispatch(getInitialNode(id));
       }, 1000);
     } catch (error) {
       console.log("error", error);
     }
   };
-    
+
   const nodeDisplay = (_) => {
     setChatbotNodes(nextNodes);
   };
@@ -136,7 +130,7 @@ const Chatbot = (props) => {
 
     if (applicationForm) {
       setDisplayApplicantInfomation([applicationForm]);
-      setTimeout(function () {
+      setTimeout(function() {
         setapplicationFormAndApplicantInfoShow(true);
       }, 1000);
     }
@@ -151,13 +145,13 @@ const Chatbot = (props) => {
       timer: 5000,
       showConfirmButton: false,
     });
-    setTimeout(function () {
+    setTimeout(function() {
       dispatch(resetStateValues());
       getImage();
       handleInitialNodeOptions();
       setDisplayApplicantInfomation([]);
       setapplicationFormAndApplicantInfoShow(false);
-      setApplicationForm({})
+      setApplicationForm({});
     }, 5000);
   };
 
@@ -179,7 +173,6 @@ const Chatbot = (props) => {
     let foundMatch = pattern.test(text);
     if (foundMatch) {
       return "p-tag-text1";
-
     } else {
       return "p-tag-text";
     }
@@ -205,7 +198,6 @@ const Chatbot = (props) => {
         sendFormValues={sendFormValues}
         handleScroll={handleScroll}
         handleResetChatbot={handleResetChatbot}
-        // handleInitialNodesReset={handleInitialNodesReset}
         nodeTextStyling={nodeTextStyling}
         editForm={editForm}
         applicationForm={applicationForm}

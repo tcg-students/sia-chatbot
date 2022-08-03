@@ -22,7 +22,6 @@ export const getInitialNode = (obj) => {
   return async (dispatch) => {
     const response = await axios.post(`http://localhost:4000/get_initial_nodes`,obj);
     const getInitialNodeData = response.data;
-    console.log(" getInitialNodeData" ,  getInitialNodeData)
     dispatch({ type: actions.GETTING_FIRST_NODE_OPTIONS, idObj : obj,  payload: getInitialNodeData });
     console.log('payload', obj)
   };

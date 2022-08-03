@@ -54,28 +54,14 @@ export const chatbotMessagesReducer = (state = initialState, action) => {
     case REMOVE_LAST_NODES:
       console.log("remove action " , action.payload)
       var textList = [...state.optionBotMessages];
-      // var newListCopy = [...state.optionBotMessages];
-      // var newListWithOutLast = newListCopy.slice(0, -1);
-      // var secondLastIndex = newListWithOutLast.findLastIndex(
-      //   (item) => item.id == 0
-      // );
-
-      // console.log("choppedList", choppedList);
-      // console.log("secondLastIndex", secondLastIndex);
-      // console.log("newListWithOutLast", newListWithOutLast);
-
       var foundIndex = 0;
       var indexOfOption = 0;
-
       for (var i in state.optionBotMessages) {
-        // console.log("state.optionBotMessages[i] === action.payload.nodeid" , state.optionBotMessages[i] ,action.payload.nodeid)
         if (state.optionBotMessages[i].id === action.payload.nodeid) {
           foundIndex = i;
         }
       }
-
       for(var i  = foundIndex ; i <  state.optionBotMessages.length ; i ++){
-        // console.log("state.optionBotMessages[i]" , state.optionBotMessages[i])       
         if(state.optionBotMessages[i].id === 0){
           indexOfOption = i
           break 
@@ -84,10 +70,8 @@ export const chatbotMessagesReducer = (state = initialState, action) => {
 
       var choppedList = textList.splice(0, indexOfOption);
 
-      // console.log("foundIndex", indexOfOption);
       return {
         ...state,
-        // currentNodes: [...action.payload],
         optionBotMessages: [...choppedList],
         currentBotRes: action.payload,
       };

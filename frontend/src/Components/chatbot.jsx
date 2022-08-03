@@ -16,7 +16,6 @@ import {
 const Chatbot = (props) => {
   const [applicationForm, setApplicationForm] = useState({});
   const [chatbotNodes, setChatbotNodes] = useState([]);
-  const [nodes , setNodes] = useState([]);
   const [formStructure, setFormStructure] = useState([]);
   const [editForm, setEditForm] = useState(false);
   const [compareNode, setCompareNode] = useState([]);
@@ -46,7 +45,6 @@ const Chatbot = (props) => {
       (state) => state.botConversation.currentBotRes
     );
 
-    console.log('tumi', currentNodes)
 
 
     let stateId = useSelector((state) => state.botConversation.id);
@@ -55,8 +53,6 @@ const Chatbot = (props) => {
 
   let dispatch = useDispatch();
   useEffect(() => {
-    getImage();
-    handleInitialNodeOptions();
     return () => {
       handleResetChatbot()
     }
@@ -84,7 +80,6 @@ const Chatbot = (props) => {
         dispatch(getInitialNode({treeid:1}));
       }, 1800);
       setCompareNode([])
-      setNodes(currentNodes)
 
       return 
     } catch (error) {
@@ -109,14 +104,11 @@ const Chatbot = (props) => {
       setTimeout(function () {
         dispatch(getInitialNode(id));
       }, 1000);
-      setNodes([...nodes ,currentNodes])
     } catch (error) {
       console.log("error", error);
     }
   };
-  
-  console.log('nodes', nodes)
-  
+    
   const nodeDisplay = (_) => {
     setChatbotNodes(nextNodes);
   };
@@ -182,14 +174,14 @@ const Chatbot = (props) => {
     setapplicationFormAndApplicantInfoShow(false);
   };
 
-  const handleInitialNodesReset = (_) => {
-    dispatch(resetInitialNodes());
-    getImage();
-    handleInitialNodeOptions();
-    setDisplayApplicantInfomation([]);
-    setCompareNode([])
+  // const handleInitialNodesReset = (_) => {
+  //   dispatch(resetInitialNodes());
+  //   getImage();
+  //   handleInitialNodeOptions();
+  //   setDisplayApplicantInfomation([]);
+  //   setCompareNode([])
 
-  };
+  // };
 
   const nodeTextStyling = (text) => {
     let pattern = /(\d[.])/g;
@@ -222,7 +214,7 @@ const Chatbot = (props) => {
         sendFormValues={sendFormValues}
         handleScroll={handleScroll}
         handleResetChatbot={handleResetChatbot}
-        handleInitialNodesReset={handleInitialNodesReset}
+        // handleInitialNodesReset={handleInitialNodesReset}
         nodeTextStyling={nodeTextStyling}
         editForm={editForm}
         applicationForm={applicationForm}

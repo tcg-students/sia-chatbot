@@ -39,7 +39,7 @@ export const chatbotMessagesReducer = (state = initialState, action) => {
       //  console.log("newListObj" , newListObj)
       return {
         ...state,
-        optionBotMessages: [...state.optionBotMessages,...action.payload],
+        optionBotMessages: newListObj,
         currentBotRes: action.payload
       };
 

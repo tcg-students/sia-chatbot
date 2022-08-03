@@ -16,6 +16,7 @@ import {
 const Chatbot = (props) => {
   const [applicationForm, setApplicationForm] = useState({});
   const [chatbotNodes, setChatbotNodes] = useState([]);
+  const [nodes , setNodes] = useState([]);
   const [formStructure, setFormStructure] = useState([]);
   const [editForm, setEditForm] = useState(false);
   const [compareNode, setCompareNode] = useState([]);
@@ -39,10 +40,16 @@ const Chatbot = (props) => {
 
   let nextNodes = useSelector(
     (state) => state.botConversation.optionBotMessages
-  );
+    );
+
+    let currentNodes = useSelector(
+      (state) => state.botConversation.currentBotRes
+    );
+
+    console.log('tumi', currentNodes)
 
 
-  let stateId = useSelector((state) => state.botConversation.id);
+    let stateId = useSelector((state) => state.botConversation.id);
   
   const MySwal = withReactContent(Swal);
 
@@ -50,6 +57,9 @@ const Chatbot = (props) => {
   useEffect(() => {
     getImage();
     handleInitialNodeOptions();
+    return () => {
+      handleResetChatbot()
+    }
   }, []);
 
   const handleEdit = (e) => {
@@ -62,15 +72,21 @@ const Chatbot = (props) => {
     setTimeout(function () {
       dispatch(getLogo());
     }, 500);
-    getInitialContents();
+    getInitialContents()
   };
 
-  const getInitialContents = async (_) => {
+  const getInitialContents = async () => {
     try {
       setTimeout(function () {
         dispatch(getInitialTreeText());
       }, 1000);
+      setTimeout(function () {
+        dispatch(getInitialNode({treeid:1}));
+      }, 1800);
       setCompareNode([])
+      setNodes(currentNodes)
+
+      return 
     } catch (error) {
       console.log("error", error);
     }
@@ -93,12 +109,14 @@ const Chatbot = (props) => {
       setTimeout(function () {
         dispatch(getInitialNode(id));
       }, 1000);
+      setNodes([...nodes ,currentNodes])
     } catch (error) {
       console.log("error", error);
     }
   };
-
-
+  
+  console.log('nodes', nodes)
+  
   const nodeDisplay = (_) => {
     setChatbotNodes(nextNodes);
   };

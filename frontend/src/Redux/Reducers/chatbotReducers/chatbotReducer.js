@@ -34,38 +34,37 @@ export const chatbotMessagesReducer = (state = initialState, action) => {
           id: 0,
           application: null,
          
-        }];
-  
-  
-        console.log("newListObj" , newListObj)
-      return {
-        ...state,
-        optionBotMessages: [...newListObj],
-        currentBotRes: action.payload
-      };
-
-      case "UPDATE_ID":
-        console.log('action.obj', action.payload)
-        return {
-          ...state , 
-          id:action.payload.nodeid ? action.payload.nodeid : action.payload.treeid
         }
-
-    case REMOVE_LAST_NODES:
-        var textList = [...state.optionBotMessages]
-        var newListCopy = [...state.optionBotMessages]
-        var newListWithOutLast = newListCopy.slice(0, -1)
-        var secondLastIndex = newListWithOutLast.findLastIndex(item => item.id == 0);  
-        var choppedList = textList.splice(0, secondLastIndex + 1)
-
-        console.log("choppedList" , choppedList)
-
+      ];
+      //  console.log("newListObj" , newListObj)
       return {
         ...state,
-        currentNodes: [...action.payload],
-        optionBotMessages: [...choppedList],
+        optionBotMessages: [...state.optionBotMessages,...action.payload],
         currentBotRes: action.payload
       };
+
+      // case "UPDATE_ID":
+      //   // console.log('action.obj', action.payload)
+      //   return {
+      //     ...state , 
+      //     id:action.payload.nodeid ? action.payload.nodeid : action.payload.treeid
+      //   }
+
+    // case REMOVE_LAST_NODES:
+    //     var textList = [...state.optionBotMessages]
+    //     var newListCopy = [...state.optionBotMessages]
+    //     var newListWithOutLast = newListCopy.slice(0, -1)
+    //     var secondLastIndex = newListWithOutLast.findLastIndex(item => item.id == 0);  
+    //     var choppedList = textList.splice(0, secondLastIndex + 1)
+
+    //     console.log("choppedList" , choppedList)
+
+    //   return {
+    //     ...state,
+    //     currentNodes: [...action.payload],
+    //     optionBotMessages: [...choppedList],
+    //     currentBotRes: action.payload
+    //   };
 
     case actions.GETTING_NODE_OPTIONS:
       return {

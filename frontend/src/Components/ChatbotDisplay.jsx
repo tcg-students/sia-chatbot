@@ -27,6 +27,7 @@ const ChatbotDisplay = (props) => {
     nodeTextStyling,
   } = props;
 
+
   useEffect(() => {
     nodeDisplay();
     handleScroll();
@@ -61,29 +62,11 @@ const ChatbotDisplay = (props) => {
                   </div>
                 );
               })
-              .slice(0, 1)}
+              }
         </div>
 
         <div className="treeOptions">
-          {introTreeMessages !== undefined
-            ? introTreeMessages &&
-              introTreeMessages
-                .map((item, i) => {
-                  return (
-                    <div onClick={handleInitialNodesReset}>
-                      <button
-                        className="treeOptionButtons"
-                        onClick={() =>
-                          handleInitialNodeOptions({ treeid: item.id })
-                        }
-                      >
-                        {item.text}
-                      </button>
-                    </div>
-                  );
-                })
-                .splice(1)
-            : null}
+          
         </div>
         <div>
           {nextNodes !== undefined

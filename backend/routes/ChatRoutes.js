@@ -29,14 +29,16 @@ const chatRoutes = (app) => {
 
   app.post("/node/:treename", async (req, res) => {
     const nodes = req.body
+    console.log('nodes', nodes)
     console.log("nodes" , nodes)
 
     const treeId = await createTree(req.params.treename)
+    console.log('treeId', treeId)
     insertAllNodes(nodes , treeId)
-    res.send(201);
+    console.log('insertAllNodes', insertAllNodes)
+    // res.send({treeId ,insertAllNodes}).status(201);
   });
 
-  // });
 
 };
 

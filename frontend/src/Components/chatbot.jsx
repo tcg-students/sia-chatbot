@@ -62,10 +62,10 @@ const Chatbot = (props) => {
     setTimeout(function () {
       dispatch(getLogo());
     }, 500);
-    getWelcomeContents();
+    getInitialContents();
   };
 
-  const getWelcomeContents = async (_) => {
+  const getInitialContents = async (_) => {
     try {
       setTimeout(function () {
         dispatch(getInitialTreeText());

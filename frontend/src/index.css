@@ -328,7 +328,26 @@ input[type="date"] {
 @media (min-width: 320px) and (max-width: 374px) {
   .logo {
       width: 80% !important;
-      height: 12vh;
+      margin: 0 !important;
+      height: 11.5vh !important;
+      
+      
     }
+
+    .chatBotHeader {
+      color: white;
+      height: 5.5rem;
+      background-color: black;
+      display: grid;
+      padding: 0.8rem;
+      grid-template-columns: 30% 70%;
+      text-align: center;
+  }
+
+  .chatBotHeader input {
+    height: 50px;
+    text-align: center;
+    border-radius: 15px;
+  }
  
 }

@@ -46,9 +46,9 @@ export const getApplicationFormValues = (data) => {
   };
 };
 
-export const removeLastNodes = () => {
+export const removeLastNodes = (id) => {
   return async (dispatch) => {
-    dispatch({ type: "REMOVE_LAST_NODES", payload: [] });
+    dispatch({ type: "REMOVE_LAST_NODES", payload: id });
   };
 };
 

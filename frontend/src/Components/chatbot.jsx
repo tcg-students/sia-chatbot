@@ -96,7 +96,7 @@ const Chatbot = (props) => {
       if (id.nodeid) {
         for (var i in compareNode) {
           if (compareNode[i].id === id.nodeid) {
-            dispatch(removeLastNodes());
+            dispatch(removeLastNodes(id));
           }
         }
         setCompareNode(nextNodes);
@@ -173,15 +173,6 @@ const Chatbot = (props) => {
     setDisplayApplicantInfomation([]);
     setapplicationFormAndApplicantInfoShow(false);
   };
-
-  // const handleInitialNodesReset = (_) => {
-  //   dispatch(resetInitialNodes());
-  //   getImage();
-  //   handleInitialNodeOptions();
-  //   setDisplayApplicantInfomation([]);
-  //   setCompareNode([])
-
-  // };
 
   const nodeTextStyling = (text) => {
     let pattern = /(\d[.])/g;

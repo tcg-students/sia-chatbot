@@ -38,7 +38,7 @@ const ChatbotDisplay = (props) => {
     <div>
       <div className="chatBotHeaderContainer">
         <div className="chatBotHeader">
-          <input
+          <input type="button"
             className="headerButtons"
             onClick={handleResetChatbot}
             value="Reset"
@@ -49,6 +49,7 @@ const ChatbotDisplay = (props) => {
             <h1>Sia Chatbot</h1>
           </div>
         </div>
+
       </div>
       <div id="chatbotBodyDiv" className="chatbotBody">
         <div>
@@ -56,7 +57,7 @@ const ChatbotDisplay = (props) => {
             introTreeMessages
               .map((item) => {
                 return (
-                  <div className="introMessage">
+                  <div className="inztroMessage">
                     <p>{item.text}</p>
                   </div>
                 );

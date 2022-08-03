@@ -19,9 +19,7 @@ const Chatbot = (props) => {
   const [formStructure, setFormStructure] = useState([]);
   const [editForm, setEditForm] = useState(false);
   const [compareNode, setCompareNode] = useState([]);
-  const [displayApplicantInfomation, setDisplayApplicantInfomation] = useState(
-    []
-  );
+  const [displayApplicantInfomation, setDisplayApplicantInfomation] = useState([]);
 
   const [
     applicationFormAndApplicantInfoShow,

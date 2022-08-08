@@ -23,7 +23,6 @@ const ChatbotDisplay = (props) => {
     sendFormValues,
     handleScroll,
     handleResetChatbot,
-    handleInitialResetButton,
     nodeTextStyling,
   } = props;
 
@@ -83,7 +82,7 @@ const ChatbotDisplay = (props) => {
                   } else if (item.image) {
                     return (
                       <div className="mapImage" style={{ padding: ".5rem" }}>
-                        <img className="mapImage" src={item.image} alt="" />
+                        <img className="mapImage" src={item.image} alt="Map Logo" />
                       </div>
                     );
                   } else if (item.option) {
@@ -92,7 +91,7 @@ const ChatbotDisplay = (props) => {
                         <button
                           className="optionButtons"
                           onClick={() =>
-                            handleInitialResetButton({ nodeid: item.id })
+                            handleResetChatbot({ nodeid: item.id })
                           }
                         >
                           {item.option}

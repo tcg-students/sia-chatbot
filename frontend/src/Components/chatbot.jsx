@@ -170,6 +170,8 @@ const Chatbot = (props) => {
     handleInitialNodeOptions();
     setDisplayApplicantInfomation([]);
     setapplicationFormAndApplicantInfoShow(false);
+    setCompareNode([]);
+
   };
 
   const nodeTextStyling = (text) => {
@@ -181,10 +183,6 @@ const Chatbot = (props) => {
       return "p-tag-text";
     }
   };
-
-  const handleInitialResetButton = _ => {
-    handleResetChatbot()
-  }
 
   return (
     <div>
@@ -209,7 +207,6 @@ const Chatbot = (props) => {
         nodeTextStyling={nodeTextStyling}
         editForm={editForm}
         applicationForm={applicationForm}
-        handleInitialResetButton={handleInitialResetButton}
       />
     </div>
   );

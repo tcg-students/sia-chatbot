@@ -46,9 +46,10 @@ const Chatbot = (props) => {
   const MySwal = withReactContent(Swal);
 
   let dispatch = useDispatch();
+
   useEffect(() => {
     return () => {
-      handleResetChatbot();
+      getImage()
     };
   }, []);
 
@@ -90,7 +91,10 @@ const Chatbot = (props) => {
       if (id.nodeid) {
         for (var i in compareNode) {
           if (compareNode[i].id === id.nodeid) {
+            setTimeout(function() {
             dispatch(removeLastNodes(id));
+            }, 1000);
+            
           }
         }
         setCompareNode(nextNodes);

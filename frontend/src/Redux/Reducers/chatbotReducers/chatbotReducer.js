@@ -52,7 +52,6 @@ export const chatbotMessagesReducer = (state = initialState, action) => {
       };
 
     case REMOVE_LAST_NODES:
-      console.log("remove action " , action.payload)
       var textList = [...state.optionBotMessages];
       var foundIndex = 0;
       var indexOfOption = 0;

@@ -1,5 +1,4 @@
 const sgMail = require("@sendgrid/mail");
-const { getTcgLogo } = require("../chatQueries/ChatQueries");
 const fs = require("fs");
 require("dotenv").config();
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
@@ -8,9 +7,7 @@ const sendGridRoute = (app) => {
     console.log("req.body", req.body);
     const emailSendTO = "ramollosamuel2@gmail.com";
     const emailSendFrom = "sia.chatbot1@gmail.com";
-    const logo = await getTcgLogo();
-    console.log("logo", logo[0].image);
-    let sendGridLogo = logo[0].image
+  
     const getApplicantsDetails = (_) => {
       const timeElapsed = Date.now();
       const today = new Date(timeElapsed).toDateString();
@@ -20,16 +17,15 @@ const sendGridRoute = (app) => {
         
         <div style="margin: auto; width:30%;padding:0.5rem; background-color:#2a7e5f;">
       <div style="background-color: #2a7e5f;">
-        <div style="margin:auto; width:20%; padding:2rem;">
-          <img  src="" alt="Logo" />
-        </div>
-        <div style="padding:1px;">
-          <p style="text-align:center;color:white; font-weight: bold; font-size: 1.5rem;">TRADITIONAL ONE-ONE MENTORSHIP/TRAINING</p>
+        <div style="padding: 17px; display: flex;gap: 1rem;">
+        <img style="width: 30%;" src="http://thecodingground.com/img/Logo-White.png" alt="Logo" />
+          <p style="text-align:center;color:white; font-weight: bold; font-size: 1rem;">TRADITIONAL ONE-ONE MENTORSHIP/TRAINING</p>
         </div>
         <div>
-        <p style="color:white;">${today}</p>
+        <p style="color:white;padding:2rem;">${today}</p>
         </div>
       </div>
+      <hr>
       <div style="padding:2rem;">
         <h2 style="color:black">Email Address: <a style="color:rgb(147, 147, 249)" href="#">${req.body["emailAddress"]}</a></h2>
         <div style="padding-top:1rem;"><h3 style="color:black;">&#9995;Hi...</h3></div>
@@ -44,20 +40,21 @@ const sendGridRoute = (app) => {
         </html>`;
       }
 
+
+
       if ("Distance/virtual mentorship/training" in req.body) {
         return `<html>
   <div style="margin: auto; width:30%; border: 1px solid #2a7e5f;">
         <div style="background-color: #2a7e5f;">
-          <div style="margin:auto; width:20%; padding:2rem;">
-            <img  src="" alt="Logo" />
-          </div>        
-          <div style="padding:1px;">
+        <div style="padding: 17px; display: flex;gap: 1rem;">
+          <img style="width: 30%;" src="http://thecodingground.com/img/Logo-White.png" alt="Logo" />
             <p style="text-align:center;color:white; font-weight: bold; font-size: 1.5rem;">DISTANCE/VIRTUAL MENTOSHIP/TRAINING</p>
           </div>
           <div>
           <p style="color:white;">${today}</p>
           </div>
         </div>
+
         <div style="padding:1px;">
           <p style=" font-weight: bold; font-size: 1.5rem;"></p>
         </div>
@@ -77,14 +74,15 @@ const sendGridRoute = (app) => {
   </html>`;
       }
 
+
+
       if (["Group training"] in req.body) {
         return `<html>
         <div style="margin: auto; width:30%; border: 1px solid #2a7e5f;">
         <div style="background-color: #2a7e5f;">
-          <div style="margin:auto; width:20%; padding:2rem;">
-            <img  src="" alt="Logo" />
-          </div>
-          <div style="padding:1px;">
+         
+        <div style="padding: 17px; display: flex;gap: 1rem;">
+          <img style="width: 30%;" src="http://thecodingground.com/img/Logo-White.png" alt="Logo" />
             <p style="text-align:center;color:white; font-weight: bold; font-size: 1.5rem;">GROUP TRAINING</p>
           </div>
           <div>
@@ -108,14 +106,14 @@ const sendGridRoute = (app) => {
         </html>`;
       }
 
+
+
       if (["Sponsor TCG"] in req.body) {
         return `<html>
         <div style="margin: auto; width:30%; border: 1px solid #2a7e5f;">
         <div style="background-color: #2a7e5f;">
-          <div style="margin:auto; width:20%; padding:2rem;">
-            <img  src="" alt="Logo" />
-          </div>
-          <div style="padding:1px;">
+        <div style="padding: 17px; display: flex;gap: 1rem;">
+          <img style="width: 30%;" src="http://thecodingground.com/img/Logo-White.png" alt="Logo" />
             <p style="text-align:center;color:white; font-weight: bold; font-size: 1.5rem;">SPONSOR TCG</p>
           </div>
           <div>
@@ -139,14 +137,14 @@ const sendGridRoute = (app) => {
         </html>`;
       }
 
+
+
       if (["Sponsor a student"] in req.body) {
         return `<html>
         <div style="margin: auto; width:30%; border: 1px solid #2a7e5f;">
         <div style="background-color: #2a7e5f;">
-          <div style="margin:auto; width:20%; padding:2rem;">
-            <img  src="" alt="Logo" />
-          </div>
-          <div style="padding:1px;">
+        <div style="padding: 17px; display: flex; gap: 1rem;">
+                 <img style="width: 30%;" src="http://thecodingground.com/img/Logo-White.png" alt="Logo" />
             <p style="text-align:center;color:white; font-weight: bold; font-size: 1.5rem;">SPONSOR STUDENT</p>
           </div>
           <div>
@@ -170,14 +168,15 @@ const sendGridRoute = (app) => {
         </html>`;
       }
 
+
+
       if (["The kind of support you’d like to offer (Optional)"] in req.body) {
         return `<html>
         <div style="margin: auto; width:30%; border: 1px solid #2a7e5f;">
         <div style="background-color: #2a7e5f;">
-          <div style="margin:auto; width:20%; padding:2rem;">
-            <img  src=${sendGridLogo} alt="Logo" />
-          </div>
-          <div style="padding:1px;">
+
+        <div style="padding: 17px; display: flex;gap: 1rem;">
+          <img style="width: 30%;" src="http://thecodingground.com/img/Logo-White.png" alt="Logo" />
             <p style="text-align:center;color:white; font-weight: bold; font-size: 1.5rem;">OTHER</p>
           </div>
           <div>
@@ -200,16 +199,16 @@ const sendGridRoute = (app) => {
         </html>`;
       }
 
+
+
       if (
         ["Give us an idea of what you’re looking for (Optional)"] in req.body
       ) {
         return `<html>
         <div style="margin: auto; width:30%; border: 1px solid #2a7e5f;">
         <div style="background-color: #2a7e5f;">
-          <div style="margin:auto; width:20%; padding:2rem;">
-            <img  src="" alt="Logo" />
-          </div>
-          <div style="padding:1px;">
+        <div style="padding: 17px; display: flex;gap: 1rem;">
+          <img style="width: 30%;" src="http://thecodingground.com/img/Logo-White.png" alt="Logo" />
             <p style="text-align:center;color:white; font-weight: bold; font-size: 1.5rem;">PLACE TCG INTERNS</p>
           </div>
           <div>
@@ -233,14 +232,15 @@ const sendGridRoute = (app) => {
         </html>`;
       }
 
+
+
       if (["whatsappNumber"] in req.body) {
         return `<html>
         <div style="margin: auto; width:30%; border: 1px solid #2a7e5f;">
         <div style="background-color: #2a7e5f;">
-          <div style="margin:auto; width:20%; padding:2rem;">
-            <img  src="" alt="Logo" />
-          </div> 
-        <div style="padding:1px;">
+
+        <div style="padding: 17px; display: flex; gap: 1rem;">
+        <img style="width: 30%;" src="http://thecodingground.com/img/Logo-White.png" alt="Logo" />
           <p style="color:white; text-align: center; font-weight: bold; font-size: 1.5rem;">STUDENT APPLICATION</p>
         </div>
         <div>

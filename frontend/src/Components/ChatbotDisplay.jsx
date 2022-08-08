@@ -23,7 +23,7 @@ const ChatbotDisplay = (props) => {
     sendFormValues,
     handleScroll,
     handleResetChatbot,
-    handleInitialNodesReset,
+    handleInitialResetButton,
     nodeTextStyling,
   } = props;
 
@@ -74,7 +74,7 @@ const ChatbotDisplay = (props) => {
                 .map((item, i) => {
                   if (item.text) {
                     return (
-                      <div style={{padding:".5rem"}}>
+                      <div style={{ padding: ".5rem" }}>
                         <p className={nodeTextStyling(item.text)}>
                           {item.text}
                         </p>
@@ -82,13 +82,24 @@ const ChatbotDisplay = (props) => {
                     );
                   } else if (item.image) {
                     return (
-                      <div style={{padding:".5rem"}}>
-                        <img src={item.image} alt="" />
+                      <div className="mapImage" style={{ padding: ".5rem" }}>
+                        <img className="mapImage" src={item.image} alt="" />
                       </div>
                     );
                   } else if (item.option) {
-                    return (
-                      <div style={{padding:".5rem"}}>
+                    return item.option.includes("Back to top") ? (
+                      <div style={{ padding: ".5rem" }}>
+                        <button
+                          className="optionButtons"
+                          onClick={() =>
+                            handleInitialResetButton({ nodeid: item.id })
+                          }
+                        >
+                          {item.option}
+                        </button>
+                      </div>
+                    ) : (
+                      <div style={{ padding: ".5rem" }}>
                         <button
                           className="optionButtons"
                           onClick={() =>

@@ -182,6 +182,10 @@ const Chatbot = (props) => {
     }
   };
 
+  const handleInitialResetButton = _ => {
+    handleResetChatbot()
+  }
+
   return (
     <div>
       <ChatbotDisplay
@@ -205,6 +209,7 @@ const Chatbot = (props) => {
         nodeTextStyling={nodeTextStyling}
         editForm={editForm}
         applicationForm={applicationForm}
+        handleInitialResetButton={handleInitialResetButton}
       />
     </div>
   );

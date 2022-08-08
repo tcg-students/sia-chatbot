@@ -319,6 +319,15 @@ input[type="date"] {
   cursor: pointer;
 }
 
+.mapImage{
+  width:30% !important;
+  margin:auto !important;
+}
+
+.mapImage img {
+  width: 100% !important;
+}
+
 .headerButtons:hover {
   box-shadow: 0px 0px 30px;
   border: 2px solid rgb(29, 198, 186);

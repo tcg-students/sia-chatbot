@@ -5,22 +5,37 @@
       
     }
 
-    .headerButtons {
-      margin-left: 2rem;
-    }
-*{
-  
-  box-sizing: border-box;
-}
+  .chatbotFooter{
+    display: flex;
+  }
+
     .chatBotHeader {
         color: white;
-        /* height: 5rem; */
         background-color: black;
-        /* display: grid; */
         padding: 0.8rem;
-        /* grid-template-columns: auto auto; */
-        /* text-align: center; */
+      
+    }
+    .heading{
+      margin-bottom: 1rem;
     }
 
+.introMessage{
+  padding: 0.5rem;
+  width: 100%;
+  text-align: center;
+  margin-top: 2rem !important;
 }
+
+.chatbotFooter p {
+    float: left;
+    margin-right: 11rem;
+}
+
+.form-control{
+  width: 100% !important;
+}
+
+}
+
+
    

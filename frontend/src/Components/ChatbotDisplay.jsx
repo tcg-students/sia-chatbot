@@ -46,7 +46,7 @@ const ChatbotDisplay = (props) => {
 
           <div style={{ display: "flex", marginTop: "auto", gap: "10px" }}>
             <img className="logo" style={{ height: "6vh" }} src={logo} alt="tcgLogo" />
-            <h1>Sia Chatbot</h1>
+            <h1 className="heading">Sia Chatbot</h1>
           </div>
         </div>
 
@@ -57,7 +57,7 @@ const ChatbotDisplay = (props) => {
             introTreeMessages
               .map((item) => {
                 return (
-                  <div className="inztroMessage">
+                  <div className="introMessage">
                     <p>{item.text}</p>
                   </div>
                 );

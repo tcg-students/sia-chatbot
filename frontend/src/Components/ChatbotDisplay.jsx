@@ -95,9 +95,9 @@ const ChatbotDisplay = (props) => {
 //                   console.log("item", i);
 //                 }
                 return (
-                  <div style={{ padding: ".5rem" }}>
+                  <div style={{ padding: ".5rem" }} >
                     {item.text ? (
-                      <div>
+                      <div className="nextOptionContainer">
                         <p
                           className={nodeTextStyling(item.text)}
                         >
@@ -106,7 +106,7 @@ const ChatbotDisplay = (props) => {
                       </div>
                     ) : (
                       item.option && (
-                        <div>
+                        <div className="nextOptions">
                           <button
                             className="optionButtons"
                             onClick={() =>

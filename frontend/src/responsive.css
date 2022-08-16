@@ -27,12 +27,44 @@
 }
 
 .chatbotFooter p {
+  display: none;
     float: left;
     margin-right: 11rem;
 }
 
 .form-control{
-  width: 100% !important;
+  /* width: 100% !important; */
+  border-radius: 0 ! important;
+}
+
+.p-tag-text1{
+  margin: 1rem 0;
+  width: 100%;
+}
+.p-tag-text{
+  margin: 0;
+}
+
+.nextOptionContainer{
+  margin: 0;
+  display: grid;
+  
+}
+
+.optionButtons{
+  width: 90%;
+}
+
+.nextOptions{
+  margin: 0;
+}
+
+.selectInput{
+  display: flex;
+  flex: auto;
+}
+.treeOptionButtons{
+  width: 90% !important;
 }
 
 }

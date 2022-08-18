@@ -35,7 +35,7 @@ const ChatbotDisplay = (props) => {
     <div>
       <div className="chatBotHeaderContainer">
         <div className="chatBotHeader">
-          <input
+          <input type="button"
             className="headerButtons"
             onClick={handleResetChatbot}
             value="Reset"
@@ -49,8 +49,10 @@ const ChatbotDisplay = (props) => {
               alt="tcgLogo"
             />
             <h1>Sia Chatbot</h1>
+
           </div>
         </div>
+
       </div>
       <div id="chatbotBodyDiv" className="chatbotBody">
         <div>
@@ -75,6 +77,7 @@ const ChatbotDisplay = (props) => {
                     return (
                       <div style={{ padding: ".5rem" }}>
                         <p className={nodeTextStyling(item.text)}>
+
                           {item.text}
                         </p>
                       </div>
@@ -111,6 +114,7 @@ const ChatbotDisplay = (props) => {
                     );
                   }
                 })
+
             : null}
         </div>
         <div>

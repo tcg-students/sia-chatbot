@@ -1,0 +1,1 @@
+cd frontend && npm run build && rm -rf  ../backend/public/build && mv build ../backend/public

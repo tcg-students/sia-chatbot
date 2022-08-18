@@ -22,8 +22,8 @@ export const getInitialNode = (obj) => {
   return async (dispatch) => {
     const response = await axios.post(`http://localhost:4000/get_initial_nodes`,obj);
     const getInitialNodeData = response.data;
-    console.log("obj" , obj , " getInitialNodeData" ,  getInitialNodeData)
     dispatch({ type: actions.GETTING_FIRST_NODE_OPTIONS, idObj : obj,  payload: getInitialNodeData });
+    console.log('payload', obj)
   };
 };
 
@@ -45,9 +45,9 @@ export const getApplicationFormValues = (data) => {
   };
 };
 
-export const removeLastNodes = () => {
+export const removeLastNodes = (id) => {
   return async (dispatch) => {
-    dispatch({ type: "REMOVE_LAST_NODES", payload: [] });
+    dispatch({ type: "REMOVE_LAST_NODES", payload: id });
   };
 };
 

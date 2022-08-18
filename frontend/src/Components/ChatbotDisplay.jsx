@@ -86,7 +86,7 @@ const ChatbotDisplay = (props) => {
                       </div>
                     );
                   } else if (item.option) {
-                    return item.option.includes("Back to top") ? (
+                    return item.option.includes("Back to top" ) ? (
                       <div style={{ padding: ".5rem" }}>
                         <button
                           className="optionButtons"
@@ -116,7 +116,6 @@ const ChatbotDisplay = (props) => {
         <div>
           {nextNodes.map((item) => {
             if (item.application !== null) {
-              // console.log("item.app: ", item.application);
               return <FormIneractionController {...props} />;
             }
           })}

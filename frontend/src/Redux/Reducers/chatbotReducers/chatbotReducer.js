@@ -60,10 +60,10 @@ export const chatbotMessagesReducer = (state = initialState, action) => {
           foundIndex = i;
         }
       }
-      for(var i  = foundIndex ; i <  state.optionBotMessages.length ; i ++){
-        if(state.optionBotMessages[i].id === 0){
-          indexOfOption = i
-          break 
+      for (var i = foundIndex; i < state.optionBotMessages.length; i++) {
+        if (state.optionBotMessages[i].id === 0) {
+          indexOfOption = i;
+          break;
         }
       }
 
@@ -93,15 +93,11 @@ export const chatbotMessagesReducer = (state = initialState, action) => {
     case actions.RESET_STATE:
       return {
         ...state,
-        welcomeMessages: action.payload || state,
-        optionBotMessages: action.payload,
-        currentBotRes: [],
-      };
-
-    case actions.RESET_INITIAL_NODES:
-      return {
-        ...state,
-        optionBotMessages: action.payload,
+        nodeId: [],
+        currentNodes: [],
+        welcomeMessages: [],
+        optionBotMessages: [],
+        id: null,
       };
 
     default:

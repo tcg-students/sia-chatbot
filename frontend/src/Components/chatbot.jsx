@@ -6,10 +6,9 @@ import withReactContent from "sweetalert2-react-content";
 import {
   getInitialTreeText,
   getInitialNode,
-  getLogo,
   getApplicationFormValues,
   resetStateValues,
-  resetInitialNodes,
+  loading,
   removeLastNodes,
   getInitialNode2,
 } from "../Redux/ActionCreators/index";
@@ -20,21 +19,18 @@ const Chatbot = (props) => {
   const [editForm, setEditForm] = useState(false);
   const [compareNode, setCompareNode] = useState([]);
   const [displayApplicantInfomation, setDisplayApplicantInfomation] = useState([]);
+  
 
   const [
     applicationFormAndApplicantInfoShow,
     setapplicationFormAndApplicantInfoShow,
   ] = useState(false);
 
-  let logo = useSelector(
-    (state) =>
-      state.botConversation.logo.logo &&
-      state.botConversation.logo.logo[0].image
-  );
   let introTreeMessages = useSelector(
     (state) => state.botConversation.welcomeMessages
   );
-
+  let isLoading = useSelector((state)=>state.botConversation.isLoading)
+  
   let nextNodes = useSelector(
     (state) => state.botConversation.optionBotMessages
   );
@@ -58,15 +54,14 @@ const Chatbot = (props) => {
   };
 
   const getImage = (_) => {
-    setTimeout(function() {
-      dispatch(getLogo());
-    }, 500);
+  
     getInitialContents();
   };
 
   const getInitialContents = async () => {
     try {
       setTimeout(function() {
+        dispatch(loading(true))
         dispatch(getInitialTreeText());
       }, 1000);
       setTimeout(function() {
@@ -82,6 +77,7 @@ const Chatbot = (props) => {
 
   const handleInitialNodeOptions = async (id) => {
     try {
+      dispatch(loading(true))
       dispatch(getInitialNode2(id));
       if (stateId === id.nodeid) {
         return;
@@ -109,18 +105,24 @@ const Chatbot = (props) => {
     setChatbotNodes(nextNodes);
   };
 
+  
+
   const jsonForm = nextNodes.filter((item) => item.id !== 0);
   var object = jsonForm && jsonForm[jsonForm.length - 1];
+   console.log("obj", object)
 
   const createForm = (_) => {
     var values = [];
     if (object) {
       for (var i in object.application) {
-        values.push({ name: i, value: object.application[i] });
+        values.push({ name: i, value: object.application[i]});
+        console.log('values', values)
       }
     }
     setFormStructure(values);
   };
+
+  console.log("form", formStructure)
 
   const handleChange = (e) => {
     setApplicationForm({ ...applicationForm, [e.target.name]: e.target.value });
@@ -163,12 +165,15 @@ const Chatbot = (props) => {
   };
 
   const handleResetChatbot = (_) => {
-    dispatch(resetStateValues());
-    getImage();
-    handleInitialNodeOptions();
-    setDisplayApplicantInfomation([]);
-    setapplicationFormAndApplicantInfoShow(false);
-    setCompareNode([]);
+    dispatch(loading(true))
+    setTimeout(function() {
+      dispatch(resetStateValues());
+      getImage();
+      handleInitialNodeOptions();
+      setDisplayApplicantInfomation([]);
+      setapplicationFormAndApplicantInfoShow(false);
+      setCompareNode([]);
+         }, 2000);
 
   };
 
@@ -187,7 +192,6 @@ const Chatbot = (props) => {
   return (
     <div>
       <ChatbotDisplay
-        logo={logo}
         introTreeMessages={introTreeMessages}
         nextNodes={nextNodes}
         nodeDisplay={nodeDisplay}
@@ -201,6 +205,7 @@ const Chatbot = (props) => {
         applicationFormAndApplicantInfoShow={
           applicationFormAndApplicantInfoShow
         }
+        isLoading={isLoading}
         sendFormValues={sendFormValues}
         handleScroll={handleScroll}
         handleResetChatbot={handleResetChatbot}

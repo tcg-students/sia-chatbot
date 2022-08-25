@@ -1,12 +1,14 @@
 import * as actions from "../../ActionTypes/index";
-const REMOVE_LAST_NODES = "REMOVE_LAST_NODES"
+
+const REMOVE_LAST_NODES = "REMOVE_LAST_NODES";
 let initialState = {
   logo: [],
   nodeId: [],
   currentNodes: [],
   welcomeMessages: [],
   optionBotMessages: [],
-  id:null
+  id: null,
+  isLoading:false
 };
 
 export const chatbotMessagesReducer = (state = initialState, action) => {
@@ -19,52 +21,59 @@ export const chatbotMessagesReducer = (state = initialState, action) => {
     case actions.GETTING_FIRST_TREE_WELCOME_MESSAGES:
       return {
         ...state,
+        isLoading:true,
         welcomeMessages: action.payload,
-
       };
 
     case actions.GETTING_FIRST_NODE_OPTIONS:
-      const newListObj = [...state.optionBotMessages,
+      const newListObj = [
+        ...state.optionBotMessages,
         {
           id: 0,
           application: null,
-         
         },
-        ...action.payload, {
+        ...action.payload,
+        {
           id: 0,
           application: null,
-         
-        }];
-  
-  
-        console.log("newListObj" , newListObj)
+        },
+      ];
       return {
         ...state,
-        optionBotMessages: [...newListObj],
-        currentBotRes: action.payload
+        optionBotMessages: newListObj,
+        currentBotRes: action.payload,
       };
 
-      case "UPDATE_ID":
-        console.log('action.obj', action.payload)
-        return {
-          ...state , 
-          id:action.payload.nodeid ? action.payload.nodeid : action.payload.treeid
-        }
+    case "UPDATE_ID":
+      return {
+        ...state,
+        id: action.payload.nodeid
+          ? action.payload.nodeid
+          : action.payload.treeid,
+      };
 
     case REMOVE_LAST_NODES:
-        var textList = [...state.optionBotMessages]
-        var newListCopy = [...state.optionBotMessages]
-        var newListWithOutLast = newListCopy.slice(0, -1)
-        var secondLastIndex = newListWithOutLast.findLastIndex(item => item.id == 0);  
-        var choppedList = textList.splice(0, secondLastIndex + 1)
+      var textList = [...state.optionBotMessages];
+      var foundIndex = 0;
+      var indexOfOption = 0;
+      for (var i in state.optionBotMessages) {
+        if (state.optionBotMessages[i].id === action.payload.nodeid) {
+          foundIndex = i;
+        }
+      }
+      for (var i = foundIndex; i < state.optionBotMessages.length; i++) {
+        if (state.optionBotMessages[i].id === 0) {
+          indexOfOption = i;
+          break;
+        }
+      }
 
-        console.log("choppedList" , choppedList)
+      var choppedList = textList.splice(0, indexOfOption);
 
       return {
         ...state,
-        currentNodes: [...action.payload],
         optionBotMessages: [...choppedList],
-        currentBotRes: action.payload
+        currentBotRes: action.payload,
       };
 
     case actions.GETTING_NODE_OPTIONS:
@@ -85,16 +94,16 @@ export const chatbotMessagesReducer = (state = initialState, action) => {
     case actions.RESET_STATE:
       return {
         ...state,
-        welcomeMessages: action.payload || state,
-        optionBotMessages: action.payload,
-        currentBotRes:[]
+        nodeId: [],
+        currentNodes: [],
+        welcomeMessages: [],
+        optionBotMessages: [],
+        id: null,
       };
-
-    case actions.RESET_INITIAL_NODES:
-      return {
-        ...state,
-        optionBotMessages: action.payload,
-      };
+    case actions.LOADING:
+      return{
+        ...state,isLoading: action.payload
+      }
 
     default:
       return state;

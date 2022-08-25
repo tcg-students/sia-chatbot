@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import { FormIneractionController } from "./FormIneractionController";
 import Chatinput from "./ChatInput";
 import EditForm from "./EditForm.jsx";
-import '../responsive.css'
+import Loading from "./Spinner.jsx"
+import "../responsive.css";
 
 const ChatbotDisplay = (props) => {
   const {
@@ -11,28 +12,16 @@ const ChatbotDisplay = (props) => {
     introTreeMessages,
     nextNodes,
     nodeDisplay,
-    createForm,
-    formStructure,
-    handleEdit,
-    edit,
-    getFormDetails,
-    handleChange,
-    handleSubmit,
-    displayApplicantInfomation,
-    applicationFormAndApplicantInfoShow,
-    sendFormValues,
     handleScroll,
     handleResetChatbot,
-    handleInitialNodesReset,
     nodeTextStyling,
+    isLoading
   } = props;
 
   useEffect(() => {
     nodeDisplay();
     handleScroll();
   });
-
- 
 
   return (
     <div>
@@ -42,11 +31,17 @@ const ChatbotDisplay = (props) => {
             className="headerButtons"
             onClick={handleResetChatbot}
             value="Reset"
-          />
+            />
 
           <div style={{ display: "flex", marginTop: "auto", gap: "10px" }}>
-            <img className="logo" style={{ height: "6vh" }} src={logo} alt="tcgLogo" />
+            <img
+              className="logo"
+              style={{ height: "6vh" }}
+              src={logo}
+              alt="tcgLogo"
+              />
             <h1>Sia Chatbot</h1>
+
           </div>
         </div>
 
@@ -54,84 +49,72 @@ const ChatbotDisplay = (props) => {
       <div id="chatbotBodyDiv" className="chatbotBody">
         <div>
           {introTreeMessages !== undefined &&
-            introTreeMessages
-              .map((item) => {
-                return (
-                  <div className="inztroMessage">
-                    <p>{item.text}</p>
-                  </div>
-                );
-              })
-              .slice(0, 1)}
+            introTreeMessages.map((item) => {
+              return (
+                <div className="introMessage">
+                  <p>{item.text}</p>
+                </div>
+              );
+            })}
         </div>
 
-        <div className="treeOptions">
-          {introTreeMessages !== undefined
-            ? introTreeMessages &&
-              introTreeMessages
-                .map((item, i) => {
-                  return (
-                    <div onClick={handleInitialNodesReset}>
-                      <button
-                        className="treeOptionButtons"
-                        onClick={() =>
-                          handleInitialNodeOptions({ treeid: item.id })
-                        }
-                      >
-                        {item.text}
-                      </button>
-                    </div>
-                  );
-                })
-                .splice(1)
-            : null}
-        </div>
+        <div className="treeOptions"></div>
         <div>
           {nextNodes !== undefined
             ? nextNodes &&
-              nextNodes.filter(item => item.id !== 0).map((item, i) => {
-//               nextNodes.map((item, i) => {
-//                 {
-//                   console.log("item", i);
-//                 }
+            nextNodes
+            .filter((item) => item.id !== 0)
+            .map((item, i) => {
+              if (item.text) {
                 return (
                   <div style={{ padding: ".5rem" }}>
-                    {item.text ? (
-                      <div>
-                        <p
-                          className={nodeTextStyling(item.text)}
-                        >
+                        <p className={nodeTextStyling(item.text)}>
+
                           {item.text}
                         </p>
                       </div>
-                    ) : (
-                      item.option && (
-                        <div>
-                          <button
-                            className="optionButtons"
-                            onClick={() =>
-                              handleInitialNodeOptions({ nodeid: item.id })
-                            }
+                    );
+                  } else if (item.image) {
+                    return (
+                      <div className="mapImage" style={{ padding: ".5rem" }}>
+                        <img className="mapImage" src={item.image} alt="Map Logo" />
+                      </div>
+                    );
+                  } else if (item.option) {
+                    return item.option.includes("Back to top" ) || item.option.includes("No" ) ? (
+                      <div style={{ padding: ".5rem" }}>
+                        <button
+                          className="optionButtons"
+                          onClick={() =>
+                            handleResetChatbot({ nodeid: item.id })
+                          }
                           >
-                            {item.option}
-                          </button>
-                        </div>
-                      )
-                    )}
-                  </div>
-                );
-              })
-            : null}
+                          {item.option}
+                        </button>
+                      </div>
+                    ) : (
+                      <div style={{ padding: ".5rem" }}>
+                        <button
+                          className="optionButtons"
+                          onClick={() =>
+                            handleInitialNodeOptions({ nodeid: item.id })
+                          }
+                          >
+                          {item.option}
+                        </button>
+                      </div>
+                    );
+                  }
+                })
+                
+                : null}
+
+               {isLoading && <Loading />} 
         </div>
         <div>
           {nextNodes.map((item) => {
             if (item.application !== null) {
-              // console.log("item.app: ", item.application);
-              return (
-                <FormIneractionController
-                {...props}
-                />
-              );
+              return <FormIneractionController {...props} />;
             }
           })}
         </div>

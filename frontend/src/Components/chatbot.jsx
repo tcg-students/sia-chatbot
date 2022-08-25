@@ -6,10 +6,9 @@ import withReactContent from "sweetalert2-react-content";
 import {
   getInitialTreeText,
   getInitialNode,
-  getLogo,
   getApplicationFormValues,
   resetStateValues,
-  resetInitialNodes,
+  loading,
   removeLastNodes,
   getInitialNode2,
 } from "../Redux/ActionCreators/index";
@@ -20,34 +19,32 @@ const Chatbot = (props) => {
   const [editForm, setEditForm] = useState(false);
   const [compareNode, setCompareNode] = useState([]);
   const [displayApplicantInfomation, setDisplayApplicantInfomation] = useState([]);
+  
 
   const [
     applicationFormAndApplicantInfoShow,
     setapplicationFormAndApplicantInfoShow,
   ] = useState(false);
 
-  let logo = useSelector(
-    (state) =>
-      state.botConversation.logo.logo &&
-      state.botConversation.logo.logo[0].image
-  );
   let introTreeMessages = useSelector(
     (state) => state.botConversation.welcomeMessages
   );
-
+  let isLoading = useSelector((state)=>state.botConversation.isLoading)
+  
   let nextNodes = useSelector(
     (state) => state.botConversation.optionBotMessages
   );
 
-
   let stateId = useSelector((state) => state.botConversation.id);
-  
+
   const MySwal = withReactContent(Swal);
 
   let dispatch = useDispatch();
+
   useEffect(() => {
-    getImage();
-    handleInitialNodeOptions();
+    return () => {
+      getImage()
+    };
   }, []);
 
   const handleEdit = (e) => {
@@ -57,18 +54,22 @@ const Chatbot = (props) => {
   };
 
   const getImage = (_) => {
-    setTimeout(function () {
-      dispatch(getLogo());
-    }, 500);
+  
     getInitialContents();
   };
 
-  const getInitialContents = async (_) => {
+  const getInitialContents = async () => {
     try {
-      setTimeout(function () {
+      setTimeout(function() {
+        dispatch(loading(true))
         dispatch(getInitialTreeText());
       }, 1000);
-      setCompareNode([])
+      setTimeout(function() {
+        dispatch(getInitialNode({ treeid: 1 }));
+      }, 1800);
+      setCompareNode([]);
+
+      return;
     } catch (error) {
       console.log("error", error);
     }
@@ -76,6 +77,7 @@ const Chatbot = (props) => {
 
   const handleInitialNodeOptions = async (id) => {
     try {
+      dispatch(loading(true))
       dispatch(getInitialNode2(id));
       if (stateId === id.nodeid) {
         return;
@@ -83,12 +85,15 @@ const Chatbot = (props) => {
       if (id.nodeid) {
         for (var i in compareNode) {
           if (compareNode[i].id === id.nodeid) {
-            dispatch(removeLastNodes());
+            setTimeout(function() {
+            dispatch(removeLastNodes(id));
+            }, 1000);
+            
           }
         }
         setCompareNode(nextNodes);
       }
-      setTimeout(function () {
+      setTimeout(function() {
         dispatch(getInitialNode(id));
       }, 1000);
     } catch (error) {
@@ -96,23 +101,28 @@ const Chatbot = (props) => {
     }
   };
 
-
   const nodeDisplay = (_) => {
     setChatbotNodes(nextNodes);
   };
 
+  
+
   const jsonForm = nextNodes.filter((item) => item.id !== 0);
   var object = jsonForm && jsonForm[jsonForm.length - 1];
+   console.log("obj", object)
 
   const createForm = (_) => {
     var values = [];
     if (object) {
       for (var i in object.application) {
-        values.push({ name: i, value: object.application[i] });
+        values.push({ name: i, value: object.application[i]});
+        console.log('values', values)
       }
     }
     setFormStructure(values);
   };
+
+  console.log("form", formStructure)
 
   const handleChange = (e) => {
     setApplicationForm({ ...applicationForm, [e.target.name]: e.target.value });
@@ -124,7 +134,7 @@ const Chatbot = (props) => {
 
     if (applicationForm) {
       setDisplayApplicantInfomation([applicationForm]);
-      setTimeout(function () {
+      setTimeout(function() {
         setapplicationFormAndApplicantInfoShow(true);
       }, 1000);
     }
@@ -139,13 +149,13 @@ const Chatbot = (props) => {
       timer: 5000,
       showConfirmButton: false,
     });
-    setTimeout(function () {
+    setTimeout(function() {
       dispatch(resetStateValues());
       getImage();
       handleInitialNodeOptions();
       setDisplayApplicantInfomation([]);
       setapplicationFormAndApplicantInfoShow(false);
-      setApplicationForm({})
+      setApplicationForm({});
     }, 5000);
   };
 
@@ -155,19 +165,15 @@ const Chatbot = (props) => {
   };
 
   const handleResetChatbot = (_) => {
-    dispatch(resetStateValues());
-    getImage();
-    handleInitialNodeOptions();
-    setDisplayApplicantInfomation([]);
-    setapplicationFormAndApplicantInfoShow(false);
-  };
-
-  const handleInitialNodesReset = (_) => {
-    dispatch(resetInitialNodes());
-    getImage();
-    handleInitialNodeOptions();
-    setDisplayApplicantInfomation([]);
-    setCompareNode([])
+    dispatch(loading(true))
+    setTimeout(function() {
+      dispatch(resetStateValues());
+      getImage();
+      handleInitialNodeOptions();
+      setDisplayApplicantInfomation([]);
+      setapplicationFormAndApplicantInfoShow(false);
+      setCompareNode([]);
+         }, 2000);
 
   };
 
@@ -178,7 +184,6 @@ const Chatbot = (props) => {
 
     if (foundMatch) {
       return "p-tag-text1";
-
     } else {
       return "p-tag-text";
     }
@@ -187,7 +192,6 @@ const Chatbot = (props) => {
   return (
     <div>
       <ChatbotDisplay
-        logo={logo}
         introTreeMessages={introTreeMessages}
         nextNodes={nextNodes}
         nodeDisplay={nodeDisplay}
@@ -201,10 +205,10 @@ const Chatbot = (props) => {
         applicationFormAndApplicantInfoShow={
           applicationFormAndApplicantInfoShow
         }
+        isLoading={isLoading}
         sendFormValues={sendFormValues}
         handleScroll={handleScroll}
         handleResetChatbot={handleResetChatbot}
-        handleInitialNodesReset={handleInitialNodesReset}
         nodeTextStyling={nodeTextStyling}
         editForm={editForm}
         applicationForm={applicationForm}

@@ -12,8 +12,8 @@ pipeline {
        stage("Build Backend") {
             steps { 
                  echo "Build Backend!!"
-                 sh "cd backend && rm -rf package-lock.json yarn-lock" 
-                 sh "cd backend && sudo npm install
+                 sh "cd ${WORKSPACE}/backend && sudo npm install"
+                
             }
         }
         stage("Deploy") {
@@ -22,6 +22,8 @@ pipeline {
                  sh "ls -al"
                 //sh "sudo rm -rf /var/www/html/sia-chatbot"
                 sh "cp -r ${WORKSPACE}/frontend/build ${WORKSPACE}/backend/public"
+                sh "cd  ${WORKSPACE}/backend && sudo npm start"
+            
             }
         }
     }

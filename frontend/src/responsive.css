@@ -1,0 +1,76 @@
+@media (min-width: 320px) and (max-width: 667px) {
+
+    .logo {
+        display: none;
+      
+    }
+
+  .chatbotFooter{
+    display: flex;
+  }
+
+    .chatBotHeader {
+        color: white;
+        background-color: black;
+        padding: 0.8rem;
+      
+    }
+    .heading{
+      margin-bottom: 1rem;
+    }
+
+.introMessage{
+  padding: 0.5rem;
+  width: 100%;
+  text-align: center;
+  margin-top: 2rem !important;
+}
+
+.chatbotFooter p {
+  display: none;
+    float: left;
+    margin-right: 11rem;
+}
+
+.form-control{
+  border-radius: 0 ! important;
+}
+
+.p-tag-text1{
+  margin: 1rem 0;
+  width: 100%;
+}
+.p-tag-text{
+  margin: 0;
+}
+
+.nextOptionContainer{
+  margin: 0;
+  display: grid;
+  
+}
+
+.optionButtons{
+  width: 90%;
+}
+
+.optionButtons:hover{
+  width: 90%;
+}
+
+.nextOptions{
+  margin: 0;
+}
+
+.selectInput{
+  display: flex;
+  flex: auto;
+}
+.treeOptionButtons{
+  width: 90% !important;
+}
+
+}
+
+
+   

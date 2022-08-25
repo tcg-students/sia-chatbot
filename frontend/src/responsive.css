@@ -1,4 +1,4 @@
-@media (min-width: 375px) and (max-width: 667px) {
+@media (min-width: 320px) and (max-width: 667px) {
 
     .logo {
         display: none;
@@ -33,7 +33,6 @@
 }
 
 .form-control{
-  /* width: 100% !important; */
   border-radius: 0 ! important;
 }
 
@@ -52,6 +51,10 @@
 }
 
 .optionButtons{
+  width: 90%;
+}
+
+.optionButtons:hover{
   width: 90%;
 }
 

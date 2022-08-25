@@ -1,4 +1,5 @@
 import * as actions from "../../ActionTypes/index";
+
 const REMOVE_LAST_NODES = "REMOVE_LAST_NODES";
 let initialState = {
   logo: [],
@@ -7,6 +8,7 @@ let initialState = {
   welcomeMessages: [],
   optionBotMessages: [],
   id: null,
+  isLoading:false
 };
 
 export const chatbotMessagesReducer = (state = initialState, action) => {
@@ -19,6 +21,7 @@ export const chatbotMessagesReducer = (state = initialState, action) => {
     case actions.GETTING_FIRST_TREE_WELCOME_MESSAGES:
       return {
         ...state,
+        isLoading:true,
         welcomeMessages: action.payload,
       };
 
@@ -35,7 +38,6 @@ export const chatbotMessagesReducer = (state = initialState, action) => {
           application: null,
         },
       ];
-      console.log("newListObj", newListObj);
       return {
         ...state,
         optionBotMessages: newListObj,
@@ -43,7 +45,6 @@ export const chatbotMessagesReducer = (state = initialState, action) => {
       };
 
     case "UPDATE_ID":
-      console.log("action.obj", action.payload);
       return {
         ...state,
         id: action.payload.nodeid
@@ -99,6 +100,10 @@ export const chatbotMessagesReducer = (state = initialState, action) => {
         optionBotMessages: [],
         id: null,
       };
+    case actions.LOADING:
+      return{
+        ...state,isLoading: action.payload
+      }
 
     default:
       return state;

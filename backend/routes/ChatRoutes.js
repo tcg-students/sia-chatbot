@@ -1,19 +1,19 @@
 const {
-  getTcgLogo,
-  insertAllNodes,
+  // getTcgLogo,
+  // insertAllNodes,
   getInitialTreeMessages,
   getInitialnodes,
-  getNode,
-  createTree,
-  createSingeNode
+  // getNode,
+  // createTree,
+  // createSingeNode
 } = require("../chatQueries/ChatQueries");
 
 const chatRoutes = (app) => {
 
-  app.get("/logo", async (req, res) => {
-    const logo = await getTcgLogo();
-    res.send({ logo });
-  });
+  // app.get("/logo", async (req, res) => {
+  //   const logo = await getTcgLogo();
+  //   res.send({ logo });
+  // });
 
   app.get("/treeMessages", async (req, res) => {
     const treeMessages = await getInitialTreeMessages();
@@ -27,17 +27,17 @@ const chatRoutes = (app) => {
     res.send(getInitialNodes);
   });
 
-  app.post("/node/:treename", async (req, res) => {
-    const nodes = req.body
-    console.log('nodes', nodes)
-    console.log("nodes" , nodes)
+  // app.post("/node/:treename", async (req, res) => {
+  //   const nodes = req.body
+  //   console.log('nodes', nodes)
+  //   console.log("nodes" , nodes)
 
-    const treeId = await createTree(req.params.treename)
-    console.log('treeId', treeId)
-    insertAllNodes(nodes , treeId)
-    console.log('insertAllNodes', insertAllNodes)
-    // res.send({treeId ,insertAllNodes}).status(201);
-  });
+  //   const treeId = await createTree(req.params.treename)
+  //   console.log('treeId', treeId)
+  //   insertAllNodes(nodes , treeId)
+  //   console.log('insertAllNodes', insertAllNodes)
+  //   // res.send({treeId ,insertAllNodes}).status(201);
+  // });
 
 
 };

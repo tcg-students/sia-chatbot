@@ -28,4 +28,13 @@ app.get("/bot-box/css", function (req, res) {
   res.sendFile(path.join(__dirname, "/public/build" + mainCss));
 });
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+
+if (process.env.NODE_ENV === "production") {
+  //   app.use(express.static(path.join(__dirname, 'client/build')));
+  app.use(express.static('frontend/build'));
+  app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "frontend", "build", "index.html"))
+  })
+}
+
+app.listen(port, () => console.log(`Example app listening on port ${4004}!`));

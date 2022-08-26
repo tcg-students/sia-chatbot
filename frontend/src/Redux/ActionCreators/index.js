@@ -3,7 +3,7 @@ import * as actions from "../ActionTypes/index";
 
 export const getLogo = () => {
   return async (dispatch) => {
-    const response = await axios.get("http://localhost:4000/logo");
+    const response = await axios.get("http://localhost:4004/logo");
     const getData = response.data;
     dispatch({ type: actions.GET_LOGO, payload: getData });
   };
@@ -12,7 +12,7 @@ export const getLogo = () => {
 
 export const getInitialTreeText = () => {
   return async (dispatch) => {
-    const response = await axios.get("http://localhost:4000/treeMessages");
+    const response = await axios.get("http://localhost:4004/treeMessages");
     const getData = response.data.treeMessages;
     dispatch({ type: actions.GETTING_FIRST_TREE_WELCOME_MESSAGES, payload: getData });
   };
@@ -20,7 +20,7 @@ export const getInitialTreeText = () => {
 
 export const getInitialNode = (obj) => {
   return async (dispatch) => {
-    const response = await axios.post(`http://localhost:4000/get_initial_nodes`,obj);
+    const response = await axios.post(`http://localhost:4004/get_initial_nodes`,obj);
     const getInitialNodeData = response.data;
     dispatch({ type: actions.GETTING_FIRST_NODE_OPTIONS, idObj : obj,  payload: getInitialNodeData });
     console.log('payload', obj)
@@ -39,7 +39,7 @@ payload: obj
 
 export const getApplicationFormValues = (data) => {
   return async (dispatch) => {
-    const response = await axios.post(`http://localhost:4000/send_email` , data);
+    const response = await axios.post(`http://localhost:4004/send_email` , data);
     const getFormData = response.data;
     dispatch({ type: actions.SEND_APPLICANT_DETAILS, payload: getFormData });
   };

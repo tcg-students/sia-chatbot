@@ -33,13 +33,12 @@ const getInitialTreeMessages = async () => {
 
   try {
     const res = await chats.query(query);
-console.log("res", res)
+    console.log("res", res);
     return res.rows;
   } catch (error) {
     console.log(error);
     await chats.release();
   }
-
 };
 
 // const createSingeNode = async (node) => {
@@ -124,11 +123,11 @@ const getInitialnodes = async (obj) => {
   const { treeid, nodeid } = obj;
   let req =
     treeid != undefined ? `node.tree_id=${treeid}` : "node.node_id=" + nodeid;
-    console.log("initial node req", req)
+  console.log("initial node req", req);
   try {
     let query = `SELECT * FROM node WHERE ${req};`;
     let getInitialNodeQuery = await chats.query(query);
-return getInitialNodeQuery
+    return getInitialNodeQuery;
   } catch (error) {
     console.log(error);
     await chats.release();

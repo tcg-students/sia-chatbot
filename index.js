@@ -37,4 +37,4 @@ if (process.env.NODE_ENV === "production") {
   })
 }
 
-app.listen(port, () => console.log(`Example app listening on port ${4004}!`));
+app.listen(4004, () => console.log(`Example app listening on port ${4004}!`));

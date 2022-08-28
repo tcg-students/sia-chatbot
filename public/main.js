@@ -1,7 +1,7 @@
 window.onload = loadContactMe;
 
 function loadContactMe() {
-    let style = `background-color: whitesmoke; border:4px solid whitesmoke; border-radius: 4px; color:black; position:absolute; top:40px; right:40px; z-index:1;`;
+    let style = `background-color: whitesmoke; border:4px solid whitesmoke; border-radius: 4px; color:black; position:absolute; bottom:40px; right:40px; z-index:9;`;
     var clickMeButton = document.createElement('button');
     clickMeButton.id = 'sia-the-bot';
     clickMeButton.innerHTML = 'Sia-Chatbot';
@@ -12,15 +12,16 @@ function loadContactMe() {
 
 function toggleBot(){
     let style = `
+    background-color: white;
     border:4px solid #ccc;
     border-radius: 4px;
     color:black;
     height: 400px;
     width: 300px;
     position:absolute;
-    top:70px;
+    bottom:70px;
     right:40px;
-    z-index:1;`;
+    z-index:9;`;
     var botContainer = document.createElement('div');
     botContainer.id = 'sia-chatbot-container';
     botContainer.style= style;

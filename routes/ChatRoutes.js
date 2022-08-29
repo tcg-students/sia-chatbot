@@ -20,7 +20,7 @@ const chatRoutes = (app) => {
       console.log("treeMessages", treeMessages);
       res.send({ treeMessages });
     } catch (error) {
-      console.log("treeError", error);
+      res.send({error, messsage:"gfdgfdgdfgdfgdf"});
     }
   });
 

@@ -17,9 +17,11 @@ if (process.env.NODE_ENV === "production") {
     })
   }
 
+  
+
 app.use(express.json())
 app.use(cors())
 
 chatRoutes(app)
 sendGridRoute(app)
-app.listen(4004, () => console.log(`Example app listening on port ${4004}!`))
+app.listen(process.env.PORT || 4004, () => console.log(`Example app listening on port ${4004}!`))

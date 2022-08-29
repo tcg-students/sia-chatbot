@@ -14,19 +14,19 @@ app.use(cors());
 chatRoutes(app);
 sendGridRoute(app);
 
-app.get("/bot", function (req, res) {
-  res.sendFile(path.join(__dirname, "/public/main.js"));
-});
+// app.get("/bot", function (req, res) {
+//   res.sendFile(path.join(__dirname, "/public/main.js"));
+// });
 
-app.get("/bot-box/main", function (req, res) {
-  var mainJs = reactAppJson["files"]["main.js"];
-  res.sendFile(path.join(__dirname, "/public/build" + mainJs));
-});
+// app.get("/bot-box/main", function (req, res) {
+//   var mainJs = reactAppJson["files"]["main.js"];
+//   res.sendFile(path.join(__dirname, "/public/build" + mainJs));
+// });
 
-app.get("/bot-box/css", function (req, res) {
-  var mainCss = reactAppJson["files"]["main.css"];
-  res.sendFile(path.join(__dirname, "/public/build" + mainCss));
-});
+// app.get("/bot-box/css", function (req, res) {
+//   var mainCss = reactAppJson["files"]["main.css"];
+//   res.sendFile(path.join(__dirname, "/public/build" + mainCss));
+// });
 
 
 if (process.env.NODE_ENV === "production") {

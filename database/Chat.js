@@ -14,9 +14,9 @@ require("dotenv").config();
 //   password: "674966f4d4849a0e33fd1658043d44376cea9a66c02058870f455612d6752c2d",
 //   port: 5432,
 // });
-// var pool;
+var pool;
 // var connectionString = null;
-// if (process.env === "production") {
+if (process.env === "production") {
   // var connectionString = process.env.DATABASE_URL
   var pool = new Pool({
     connectionString: process.env.DATABASE_URL,
@@ -25,7 +25,7 @@ require("dotenv").config();
     // ssl
     ssl: { rejectUnauthorized: false }
   })
-// };
+};
 
 //
 

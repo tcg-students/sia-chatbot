@@ -25,4 +25,4 @@ app.use(cors())
 
 chatRoutes(app)
 sendGridRoute(app)
-app.listen(process.env.PORT || 4004, () => console.log(`Example app listening on port ${4004}!`))
+app.listen(process.env.PORT || 4004, () => console.log(`Example app listening on port ${process.env.PORT}!`))

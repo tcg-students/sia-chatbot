@@ -9,10 +9,10 @@ const {
 } = require("../chatQueries/ChatQueries");
 
 const chatRoutes = (app) => {
-  app.get("/logo", async (req, res) => {
-    const logo = await getTcgLogo();
-    res.send({ logo });
-  });
+  // app.get("/logo", async (req, res) => {
+  //   const logo = await getTcgLogo();
+  //   res.send({ logo });
+  // });
 
   app.get("/treeMessages", async (req, res) => {
     try {

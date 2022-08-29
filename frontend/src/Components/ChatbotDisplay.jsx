@@ -2,28 +2,19 @@ import React, { useState, useEffect } from "react";
 import { FormIneractionController } from "./FormIneractionController";
 import Chatinput from "./ChatInput";
 import EditForm from "./EditForm.jsx";
+import Loading from "./Spinner.jsx"
 import "../responsive.css";
 
 const ChatbotDisplay = (props) => {
   const {
     handleInitialNodeOptions,
-    logo,
     introTreeMessages,
     nextNodes,
     nodeDisplay,
-    createForm,
-    formStructure,
-    handleEdit,
-    edit,
-    getFormDetails,
-    handleChange,
-    handleSubmit,
-    displayApplicantInfomation,
-    applicationFormAndApplicantInfoShow,
-    sendFormValues,
     handleScroll,
     handleResetChatbot,
     nodeTextStyling,
+    isLoading
   } = props;
 
   useEffect(() => {
@@ -35,22 +26,19 @@ const ChatbotDisplay = (props) => {
     <div>
       <div className="chatBotHeaderContainer">
         <div className="chatBotHeader">
-          <input
+          <input type="button"
             className="headerButtons"
             onClick={handleResetChatbot}
             value="Reset"
-          />
+            />
 
           <div style={{ display: "flex", marginTop: "auto", gap: "10px" }}>
-            <img
-              className="logo"
-              style={{ height: "6vh" }}
-              src={logo}
-              alt="tcgLogo"
-            />
+           
             <h1>Sia Chatbot</h1>
+
           </div>
         </div>
+
       </div>
       <div id="chatbotBodyDiv" className="chatbotBody">
         <div>
@@ -68,13 +56,14 @@ const ChatbotDisplay = (props) => {
         <div>
           {nextNodes !== undefined
             ? nextNodes &&
-              nextNodes
-                .filter((item) => item.id !== 0)
-                .map((item, i) => {
-                  if (item.text) {
-                    return (
-                      <div style={{ padding: ".5rem" }}>
+            nextNodes
+            .filter((item) => item.id !== 0)
+            .map((item, i) => {
+              if (item.text) {
+                return (
+                  <div style={{ padding: ".5rem" }}>
                         <p className={nodeTextStyling(item.text)}>
+
                           {item.text}
                         </p>
                       </div>
@@ -86,14 +75,14 @@ const ChatbotDisplay = (props) => {
                       </div>
                     );
                   } else if (item.option) {
-                    return item.option.includes("Back to top") ? (
+                    return item.option.includes("Back to top" ) || item.option.includes("No" ) ? (
                       <div style={{ padding: ".5rem" }}>
                         <button
                           className="optionButtons"
                           onClick={() =>
                             handleResetChatbot({ nodeid: item.id })
                           }
-                        >
+                          >
                           {item.option}
                         </button>
                       </div>
@@ -104,19 +93,21 @@ const ChatbotDisplay = (props) => {
                           onClick={() =>
                             handleInitialNodeOptions({ nodeid: item.id })
                           }
-                        >
+                          >
                           {item.option}
                         </button>
                       </div>
                     );
                   }
                 })
-            : null}
+                
+                : null}
+
+               {isLoading && <Loading />} 
         </div>
         <div>
           {nextNodes.map((item) => {
             if (item.application !== null) {
-              // console.log("item.app: ", item.application);
               return <FormIneractionController {...props} />;
             }
           })}

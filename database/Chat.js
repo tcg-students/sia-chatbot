@@ -5,9 +5,6 @@ require("dotenv").config();
 // const host = process.env.DB_HOST
 // const password = process.env.DB_PASSWORD;
 // const siaChatbot = process.env.DB_NAME;
-const {parse} = require('pg-connection-string')
-
-
 
 
 // const pool = new Pool({

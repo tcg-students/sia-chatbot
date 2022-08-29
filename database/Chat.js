@@ -14,23 +14,17 @@ require("dotenv").config();
 //   password: "674966f4d4849a0e33fd1658043d44376cea9a66c02058870f455612d6752c2d",
 //   port: 5432,
 // });
-
-
-
-// if (env === "production") {
-  // connectionString = process.env.DATABASE_URL
+var connectionString = null;
+if (env === "production") {
+  connectionString = process.env.DATABASE_URL
   pool = new Pool({
-    connectionString: 'postgres://otwvngycbybkwd:7dea492c099630ea6575155102436c90950be5bed9ba9e27cfa8806a9922daee@ec2-44-205-63-142.compute-1.amazonaws.com:5432/dc4knlj1j6afe5',
-    "dialect": "postgres",
-    ssl: { rejectUnauthorized: false }
-    // "dialectOptions": {
-    //     "ssl": {
-    //         "require": true,
-    //         "rejectUnauthorized": false
-    //     }
-    // }
+    connectionString: connectionString,
   })
-// };
+};
+
+//
+
+
 
 const getChats = async () => {
   const client = await pool.connect();

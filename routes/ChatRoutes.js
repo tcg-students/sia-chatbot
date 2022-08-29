@@ -16,8 +16,13 @@ const chatRoutes = (app) => {
   });
 
   app.get("/treeMessages", async (req, res) => {
-    const treeMessages = await getInitialTreeMessages();
-    res.send({ treeMessages });
+      try {
+        const treeMessages = await getInitialTreeMessages();
+        res.send({ treeMessages });
+        
+      } catch (error) {
+        console.log('treeError', error)
+      }
   });
   
   app.post("/get_initial_nodes", async (req, res) => {

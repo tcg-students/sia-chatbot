@@ -6,7 +6,7 @@ const URL = "/api";
 export const getInitialTreeText = () => {
   return async (dispatch) => {
     dispatch(loading(false))
-    const response = await axios.get(`/treeMessages`);
+    const response = await axios.get(`https://sia-bo.herokuapp.com/treeMessages`);
     const getData = response.data.treeMessages;
     dispatch({
       type: actions.GETTING_FIRST_TREE_WELCOME_MESSAGES,

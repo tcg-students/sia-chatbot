@@ -21,7 +21,7 @@ var pool = null
   // var connectionString = process.env.DATABASE_URL
   var pool = new Pool({
     ssl: {
-      rejectUnauthorized: false
+      rejectUnauthorized: true
     },
     connectionString: process.env.DATABASE_URL,
     

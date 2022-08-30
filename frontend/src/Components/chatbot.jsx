@@ -40,9 +40,7 @@ const Chatbot = (props) => {
   let dispatch = useDispatch();
 
   useEffect(() => {
-    return () => {
       getInitialContents();
-    };
   });
 
   const handleEdit = (e) => {

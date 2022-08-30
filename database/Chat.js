@@ -20,7 +20,9 @@ var pool = null
 // if (process.env === "production") {
   // var connectionString = process.env.DATABASE_URL
   var pool = new Pool({
-    ssl: { rejectUnauthorized },
+    ssl: {
+      rejectUnauthorized: false
+    },
     connectionString: process.env.DATABASE_URL,
     
     // 'postgres://otwvngycbybkwd:7dea492c099630ea6575155102436c90950be5bed9ba9e27cfa8806a9922daee@ec2-44-205-63-142.compute-1.amazonaws.com:5432/dc4knlj1j6afe5',

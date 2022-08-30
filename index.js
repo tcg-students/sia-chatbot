@@ -9,6 +9,12 @@ const reactAppJson = require("./public/build/asset-manifest.json");
 const helmet = require('helmet');
 const compression = require('compression');
 
+app.use(express.json())
+app.use(cors())
+app.use(helmet());
+app.use(compression());
+chatRoutes(app)
+sendGridRoute(app)
 
 const path = require('path');
 
@@ -39,10 +45,5 @@ if (process.env.NODE_ENV === "production") {
 
   
 
-app.use(express.json())
-app.use(cors())
-app.use(helmet());
-app.use(compression());
-chatRoutes(app)
-sendGridRoute(app)
+
 app.listen(process.env.PORT || 4004, () => console.log(`Example app listening on port ${process.env.PORT}!`))

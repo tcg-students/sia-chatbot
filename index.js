@@ -6,13 +6,10 @@ const cors = require('cors')
 const {chatRoutes} = require('./routes/ChatRoutes')
 const {sendGridRoute} = require('./routes/SendgridRoute')
 const reactAppJson = require("./public/build/asset-manifest.json");
-// const helmet = require('helmet');
-// const compression = require('compression');
 
 app.use(express.json())
 app.use(cors())
-// app.use(helmet());
-// app.use(compression());
+
 chatRoutes(app)
 sendGridRoute(app)
 

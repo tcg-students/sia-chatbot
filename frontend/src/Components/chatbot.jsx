@@ -41,7 +41,7 @@ const Chatbot = (props) => {
 
   useEffect(() => {
       getInitialContents();
-  });
+  },[]);
 
   const handleEdit = (e) => {
     e.preventDefault();

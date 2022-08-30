@@ -60,13 +60,10 @@ const Chatbot = (props) => {
 
   const getInitialContents = async () => {
     try {
-      setTimeout(function() {
         dispatch(loading(true))
         dispatch(getInitialTreeText());
-      }, 1000);
-      setTimeout(function() {
         dispatch(getInitialNode({ treeid: 1 }));
-      }, 1000);
+
       setCompareNode([]);
 
       return;
@@ -85,17 +82,13 @@ const Chatbot = (props) => {
       if (id.nodeid) {
         for (var i in compareNode) {
           if (compareNode[i].id === id.nodeid) {
-            setTimeout(function() {
             dispatch(removeLastNodes(id));
-            }, 1000);
             
           }
         }
         setCompareNode(nextNodes);
       }
-      setTimeout(function() {
         dispatch(getInitialNode(id));
-      }, 1000);
     } catch (error) {
       console.log("error", error);
     }
@@ -134,9 +127,7 @@ const Chatbot = (props) => {
 
     if (applicationForm) {
       setDisplayApplicantInfomation([applicationForm]);
-      setTimeout(function() {
         setapplicationFormAndApplicantInfoShow(true);
-      }, 1000);
     }
   };
 
@@ -156,7 +147,7 @@ const Chatbot = (props) => {
       setDisplayApplicantInfomation([]);
       setapplicationFormAndApplicantInfoShow(false);
       setApplicationForm({});
-    }, 3000);
+    }, 1000);
   };
 
   const handleScroll = (_) => {

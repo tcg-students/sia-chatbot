@@ -20,16 +20,12 @@ function ChatInput(props) {
     if (newIntroOptions.find((item) => item.node_id === undefined)) {
       const searchValue = input;
       const selectedValue = newIntroOptions[searchValue].id;
-      setTimeout(function() {
         dispatch(getInitialNode({ treeid: selectedValue }));
-      }, 1000);
     } else {
       const searchValue = input - 1;
       let newCurrentNodes = currentNodes.filter((item) => item.option);
       const selectedValue = newCurrentNodes[searchValue].id;
-      setTimeout(function() {
         dispatch(getInitialNode({ nodeid: selectedValue }));
-      }, 1000);
     }
     setInput("");
   };

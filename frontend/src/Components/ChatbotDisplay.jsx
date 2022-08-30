@@ -101,9 +101,7 @@ const ChatbotDisplay = (props) => {
                       </div>
                     );
                   }
-                }).filter(function(item, pos, self) {
-                  return self.indexOf(item) == pos;
-              })
+                })
             : null}
 
           {isLoading && <Loading />}

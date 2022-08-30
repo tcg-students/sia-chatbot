@@ -26,9 +26,9 @@ function toggleBot(){
     botContainer.style= style;
     var body =  document.body.appendChild(botContainer);
     var botScript = document.createElement('script'); 
-    botScript.setAttribute("src","http://localhost:4004/bot-box/main")
+    botScript.setAttribute("src","sia-bo.herokuapp.com/bot-box/main")
     var botCssScript = document.createElement('link'); 
-    botCssScript.setAttribute("href","http://localhost:4004/bot-box/css")
+    botCssScript.setAttribute("href","sia-bo.herokuapp.com/bot-box/css")
     botCssScript.setAttribute("rel","stylesheet")
     var head =  document.head.appendChild(botScript);
     var head =  document.head.appendChild(botCssScript);

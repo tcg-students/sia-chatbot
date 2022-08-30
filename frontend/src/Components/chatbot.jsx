@@ -41,11 +41,7 @@ const Chatbot = (props) => {
 
   useEffect(() => {
     return () => {
-      dispatch(loading(true))
-      dispatch(getInitialTreeText());
-      dispatch(getInitialNode({ treeid: 1 }));
-
-    setCompareNode([]);
+      getInitialContents();
     };
   });
 

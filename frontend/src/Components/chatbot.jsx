@@ -19,8 +19,6 @@ const Chatbot = (props) => {
   const [editForm, setEditForm] = useState(false);
   const [compareNode, setCompareNode] = useState([]);
   const [displayApplicantInfomation, setDisplayApplicantInfomation] = useState([]);
-  
-
   const [
     applicationFormAndApplicantInfoShow,
     setapplicationFormAndApplicantInfoShow,
@@ -45,7 +43,7 @@ const Chatbot = (props) => {
     return () => {
       getImage()
     };
-  }, []);
+  });
 
   const handleEdit = (e) => {
     e.preventDefault();

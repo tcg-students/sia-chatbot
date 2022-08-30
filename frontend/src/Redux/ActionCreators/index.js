@@ -2,11 +2,12 @@ import axios from "axios";
 import * as actions from "../ActionTypes/index";
 const URL = "/api";
 
-
 export const getInitialTreeText = () => {
   return async (dispatch) => {
-    dispatch(loading(false))
-    const response = await axios.get(`https://sia-bo.herokuapp.com/treeMessages`);
+    dispatch(loading(false));
+    const response = await axios.get(
+      `https://sia-bo.herokuapp.com/treeMessages`
+    );
     const getData = response.data.treeMessages;
     dispatch({
       type: actions.GETTING_FIRST_TREE_WELCOME_MESSAGES,
@@ -17,13 +18,13 @@ export const getInitialTreeText = () => {
 
 export const getInitialNode = (obj) => {
   return async (dispatch) => {
-    dispatch(loading(false))
+    dispatch(loading(false));
     const response = await axios.post(
-      `http://localhost:4004/get_initial_nodes`,
+      `https://sia-bo.herokuapp.com/get_initial_nodes`,
       obj
     );
 
-    console.log("response", response.data.rows)
+    console.log("response", response.data.rows);
     const getInitialNodeData = response.data.rows;
     dispatch({
       type: actions.GETTING_FIRST_NODE_OPTIONS,
@@ -42,7 +43,10 @@ export const getInitialNode2 = (obj) => {
 
 export const getApplicationFormValues = (data) => {
   return async (dispatch) => {
-    const response = await axios.post(`http://localhost:4004/send_email`, data);
+    const response = await axios.post(
+      `https://sia-bo.herokuapp.com//send_email`,
+      data
+    );
     const getFormData = response.data;
     dispatch({ type: actions.SEND_APPLICANT_DETAILS, payload: getFormData });
   };
@@ -56,7 +60,7 @@ export const removeLastNodes = (id) => {
 
 export const resetStateValues = () => {
   return async (dispatch) => {
-    dispatch(loading(false))
+    dispatch(loading(false));
     dispatch({ type: actions.RESET_STATE, payload: [] });
   };
 };
@@ -67,8 +71,8 @@ export const resetInitialNodes = () => {
   };
 };
 
-export const loading=(status)=>{
-  return (dispatch)=>{
-    dispatch({type: actions.LOADING, payload: status})
-  }
-}
+export const loading = (status) => {
+  return (dispatch) => {
+    dispatch({ type: actions.LOADING, payload: status });
+  };
+};

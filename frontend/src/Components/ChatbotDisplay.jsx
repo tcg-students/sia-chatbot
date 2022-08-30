@@ -34,7 +34,7 @@ const ChatbotDisplay = (props) => {
 
           <div style={{ display: "flex", marginTop: "auto", gap: "10px" }}>
            
-            <h1>Sia Chatbot</h1>
+            <h1>Sia Bot</h1>
 
           </div>
         </div>

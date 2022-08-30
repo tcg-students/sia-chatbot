@@ -30,7 +30,7 @@ const getInitialTreeMessages = async () => {
   const chats = await getChats();
   let query = "SELECT * FROM tree ;";
   // let parameters = [id]
-
+  console.log('chats',)
   try {
     const res = await chats.query(query);
 console.log("res", res)

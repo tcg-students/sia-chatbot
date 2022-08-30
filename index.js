@@ -5,6 +5,7 @@ const port = process.env.PORT
 const cors = require('cors')
 const {chatRoutes} = require('./routes/ChatRoutes')
 const {sendGridRoute} = require('./routes/SendgridRoute')
+const reactAppJson = require("./public/build/asset-manifest.json");
 const helmet = require('helmet');
 const compression = require('compression');
 
@@ -21,6 +22,20 @@ if (process.env.NODE_ENV === "production") {
       res.sendFile(path.join(__dirname, "frontend", "build", "index.html"))
     })
   }
+
+  app.get("/bot", function (req, res) {
+    res.sendFile(path.join(__dirname, "/public/main.js"));
+  });
+  
+  app.get("/bot-box/main", function (req, res) {
+    var mainJs = reactAppJson["files"]["main.js"];
+    res.sendFile(path.join(__dirname, "/public/build" + mainJs));
+  });
+  
+  app.get("/bot-box/css", function (req, res) {
+    var mainCss = reactAppJson["files"]["main.css"];
+    res.sendFile(path.join(__dirname, "/public/build" + mainCss));
+  });
 
   
 

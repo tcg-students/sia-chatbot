@@ -66,7 +66,7 @@ const Chatbot = (props) => {
       }, 1000);
       setTimeout(function() {
         dispatch(getInitialNode({ treeid: 1 }));
-      }, 1800);
+      }, 1000);
       setCompareNode([]);
 
       return;
@@ -156,7 +156,7 @@ const Chatbot = (props) => {
       setDisplayApplicantInfomation([]);
       setapplicationFormAndApplicantInfoShow(false);
       setApplicationForm({});
-    }, 5000);
+    }, 3000);
   };
 
   const handleScroll = (_) => {

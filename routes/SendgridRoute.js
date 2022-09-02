@@ -2,7 +2,7 @@ const sgMail = require("@sendgrid/mail");
 const fs = require("fs");
 require("dotenv").config();
 
-sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+sgMail.setApiKey("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");
 const sendGridRoute = (app) => {
   app.post("/send_email", async (req, res) => {
     console.log("req.body", req.body);

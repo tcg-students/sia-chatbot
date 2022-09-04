@@ -15,6 +15,7 @@ const ChatbotDisplay = (props) => {
     handleResetChatbot,
     nodeTextStyling,
     isLoading,
+    disableButton
   } = props;
 
   useEffect(() => {
@@ -31,6 +32,7 @@ const ChatbotDisplay = (props) => {
             className="headerButtons"
             onClick={handleResetChatbot}
             value="Reset"
+            disabled={!disableButton}
           />
 
           <div style={{ display: "flex", marginTop: "auto", gap: "10px" }}>

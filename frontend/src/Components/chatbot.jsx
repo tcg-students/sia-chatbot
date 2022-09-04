@@ -24,14 +24,18 @@ const Chatbot = (props) => {
     setapplicationFormAndApplicantInfoShow,
   ] = useState(false);
 
+  const [disableButton , setDisableButton]= useState(false)
+
   let introTreeMessages = useSelector(
     (state) => state.botConversation.welcomeMessages
   );
   let isLoading = useSelector((state)=>state.botConversation.isLoading)
   
-  let nextNodes = useSelector(
+  let nextNodesState = useSelector(
     (state) => state.botConversation.optionBotMessages
   );
+
+  let nextNodes = nextNodesState.filter((v,i,a)=>a.findIndex(v2=>(v2.id===v.id))===i)
 
   let stateId = useSelector((state) => state.botConversation.id);
 
@@ -72,6 +76,7 @@ const Chatbot = (props) => {
     try {
       dispatch(loading(true))
       dispatch(getInitialNode2(id));
+      setDisableButton(true)
       if (stateId === id.nodeid) {
         return;
       }
@@ -161,6 +166,7 @@ const Chatbot = (props) => {
       setapplicationFormAndApplicantInfoShow(false);
       setCompareNode([]);
          }, 2000);
+         setDisableButton(false)
 
   };
 
@@ -199,6 +205,7 @@ const Chatbot = (props) => {
         nodeTextStyling={nodeTextStyling}
         editForm={editForm}
         applicationForm={applicationForm}
+        disableButton={disableButton}
       />
     </div>
   );

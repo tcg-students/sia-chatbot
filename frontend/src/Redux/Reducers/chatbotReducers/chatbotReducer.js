@@ -96,7 +96,6 @@ export const chatbotMessagesReducer = (state = initialState, action) => {
         ...state,
         nodeId: [],
         currentNodes: [],
-        welcomeMessages: [],
         optionBotMessages: [],
         id: null,
       };

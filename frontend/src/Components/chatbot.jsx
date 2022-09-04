@@ -65,6 +65,7 @@ const Chatbot = (props) => {
         dispatch(getInitialNode({ treeid: 1 }));
 
       setCompareNode([]);
+      setTimeout(handleScroll(), 1000);
 
       return;
     } catch (error) {
@@ -77,6 +78,8 @@ const Chatbot = (props) => {
       dispatch(loading(true))
       dispatch(getInitialNode2(id));
       setDisableButton(true)
+      setTimeout(handleScroll(), 1000);
+
       if (stateId === id.nodeid) {
         return;
       }
@@ -84,12 +87,17 @@ const Chatbot = (props) => {
         for (var i in compareNode) {
           if (compareNode[i].id === id.nodeid) {
             dispatch(removeLastNodes(id));
+            setTimeout(handleScroll(), 1000);
+
             
           }
         }
         setCompareNode(nextNodes);
+        setTimeout(handleScroll(), 1000);
       }
         dispatch(getInitialNode(id));
+        setTimeout(handleScroll(), 1000);
+
     } catch (error) {
       console.log("error", error);
     }

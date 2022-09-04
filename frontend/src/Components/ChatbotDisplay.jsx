@@ -20,7 +20,6 @@ const ChatbotDisplay = (props) => {
 
   useEffect(() => {
     nodeDisplay();
-    handleScroll();
   });
 
   return (
